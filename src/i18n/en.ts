@@ -81,6 +81,13 @@ export const en = {
         faqManagement: "FAQ Management",
         faqDesc: "Manage frequently asked questions for your clients.",
         confirmDeleteFaq: "Are you sure you want to delete this question?",
+        createFaq: "Create FAQ",
+        editFaq: "Edit FAQ",
+        deleteFaq: "Delete FAQ",
+        question: "Question",
+        answer: "Answer",
+        editQuestion: "Edit Question",
+        deleteQuestion: "Delete Question",
 
         // Dashboard
         dashboardOverview: "Dashboard Overview",
@@ -173,8 +180,6 @@ export const en = {
         delete: "Delete",
         name: "Name",
         category: "Category",
-        question: "Question",
-        answer: "Answer",
     },
 
     // Home Page

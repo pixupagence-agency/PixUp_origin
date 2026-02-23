@@ -81,6 +81,13 @@ export const fr = {
         faqManagement: "Gestion de la FAQ",
         faqDesc: "Gérez les questions fréquemment posées par vos clients.",
         confirmDeleteFaq: "Êtes-vous sûr de vouloir supprimer cette question ?",
+        createFaq: "Créer une FAQ",
+        editFaq: "Modifier la FAQ",
+        deleteFaq: "Supprimer la FAQ",
+        question: "Question",
+        answer: "Réponse",
+        editQuestion: "Modifier la Question",
+        deleteQuestion: "Supprimer la Question",
 
         // Dashboard
         dashboardOverview: "Vue d'ensemble du tableau de bord",
@@ -173,8 +180,6 @@ export const fr = {
         delete: "Supprimer",
         name: "Nom",
         category: "Catégorie",
-        question: "Question",
-        answer: "Réponse",
     },
 
     // Home Page
