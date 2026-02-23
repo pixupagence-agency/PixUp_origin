@@ -1,0 +1,43 @@
+﻿src/app/admin-settings/page.tsx(27,92): error TS1005: ',' expected.
+src/app/admin-settings/page.tsx(27,96): error TS1005: ',' expected.
+src/app/admin-settings/page.tsx(27,101): error TS1005: ':' expected.
+src/app/blog-news/page.tsx(34,2): error TS17008: JSX element 'article' has no corresponding closing tag.
+src/app/blog-news/page.tsx(37,214): error TS1005: ',' expected.
+src/app/blog-news/page.tsx(37,219): error TS1005: ',' expected.
+src/app/blog-news/page.tsx(37,230): error TS1002: Unterminated string literal.
+src/app/blog-news/page.tsx(38,6): error TS1005: ',' expected.
+src/app/blog-news/page.tsx(38,91): error TS1005: '(' expected.
+src/app/blog-news/page.tsx(72,3): error TS17002: Expected corresponding JSX closing tag for 'main'.
+src/app/blog-news/page.tsx(104,195): error TS1005: ',' expected.
+src/app/blog-news/page.tsx(104,200): error TS1005: ',' expected.
+src/app/blog-news/page.tsx(104,211): error TS1002: Unterminated string literal.
+src/app/blog-news/page.tsx(105,1): error TS1005: ':' expected.
+src/app/blog-news/page.tsx(123,190): error TS1005: ',' expected.
+src/app/blog-news/page.tsx(123,195): error TS1005: ',' expected.
+src/app/blog-news/page.tsx(123,206): error TS1002: Unterminated string literal.
+src/app/blog-news/page.tsx(124,1): error TS1005: ':' expected.
+src/app/blog-news/page.tsx(142,184): error TS1005: ',' expected.
+src/app/blog-news/page.tsx(142,189): error TS1005: ',' expected.
+src/app/blog-news/page.tsx(142,200): error TS1002: Unterminated string literal.
+src/app/blog-news/page.tsx(143,1): error TS1005: ':' expected.
+src/app/blog-news/page.tsx(161,181): error TS1005: ',' expected.
+src/app/blog-news/page.tsx(161,186): error TS1005: ',' expected.
+src/app/blog-news/page.tsx(161,197): error TS1002: Unterminated string literal.
+src/app/blog-news/page.tsx(162,1): error TS1005: ':' expected.
+src/app/blog-news/page.tsx(180,194): error TS1005: ',' expected.
+src/app/blog-news/page.tsx(180,199): error TS1005: ',' expected.
+src/app/blog-news/page.tsx(180,210): error TS1002: Unterminated string literal.
+src/app/blog-news/page.tsx(181,1): error TS1005: ':' expected.
+src/app/blog-news/page.tsx(199,203): error TS1005: ',' expected.
+src/app/blog-news/page.tsx(199,208): error TS1005: ',' expected.
+src/app/blog-news/page.tsx(199,219): error TS1002: Unterminated string literal.
+src/app/blog-news/page.tsx(200,1): error TS1005: ':' expected.
+src/app/blog-news/page.tsx(224,3): error TS17015: Expected corresponding closing tag for JSX fragment.
+src/app/blog-news/page.tsx(226,10): error TS1005: ';' expected.
+src/app/blog-news/page.tsx(248,1): error TS1128: Declaration or statement expected.
+src/app/blog-news/page.tsx(250,9): error TS1005: ';' expected.
+src/app/blog-news/page.tsx(270,1): error TS1128: Declaration or statement expected.
+src/app/blog-news/page.tsx(271,1): error TS1109: Expression expected.
+src/app/blog-news/page.tsx(273,5): error TS1109: Expression expected.
+src/app/blog-news/page.tsx(273,7): error TS1109: Expression expected.
+src/app/blog-news/page.tsx(274,3): error TS1109: Expression expected.

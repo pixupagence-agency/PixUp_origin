@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PIXUP - Blog &amp; News</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display antialiased overflow-x-hidden">
+<div class="relative flex min-h-screen w-full flex-col group/design-root">
+<!-- Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 bg-background-light/80 backdrop-blur-md dark:border-slate-800 dark:bg-background-dark/80">
+<div class="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-4 sm:px-6 lg:px-8">
+<div class="flex items-center gap-2">
+<div class="flex h-8 w-8 items-center justify-center rounded bg-primary text-white">
+<span class="material-symbols-outlined text-[20px]">auto_awesome_mosaic</span>
+</div>
+<span class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">PIXUP</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-400 dark:hover:text-primary transition-colors" href="#">Work</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-400 dark:hover:text-primary transition-colors" href="#">Services</a>
+<a class="text-sm font-medium text-primary" href="#">Blog</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-400 dark:hover:text-primary transition-colors" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden sm:inline-flex h-9 items-center justify-center rounded-lg bg-primary px-4 text-sm font-semibold text-white shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all">
+                        Get in Touch
+                    </button>
+<button class="md:hidden p-2 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
+<!-- Hero Section (Featured Post) -->
+<article class="relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 shadow-sm border border-slate-100 dark:border-slate-800 transition-all hover:shadow-md mb-16">
+<div class="grid lg:grid-cols-2 gap-0">
+<div class="relative h-64 lg:h-auto overflow-hidden group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Abstract digital interface design with glowing blue elements" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBZi6XG_JQoFG0JGuEXHOv9YaAAdjUZlaBr5IVQGIp8h6UQFtB2x4NWAgxN85av-EtlRgPkzRIyleS90swPN3sFdAVnetJmhShfGuI_MepqSKRymsWGsTYtMlLpNiBQ1ih76gdN4oN85-87etJYo50dBB5R2HycUDxcs6ABohcKVagkHWMO0jtQccSBW1anl3L4ox2ZyvvASaIycSXv7AiwVMkGU0_XEAV2cZkiK7Y0HTu0Dvr0WvW1KRq8Vp3OCJjs70vrs5wIsAxF');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent lg:hidden"></div>
+</div>
+<div class="flex flex-col justify-center p-8 lg:p-12 xl:p-16">
+<div class="flex items-center gap-2 mb-4">
+<span class="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
+                                    Featured
+                                </span>
+<span class="text-xs font-medium text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 5 min read
+                                </span>
+</div>
+<h1 class="mb-4 text-3xl font-black tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl leading-tight">
+                                The Future of Digital Interfaces in 2024
+                            </h1>
+<p class="mb-8 text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+                                Exploring how AI and spatial computing are reshaping the way we interact with screens. A deep dive into the next generation of UI patterns.
+                            </p>
+<div class="flex items-center gap-4 mb-8">
+<div class="h-10 w-10 overflow-hidden rounded-full bg-slate-200">
+<img alt="Portrait of Alex Doe" class="h-full w-full object-cover" data-alt="Portrait of Alex Doe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKiKyZtciiBV8vHS8gHLGKno5Fj9foqZ4Qj3MtYsLTpfxxbsNyb0wh9A1SkULypAuyfReSVh9fKiM7TQxGKGRMrtMuz3rskZiYfO0n_A3zbdv9zFA_fFTC2mBRuHSueWPq6IKRO3UzyVvgW-EBIVkC-2mPU9OCZgR1dkuUJn74CUdlIxqV0_cQuvEJFP9_AmRQfiClMg0DW50pHuNSVQS9qM-5aN24MnLWge2v9ayrEQTEgsS0kaNsvyJVvyrrSPwHOyeoJq4dqq5K"/>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Alex Doe</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Design Lead</p>
+</div>
+</div>
+<div>
+<a class="inline-flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors group" href="#">
+                                    Read Article 
+                                    <span class="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</article>
+<!-- Filter & Search -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
+<div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
+<button class="whitespace-nowrap rounded-full bg-primary px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary/90">
+                            All Posts
+                        </button>
+<button class="whitespace-nowrap rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 shadow-sm transition-colors hover:bg-slate-50 hover:text-primary dark:hover:bg-slate-700">
+                            Design
+                        </button>
+<button class="whitespace-nowrap rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 shadow-sm transition-colors hover:bg-slate-50 hover:text-primary dark:hover:bg-slate-700">
+                            Tech
+                        </button>
+<button class="whitespace-nowrap rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 shadow-sm transition-colors hover:bg-slate-50 hover:text-primary dark:hover:bg-slate-700">
+                            Culture
+                        </button>
+<button class="whitespace-nowrap rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 shadow-sm transition-colors hover:bg-slate-50 hover:text-primary dark:hover:bg-slate-700">
+                            Agency Life
+                        </button>
+</div>
+<div class="relative w-full md:w-64">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="block w-full rounded-lg border-0 py-2 pl-10 pr-3 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-primary dark:bg-slate-800 dark:ring-slate-700 dark:text-white sm:text-sm sm:leading-6" placeholder="Search articles..." type="text"/>
+</div>
+</div>
+<!-- Post Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Post 1 -->
+<article class="flex flex-col group cursor-pointer">
+<div class="relative mb-4 overflow-hidden rounded-xl aspect-[16/10]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Minimalist monochromatic shapes on a wall" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDsfIMhyS9iwMkIhrCEuRp0ef3jviyEhi--td09qD5LA6Xf1QL46BoxnEzlvLHte73VDRPMx072JH8SQezquM3dj3ALTyPXYd7ZGcoYurzdBFLJTl3rfs1hVaat0eiVR5BPOPu0nKioqOznjreX4p1p_WeG_njuYv6VeiKMjkuC6Cv9gGcOG34slT6HsGO0qM1UF7YQiB_CH03FznYCz9FjEvD1A6I5v8X3K3yrwdLvw9rkNT2xI4ST4Z5h-89xJVFr1q_HwrGWUq8f');"></div>
+</div>
+<div class="flex items-center gap-3 mb-3">
+<span class="text-xs font-bold uppercase tracking-wider text-primary">Design</span>
+<span class="text-xs text-slate-400">• 4 min read</span>
+</div>
+<h3 class="mb-2 text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+                            5 Rules for Minimalist Branding
+                        </h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4 line-clamp-2">
+                            A deep dive into essential branding principles that help create timeless identities in a crowded market.
+                        </p>
+<div class="mt-auto flex items-center gap-2 text-sm font-medium text-slate-900 dark:text-white">
+                            Read more <span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_right_alt</span>
+</div>
+</article>
+<!-- Post 2 -->
+<article class="flex flex-col group cursor-pointer">
+<div class="relative mb-4 overflow-hidden rounded-xl aspect-[16/10]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Server racks with blue neon lighting" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCQyjbZKS9C792O436t1dwJ-UcBQcFH7p7ZQmfzkGwr43lqHcp34OrM4E0art4hNXuRQLGGGZA94C_zuS2nBFcqRA-L89PQsoetXRiniilEx58utQKuO-O8qC5sOe408F-ceY_rBk2pkCITPEQWk5CsmkQLhLuW4Tod7EIBJG67FlFvHKD5wcwqaf7Bz0BkaZNSU-3wHkT7rIH9bGm5rVbK1SGyx2NacpQJCuCS_Spc5jsEoSHxWef4ZiE0WCEO3NNkblb6hL3QQjr-');"></div>
+</div>
+<div class="flex items-center gap-3 mb-3">
+<span class="text-xs font-bold uppercase tracking-wider text-primary">Tech</span>
+<span class="text-xs text-slate-400">• 6 min read</span>
+</div>
+<h3 class="mb-2 text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+                            Why We Switched to Serverless
+                        </h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4 line-clamp-2">
+                            Our journey migrating our infrastructure to a serverless architecture and the benefits we've seen.
+                        </p>
+<div class="mt-auto flex items-center gap-2 text-sm font-medium text-slate-900 dark:text-white">
+                            Read more <span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_right_alt</span>
+</div>
+</article>
+<!-- Post 3 -->
+<article class="flex flex-col group cursor-pointer">
+<div class="relative mb-4 overflow-hidden rounded-xl aspect-[16/10]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Team celebrating with confetti" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBNswnULezC-FMlmR2C4HArDkFzcLD8myM1KoQ1eJWXojZKkZ9qQlYF7QBbqtksNRFdhwX3mkjk_F8F4uHShgKPj5FMQ5RXKIzngXnXtrNuCIeIFz401sO_XVb27ntDaaiqck6ehZlcHVN_zHawApjTlJPCYXeOmAZjJpWVBADr8FQp_eN1yFJUT7pt4t7K-dUbY4EPNf0CyCIMPlCITLKNMaOe-ednDpUnNMQ1LJCqLy_LhqDuDqC9ueffoO0Z927b42eSn108qPZd');"></div>
+</div>
+<div class="flex items-center gap-3 mb-3">
+<span class="text-xs font-bold uppercase tracking-wider text-primary">News</span>
+<span class="text-xs text-slate-400">• 3 min read</span>
+</div>
+<h3 class="mb-2 text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+                            PIXUP Wins Agency of the Year
+                        </h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4 line-clamp-2">
+                            Celebrating our team's hard work, creativity, and the amazing clients who trust us with their vision.
+                        </p>
+<div class="mt-auto flex items-center gap-2 text-sm font-medium text-slate-900 dark:text-white">
+                            Read more <span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_right_alt</span>
+</div>
+</article>
+<!-- Post 4 -->
+<article class="flex flex-col group cursor-pointer">
+<div class="relative mb-4 overflow-hidden rounded-xl aspect-[16/10]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Colorful abstract gradients" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDJCEfWDGKCvDnFjrJ9FhB7abggrGi_lQJtd_0hUGI5qiPSH49PvEaPMQJCR5iBE-mnh-VmGvjIA8vse-bLwSg3wYTFYZ3m5jsVXUh4ySG6c8g5p2R9n7ZKnW_UUsdmrOJON2qS-q89eXKRjNrz1IPn-hhbRoi8dJ3RbNlCcz5CKrwEPJVEdUu7zvQVbtMnvTcuzrLLsxJprvos3W_qJnEP1YxZBsc1E8HXUMsCQlYE7I1YBanq7c_40P7abkBu4sTqjccQ28cY32DM');"></div>
+</div>
+<div class="flex items-center gap-3 mb-3">
+<span class="text-xs font-bold uppercase tracking-wider text-primary">Design</span>
+<span class="text-xs text-slate-400">• 5 min read</span>
+</div>
+<h3 class="mb-2 text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+                            Color Theory in UI Design
+                        </h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4 line-clamp-2">
+                            Understanding the emotional impact of color and how to use it effectively in user interfaces.
+                        </p>
+<div class="mt-auto flex items-center gap-2 text-sm font-medium text-slate-900 dark:text-white">
+                            Read more <span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_right_alt</span>
+</div>
+</article>
+<!-- Post 5 -->
+<article class="flex flex-col group cursor-pointer">
+<div class="relative mb-4 overflow-hidden rounded-xl aspect-[16/10]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Hand touching a digital screen interface" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuARlki9vq2jeDDimbG48Spt7uteor7XMLEuOusklGTZJZFqaBz3T5p8lEyMg1Z9fnNtPr8pg-X4ZzxtEKVaHdp2shp8ha4mC_CwarfLIUzpfGokqe3Zxz3ptDhz_-UazGm424TZruq0um7r4zVMvdhKRC8nGRRmaK0zjSr_Q-vQXC_VTBvru3C8h66OYbkB1qbvceIYELgIKuRfISYn2fl-kaSNcJ79rQn8XIk-TRxpVAx8CWkJ0n0dC-ikgsVn6kJdd4o8ePceyvFy');"></div>
+</div>
+<div class="flex items-center gap-3 mb-3">
+<span class="text-xs font-bold uppercase tracking-wider text-primary">UX</span>
+<span class="text-xs text-slate-400">• 4 min read</span>
+</div>
+<h3 class="mb-2 text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+                            The Rise of Micro-Interactions
+                        </h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4 line-clamp-2">
+                            How small animations and feedback loops are enhancing user experience and delight.
+                        </p>
+<div class="mt-auto flex items-center gap-2 text-sm font-medium text-slate-900 dark:text-white">
+                            Read more <span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_right_alt</span>
+</div>
+</article>
+<!-- Post 6 -->
+<article class="flex flex-col group cursor-pointer">
+<div class="relative mb-4 overflow-hidden rounded-xl aspect-[16/10]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Green plant growing from technology circuit board" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBmEH94Sr0wNswYfBHtS7FIoGLYE8RcEqn3jB9rpJbUwMmWjSzZr7tIrRlzhreEIFrl1PQce16C0_vhmMPo3jBmgdx0X0OZQl6TvXjxYKmrF2woC8NDVrd4eIr-EB4basOBP_EM75GWPfmE2m8LAEt6ZfjJAU6Gvv-fepSiuz_cij8xw1Ya0amAai7JH1BH8gigdajbOYN-dQmxLy8Zo15Uj8NzW7LjZZbS9LZRLKXbagkraTWhEGnDiHqLXZPSsVnkK7QjN3w5bH20');"></div>
+</div>
+<div class="flex items-center gap-3 mb-3">
+<span class="text-xs font-bold uppercase tracking-wider text-primary">Dev</span>
+<span class="text-xs text-slate-400">• 7 min read</span>
+</div>
+<h3 class="mb-2 text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+                            Sustainable Web Design Practices
+                        </h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4 line-clamp-2">
+                            Building a greener internet for everyone by optimizing code and reducing energy consumption.
+                        </p>
+<div class="mt-auto flex items-center gap-2 text-sm font-medium text-slate-900 dark:text-white">
+                            Read more <span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_right_alt</span>
+</div>
+</article>
+</div>
+<!-- Load More -->
+<div class="mt-16 flex justify-center">
+<button class="flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-8 py-3 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:text-primary dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">
+                        Load More Articles
+                        <span class="material-symbols-outlined text-[20px]">expand_more</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Newsletter Section -->
+<section class="border-t border-slate-200 bg-slate-50 py-16 dark:border-slate-800 dark:bg-slate-900/50">
+<div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+<div class="mb-4 inline-flex items-center justify-center rounded-full bg-primary/10 p-3 text-primary">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<h2 class="mb-4 text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
+                    Join 5,000+ creatives
+                </h2>
+<p class="mx-auto mb-8 max-w-xl text-lg text-slate-600 dark:text-slate-400">
+                    Get the latest design trends, tech insights, and agency news delivered directly to your inbox. No spam, just value.
+                </p>
+<form class="mx-auto flex max-w-md flex-col gap-3 sm:flex-row">
+<label class="sr-only" for="email-address">Email address</label>
+<input autocomplete="email" class="min-w-0 flex-auto rounded-lg border-0 bg-white px-4 py-3 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-primary dark:bg-slate-800 dark:ring-slate-700 dark:text-white sm:text-sm sm:leading-6" id="email-address" name="email" placeholder="Enter your email" required="" type="email"/>
+<button class="flex-none rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors" type="submit">
+                        Subscribe
+                    </button>
+</form>
+<p class="mt-4 text-xs text-slate-500 dark:text-slate-500">
+                    By subscribing, you agree to our <a class="underline hover:text-primary" href="#">Privacy Policy</a>.
+                </p>
+</div>
+</section>
+<!-- Footer -->
+<footer class="border-t border-slate-200 bg-white py-12 dark:border-slate-800 dark:bg-background-dark">
+<div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+<div class="flex items-center gap-2">
+<div class="flex h-6 w-6 items-center justify-center rounded bg-primary text-white">
+<span class="material-symbols-outlined text-[14px]">auto_awesome_mosaic</span>
+</div>
+<span class="text-lg font-bold text-slate-900 dark:text-white">PIXUP</span>
+</div>
+<div class="flex gap-8 text-sm text-slate-500 dark:text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">Twitter</a>
+<a class="hover:text-primary transition-colors" href="#">LinkedIn</a>
+<a class="hover:text-primary transition-colors" href="#">Instagram</a>
+<a class="hover:text-primary transition-colors" href="#">Dribbble</a>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400">
+                        © 2024 PIXUP Agency. All rights reserved.
+                    </p>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

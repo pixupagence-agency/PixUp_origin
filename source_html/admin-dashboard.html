@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PIXUP Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-content": "#ffffff",
+                        "primary-light": "#eef4ff",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem", 
+                        "lg": "0.75rem", 
+                        "xl": "1rem", 
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Glassmorphism utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .glass-sidebar {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        /* Smooth transitions */
+        .transition-all-300 {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f6f6f8;
+            /* Subtle mesh gradient background */
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(222,90%,92%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(210,80%,96%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 100%, hsla(222,90%,96%,1) 0, transparent 50%);
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="text-slate-900 bg-background-light overflow-x-hidden">
+<div class="flex h-screen w-full overflow-hidden">
+<!-- Sidebar -->
+<aside class="hidden md:flex flex-col w-72 h-full glass-sidebar z-20 shrink-0">
+<div class="flex items-center gap-3 p-6 border-b border-slate-100/50">
+<div class="bg-primary/10 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary text-2xl">auto_awesome_mosaic</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 text-lg font-bold tracking-tight">PIXUP</h1>
+<p class="text-slate-500 text-xs font-medium">Creative Agency</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-2 p-4 overflow-y-auto">
+<p class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 mt-2">Main Menu</p>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg bg-primary/10 text-primary group transition-all-300" href="#">
+<span class="material-symbols-outlined filled-icon">dashboard</span>
+<span class="text-sm font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-slate-100 text-slate-600 hover:text-slate-900 group transition-all-300" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">description</span>
+<span class="text-sm font-medium">Pages</span>
+<span class="ml-auto bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-0.5 rounded-full border border-slate-200">12</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-slate-100 text-slate-600 hover:text-slate-900 group transition-all-300" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">article</span>
+<span class="text-sm font-medium">Blog</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-slate-100 text-slate-600 hover:text-slate-900 group transition-all-300" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">folder_open</span>
+<span class="text-sm font-medium">Portfolio</span>
+</a>
+<p class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 mt-6">System</p>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-slate-100 text-slate-600 hover:text-slate-900 group transition-all-300" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">people</span>
+<span class="text-sm font-medium">Users</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-slate-100 text-slate-600 hover:text-slate-900 group transition-all-300" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-100/50">
+<div class="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200">
+<img alt="Admin User Profile" class="h-10 w-10 rounded-full object-cover border-2 border-white shadow-sm" data-alt="Close up portrait of a man smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMu9lPu7U1LHHfzEJHm-L1G43fJ47kh_K318q0wbU599eG2mqt1rRjNVYk05yAweiMdi62y8OYXg_9waRkUdDMegbAJv-V_LgPtPtDxLx-Qpl9agQ4YbGH57jbyp55n-6K4471nJ2xNUiOkKY5a11cSpAFvktg7VzvrZ__-Y9uYUNjTlRJ54EmqCvXQ9cnLxc_NyeN0noAtyRucCtghM-eEIGWlMa2NzKtvdOMWOuKEnc39GheUh9hbzCziK7soSqwhgDsWlmmcKZ5"/>
+<div class="flex flex-col overflow-hidden">
+<span class="text-sm font-bold text-slate-900 truncate">Alex Morgan</span>
+<span class="text-xs text-slate-500 truncate">Admin Access</span>
+</div>
+<button class="ml-auto text-slate-400 hover:text-slate-600">
+<span class="material-symbols-outlined text-xl">logout</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-full overflow-hidden relative">
+<!-- Top Header -->
+<header class="h-20 px-8 flex items-center justify-between shrink-0 glass-panel z-10 m-4 rounded-xl shadow-sm border-white/40">
+<div class="flex items-center gap-4 flex-1">
+<button class="md:hidden text-slate-500">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="relative w-full max-w-md hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full bg-slate-50/50 border-slate-200 pl-10 pr-4 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all-300 placeholder-slate-400" placeholder="Search pages, projects..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative p-2 text-slate-400 hover:text-primary transition-colors rounded-lg hover:bg-slate-50">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 h-2 w-2 rounded-full bg-red-500 border-2 border-white"></span>
+</button>
+<button class="flex items-center gap-2 bg-primary hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg shadow-lg shadow-blue-500/30 transition-all-300 transform hover:-translate-y-0.5">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span class="text-sm font-bold">New Project</span>
+</button>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto px-4 pb-8 md:px-8">
+<div class="max-w-7xl mx-auto flex flex-col gap-8">
+<!-- Page Title -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mt-2">
+<div>
+<h2 class="text-3xl font-black text-slate-900 tracking-tight">Dashboard Overview</h2>
+<p class="text-slate-500 mt-1">Welcome back, Alex. Here's what's happening with your site today.</p>
+</div>
+<div class="flex items-center gap-2 text-sm text-slate-500 bg-white/60 px-3 py-1.5 rounded-lg border border-white/50 shadow-sm backdrop-blur-sm">
+<span class="material-symbols-outlined text-lg">calendar_today</span>
+<span>Last 30 Days</span>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Stat Card 1 -->
+<div class="glass-panel p-6 rounded-2xl shadow-sm hover:shadow-md transition-all-300 group">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-blue-50 p-3 rounded-xl text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</div>
+<span class="flex items-center text-emerald-600 bg-emerald-50 px-2 py-1 rounded-md text-xs font-bold">
+<span class="material-symbols-outlined text-sm mr-1">trending_up</span>
+                                +12%
+                            </span>
+</div>
+<p class="text-slate-500 text-sm font-medium">Total Views</p>
+<h3 class="text-2xl font-bold text-slate-900 mt-1">124.5k</h3>
+</div>
+<!-- Stat Card 2 -->
+<div class="glass-panel p-6 rounded-2xl shadow-sm hover:shadow-md transition-all-300 group">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-purple-50 p-3 rounded-xl text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">folder_special</span>
+</div>
+<span class="flex items-center text-emerald-600 bg-emerald-50 px-2 py-1 rounded-md text-xs font-bold">
+<span class="material-symbols-outlined text-sm mr-1">trending_up</span>
+                                +5%
+                            </span>
+</div>
+<p class="text-slate-500 text-sm font-medium">Portfolio Visits</p>
+<h3 class="text-2xl font-bold text-slate-900 mt-1">8,230</h3>
+</div>
+<!-- Stat Card 3 -->
+<div class="glass-panel p-6 rounded-2xl shadow-sm hover:shadow-md transition-all-300 group">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-orange-50 p-3 rounded-xl text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">person_add</span>
+</div>
+<span class="flex items-center text-emerald-600 bg-emerald-50 px-2 py-1 rounded-md text-xs font-bold">
+<span class="material-symbols-outlined text-sm mr-1">trending_up</span>
+                                +18%
+                            </span>
+</div>
+<p class="text-slate-500 text-sm font-medium">New Leads</p>
+<h3 class="text-2xl font-bold text-slate-900 mt-1">45</h3>
+</div>
+<!-- Stat Card 4 -->
+<div class="glass-panel p-6 rounded-2xl shadow-sm hover:shadow-md transition-all-300 group">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-pink-50 p-3 rounded-xl text-pink-600 group-hover:bg-pink-600 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<span class="flex items-center text-slate-500 bg-slate-100 px-2 py-1 rounded-md text-xs font-bold">
+<span class="material-symbols-outlined text-sm mr-1">remove</span>
+                                0%
+                            </span>
+</div>
+<p class="text-slate-500 text-sm font-medium">Active Projects</p>
+<h3 class="text-2xl font-bold text-slate-900 mt-1">12</h3>
+</div>
+</div>
+<!-- Main Content Row -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Traffic Chart -->
+<div class="lg:col-span-2 glass-panel p-6 rounded-2xl shadow-sm border-white/60">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-lg font-bold text-slate-900">Traffic Overview</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-2xl font-bold text-slate-900">145k</span>
+<span class="text-sm text-slate-500">Total Visits</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1 text-xs font-semibold bg-primary text-white rounded-lg shadow-lg shadow-blue-500/30">Week</button>
+<button class="px-3 py-1 text-xs font-semibold text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">Month</button>
+<button class="px-3 py-1 text-xs font-semibold text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">Year</button>
+</div>
+</div>
+<!-- Chart Area -->
+<div class="w-full h-[280px] relative mt-4">
+<!-- Background Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+<div class="w-full border-t border-dashed border-slate-200"></div>
+<div class="w-full border-t border-dashed border-slate-200"></div>
+<div class="w-full border-t border-dashed border-slate-200"></div>
+<div class="w-full border-t border-dashed border-slate-200"></div>
+<div class="w-full border-t border-dashed border-slate-200"></div>
+</div>
+<!-- The Chart SVG -->
+<svg class="absolute inset-0 w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 100 100">
+<!-- Gradient Definition -->
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#135bec" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#135bec" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Area Path -->
+<path d="M0,100 L0,70 Q10,60 20,75 T40,50 T60,60 T80,30 T100,50 L100,100 Z" fill="url(#chartGradient)"></path>
+<!-- Line Path -->
+<path d="M0,70 Q10,60 20,75 T40,50 T60,60 T80,30 T100,50" fill="none" stroke="#135bec" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.8" vector-effect="non-scaling-stroke"></path>
+<!-- Data Points (Optional visual enhancement) -->
+<circle cx="20" cy="75" fill="white" r="1.5" stroke="#135bec" stroke-width="0.8"></circle>
+<circle cx="60" cy="60" fill="white" r="1.5" stroke="#135bec" stroke-width="0.8"></circle>
+<circle cx="80" cy="30" fill="white" r="1.5" stroke="#135bec" stroke-width="0.8"></circle>
+</svg>
+</div>
+<!-- X Axis Labels -->
+<div class="flex justify-between mt-4 px-2 text-xs font-medium text-slate-400">
+<span>Mon</span>
+<span>Tue</span>
+<span>Wed</span>
+<span>Thu</span>
+<span>Fri</span>
+<span>Sat</span>
+<span>Sun</span>
+</div>
+</div>
+<!-- Recent Activity -->
+<div class="glass-panel p-6 rounded-2xl shadow-sm border-white/60 flex flex-col h-full">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold text-slate-900">Recent Activity</h3>
+<button class="text-primary text-sm font-semibold hover:underline">View All</button>
+</div>
+<div class="flex flex-col gap-6 overflow-y-auto pr-2">
+<!-- Activity Item 1 -->
+<div class="flex gap-4">
+<div class="relative">
+<div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-primary z-10 relative">
+<span class="material-symbols-outlined text-xl">edit_document</span>
+</div>
+<div class="absolute top-10 left-1/2 -translate-x-1/2 w-0.5 h-full bg-slate-100 -z-0"></div>
+</div>
+<div class="flex flex-col pb-2">
+<p class="text-sm text-slate-900 font-medium"><span class="font-bold">Home Page</span> updated by Alex</p>
+<span class="text-xs text-slate-400 mt-1">2 mins ago</span>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="flex gap-4">
+<div class="relative">
+<div class="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 z-10 relative">
+<span class="material-symbols-outlined text-xl">image</span>
+</div>
+<div class="absolute top-10 left-1/2 -translate-x-1/2 w-0.5 h-full bg-slate-100 -z-0"></div>
+</div>
+<div class="flex flex-col pb-2">
+<p class="text-sm text-slate-900 font-medium">New project <span class="font-bold">Neon Brand</span> added</p>
+<span class="text-xs text-slate-400 mt-1">1 hour ago</span>
+</div>
+</div>
+<!-- Activity Item 3 -->
+<div class="flex gap-4">
+<div class="relative">
+<div class="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 z-10 relative">
+<span class="material-symbols-outlined text-xl">check_circle</span>
+</div>
+<div class="absolute top-10 left-1/2 -translate-x-1/2 w-0.5 h-full bg-slate-100 -z-0"></div>
+</div>
+<div class="flex flex-col pb-2">
+<p class="text-sm text-slate-900 font-medium">System Backup completed</p>
+<span class="text-xs text-slate-400 mt-1">Yesterday</span>
+</div>
+</div>
+<!-- Activity Item 4 -->
+<div class="flex gap-4">
+<div class="relative">
+<div class="h-10 w-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 z-10 relative">
+<span class="material-symbols-outlined text-xl">comment</span>
+</div>
+</div>
+<div class="flex flex-col pb-2">
+<p class="text-sm text-slate-900 font-medium">New comment on <span class="font-bold">Design Trends</span></p>
+<span class="text-xs text-slate-400 mt-1">2 days ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Projects Table Section -->
+<div class="glass-panel rounded-2xl shadow-sm border-white/60 overflow-hidden mb-8">
+<div class="p-6 border-b border-slate-100/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<h3 class="text-lg font-bold text-slate-900">Active Projects</h3>
+<div class="flex gap-2">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="pl-8 pr-3 py-1.5 text-sm bg-slate-50 border-slate-200 rounded-lg focus:ring-1 focus:ring-primary focus:border-primary" placeholder="Search..." type="text"/>
+</div>
+<button class="flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                                Filter
+                            </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50/50 border-b border-slate-100/50 text-xs uppercase text-slate-500 font-semibold tracking-wider">
+<th class="px-6 py-4">Project Name</th>
+<th class="px-6 py-4">Client</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4">Team</th>
+<th class="px-6 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100/50 text-sm">
+<tr class="hover:bg-slate-50/30 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-lg bg-indigo-500 flex items-center justify-center text-white shadow-md shadow-indigo-200">
+<span class="material-symbols-outlined">dataset</span>
+</div>
+<div>
+<p class="font-semibold text-slate-900">Website Redesign</p>
+<p class="text-xs text-slate-500">Started 2 days ago</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-600">TechFlow Inc.</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-100">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                                            In Progress
+                                        </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex -space-x-2">
+<img alt="Team member" class="w-8 h-8 rounded-full border-2 border-white" data-alt="Portrait of a young woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDts_x-EPHPQ6WNDiSjJQCEbyohN9FlVF4n26gyPpK3kIY8E24pSnbklUlSEUl9Xs7-bZ-i4DhtDm4Yfu_aAPoR5OUdeYby27HbllqZYG042iikD3dzsfNjbvyCBVA6fvUN3ZM06bl7XR-UppaLRP2Q_TsujhhWeL02pD0eukuyl_eviJg2oRcIGihbBsnvieWF3cUDikjy6WIaPY0CTeqwV8broyrXfMhQgZoQpIUtG5USrmnAYEUxkREscLeicgbHZShPzTtFB1yw"/>
+<img alt="Team member" class="w-8 h-8 rounded-full border-2 border-white" data-alt="Portrait of a man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdPCeQlELoK-HtLFz2Ls_q4gNsBZIkPhTNF9fKC0UWM2rYAxKNpp1ia7ZeLyDjr2C91lM5hp-vfYXZiU22ubIPE-rta99WcKOaHSSy-fx9AcYHpStivXHbGSLnFUsdH86Tc8jyC0uqqobb57bvHIWaUHVvojf-iSoKPbQX6diRbuFndaI4-VyDLCe_enFmSO-FreLLfY4BCYc-Df0fqD1ign0yXz67UMCZyMBhLMdb6NJpepMVhlP0TU04zp_cP-fpL-VUaKBCnKxA"/>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-xs font-medium text-slate-500">+2</div>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary p-1">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/30 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-lg bg-emerald-500 flex items-center justify-center text-white shadow-md shadow-emerald-200">
+<span class="material-symbols-outlined">smartphone</span>
+</div>
+<div>
+<p class="font-semibold text-slate-900">Mobile App UI</p>
+<p class="text-xs text-slate-500">Due in 5 days</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-600">GreenLeaf Co.</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-50 text-amber-700 border border-amber-100">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                            Review
+                                        </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex -space-x-2">
+<img alt="Team member" class="w-8 h-8 rounded-full border-2 border-white" data-alt="Portrait of a smiling woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUtxHcvvoMEmOHDdKMB6R8v1egb5m6shJ1Lfhl1pWA0RWbnSO5xTZDkLSRaH5oLqs52OkecQUSG36tjFGKXhk8JvtwA8bIWsEvk-PsRKi6D9edKnQhHcca753gNUOD7C-x0RmSoVnavBh5nxncBQ2hAg15MY2ClIy7wGmuob4zu7GtZPtCcA3yCYDOZt9JPzCmwepvFdQI5TMvSmtOxpf2hQDF6Zm7FYZmfGqvFiDd4Wjh5euN5bZWDMjoD5vaZcbjC9KzOqH79K9M"/>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary p-1">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/30 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-lg bg-rose-500 flex items-center justify-center text-white shadow-md shadow-rose-200">
+<span class="material-symbols-outlined">campaign</span>
+</div>
+<div>
+<p class="font-semibold text-slate-900">Q3 Marketing</p>
+<p class="text-xs text-slate-500">Planning Phase</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-600">Internal</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-600 border border-slate-200">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                                            Pending
+                                        </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex -space-x-2">
+<img alt="Team member" class="w-8 h-8 rounded-full border-2 border-white" data-alt="Portrait of admin user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8bdQEyOD2sIvulcMZTUd6UBTg_kjvddCiattKZGPjY40bNEtp_XATXMkOjzpPE7DZgsu3dgG01hJVuyrognnJb0aLgL4IVSwlYaT-DNSBvnYZhs9Ew99YX7tIk3yBObbotvpYllgFKtKo2go7yfDQgfNWW6G-VfAKrhdsH2KRJq5XJlVIDHOfAm-Fgvmufql2qsGxi1keNZ8I5EGpwIqSp7_i6gVUDURNZeD9_IKp3fU9mOt-we_wS0S7kjj1-B1FLMZmAQWtsKfR"/>
+<img alt="Team member" class="w-8 h-8 rounded-full border-2 border-white" data-alt="Portrait of team member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFrB9IEn3X7gFSJwff0yDG1BNsHVs67CtlO50MGY9T5ReD5H3UlMxw78zfKIfADhFXMoUN0yu1epCkO2EfvrYLkXj8QNtwBXoRzawTezLp-WAXxh7Vp9SexX0ZqRROlcQXFzQJBkuyWqJ1Vb3AjmHXxw5yhx6GFB0idNPdBNoCmjs7b0UhO4PTY8eVr3ijqbx1HA89djQPjq7DdBuMuwP4vshgvCbD2ig_oLwbAD_XLPLEcNZlkp6vEjkwcSNuk9T_yPikak4JDdsU"/>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary p-1">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

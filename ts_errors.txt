@@ -1,0 +1,9 @@
+src/app/portfolio/page.tsx(61,119): error TS2322: Type 'string' is not assignable to type 'MouseEventHandler<HTMLDivElement>'.
+src/app/portfolio/page.tsx(73,119): error TS2322: Type 'string' is not assignable to type 'MouseEventHandler<HTMLDivElement>'.
+src/app/portfolio/page.tsx(85,119): error TS2322: Type 'string' is not assignable to type 'MouseEventHandler<HTMLDivElement>'.
+src/app/portfolio/page.tsx(97,119): error TS2322: Type 'string' is not assignable to type 'MouseEventHandler<HTMLDivElement>'.
+src/app/portfolio/page.tsx(109,119): error TS2322: Type 'string' is not assignable to type 'MouseEventHandler<HTMLDivElement>'.
+src/app/portfolio/page.tsx(121,119): error TS2322: Type 'string' is not assignable to type 'MouseEventHandler<HTMLDivElement>'.
+src/app/portfolio/page.tsx(133,119): error TS2322: Type 'string' is not assignable to type 'MouseEventHandler<HTMLDivElement>'.
+src/app/portfolio/page.tsx(155,68): error TS2322: Type 'string' is not assignable to type 'MouseEventHandler<HTMLDivElement>'.
+src/app/portfolio/page.tsx(159,182): error TS2322: Type 'string' is not assignable to type 'MouseEventHandler<HTMLButtonElement>'.

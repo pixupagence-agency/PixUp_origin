@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PIXUP - Pricing Plans</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#135bec",
+                        "primary-content": "#ffffff",
+                        "primary-dark": "#0e45b8",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .dark .glass-card {
+            background: rgba(16, 22, 34, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col antialiased selection:bg-primary/20 selection:text-primary">
+<!-- Background Decoration -->
+<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+<div class="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-blue-400/10 blur-[100px] dark:bg-blue-600/10"></div>
+<div class="absolute top-[10%] -right-[10%] w-[40%] h-[60%] rounded-full bg-purple-400/10 blur-[120px] dark:bg-purple-900/10"></div>
+<div class="absolute bottom-[0%] left-[20%] w-[30%] h-[40%] rounded-full bg-indigo-300/10 blur-[90px] dark:bg-indigo-900/10"></div>
+</div>
+<!-- Navigation -->
+<nav class="relative z-10 w-full border-b border-slate-200/60 dark:border-slate-800/60 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<!-- Logo -->
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-8 rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined text-xl">auto_awesome_mosaic</span>
+</div>
+<span class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">PIXUP</span>
+</div>
+<!-- Desktop Menu -->
+<div class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-white transition-colors" href="#">Work</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-white transition-colors" href="#">Services</a>
+<a class="text-sm font-medium text-primary dark:text-white" href="#">Pricing</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-white transition-colors" href="#">About</a>
+</div>
+<!-- CTA -->
+<div class="flex items-center gap-4">
+<a class="hidden md:block text-sm font-medium text-slate-900 dark:text-white hover:text-primary transition-colors" href="#">Log in</a>
+<a class="inline-flex items-center justify-center h-9 px-4 rounded-lg bg-primary hover:bg-primary-dark text-white text-sm font-semibold transition-all shadow-sm hover:shadow-md hover:shadow-primary/20" href="#">
+                        Get Started
+                    </a>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="relative z-10 flex-grow py-16 px-4 sm:px-6 lg:px-8">
+<div class="max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-white mb-6">
+                    Flexible plans for your <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600">creative needs</span>
+</h1>
+<p class="text-lg text-slate-600 dark:text-slate-400 mb-10">
+                    Choose a plan that fits your ambition. Upgrade or cancel anytime with zero hidden fees.
+                </p>
+<!-- Billing Toggle -->
+<div class="inline-flex items-center p-1.5 rounded-full border border-slate-200 bg-white/50 dark:bg-slate-800/50 dark:border-slate-700 backdrop-blur-sm relative">
+<div class="relative z-10 flex">
+<label class="group relative cursor-pointer">
+<input checked="" class="peer sr-only" name="billing" type="radio" value="monthly"/>
+<span class="flex items-center justify-center px-6 py-2 text-sm font-medium rounded-full transition-all duration-200 text-slate-500 peer-checked:bg-white peer-checked:text-slate-900 peer-checked:shadow-sm dark:peer-checked:bg-slate-700 dark:peer-checked:text-white dark:text-slate-400">
+                                Monthly
+                            </span>
+</label>
+<label class="group relative cursor-pointer">
+<input class="peer sr-only" name="billing" type="radio" value="yearly"/>
+<span class="flex items-center justify-center px-6 py-2 text-sm font-medium rounded-full transition-all duration-200 text-slate-500 peer-checked:bg-white peer-checked:text-slate-900 peer-checked:shadow-sm dark:peer-checked:bg-slate-700 dark:peer-checked:text-white dark:text-slate-400">
+                                Yearly
+                            </span>
+</label>
+</div>
+<div class="absolute -right-24 top-1/2 -translate-y-1/2 hidden sm:block">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 border border-green-200 dark:border-green-800">
+                            Save 20%
+                        </span>
+<svg class="absolute -left-6 top-4 w-6 h-6 text-slate-400 dark:text-slate-600 rotate-12" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Pricing Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start relative">
+<!-- Starter Plan -->
+<div class="glass-card rounded-3xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5 group">
+<div class="mb-6">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Starter</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Perfect for freelancers and solo creators.</p>
+</div>
+<div class="flex items-baseline gap-1 mb-8">
+<span class="text-4xl font-black text-slate-900 dark:text-white tracking-tight">$49</span>
+<span class="text-slate-500 dark:text-slate-400 font-medium">/mo</span>
+</div>
+<a class="flex items-center justify-center w-full py-3 px-4 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-semibold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" href="#">
+                        Get Started
+                    </a>
+<ul class="mt-8 space-y-4">
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>5 Active Projects</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>Basic Support (Email)</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>Community Access</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>Standard Analytics</span>
+</li>
+</ul>
+</div>
+<!-- Professional Plan (Highlighted) -->
+<div class="glass-card rounded-3xl p-8 border-primary/30 dark:border-primary/50 shadow-2xl shadow-primary/10 relative z-10 md:-mt-4 md:mb-4 bg-white/90 dark:bg-slate-800/90 transition-all duration-300 hover:-translate-y-2">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-primary text-white shadow-lg shadow-primary/30 tracking-wide uppercase">
+                            Most Popular
+                        </span>
+</div>
+<div class="mb-6">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                            Professional
+                            <span class="material-symbols-outlined text-primary" style="font-size: 20px;">star</span>
+</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-2">For growing teams demanding power.</p>
+</div>
+<div class="flex items-baseline gap-1 mb-8">
+<span class="text-5xl font-black text-slate-900 dark:text-white tracking-tight">$99</span>
+<span class="text-slate-500 dark:text-slate-400 font-medium">/mo</span>
+</div>
+<a class="flex items-center justify-center w-full py-3 px-4 rounded-xl bg-primary text-white font-bold text-sm shadow-lg shadow-primary/25 hover:bg-primary-dark hover:shadow-primary/40 transition-all" href="#">
+                        Get Started
+                    </a>
+<ul class="mt-8 space-y-4">
+<li class="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-200 font-medium">
+<span class="material-symbols-outlined text-primary text-[20px] fill-current">check_circle</span>
+<span>Unlimited Active Projects</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-200 font-medium">
+<span class="material-symbols-outlined text-primary text-[20px] fill-current">check_circle</span>
+<span>Priority 24/7 Support</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-200 font-medium">
+<span class="material-symbols-outlined text-primary text-[20px] fill-current">check_circle</span>
+<span>Full Source Files Access</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-200 font-medium">
+<span class="material-symbols-outlined text-primary text-[20px] fill-current">check_circle</span>
+<span>Advanced Analytics &amp; Reporting</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-200 font-medium">
+<span class="material-symbols-outlined text-primary text-[20px] fill-current">check_circle</span>
+<span>Team Collaboration Tools</span>
+</li>
+</ul>
+</div>
+<!-- Agency Plan -->
+<div class="glass-card rounded-3xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5 group">
+<div class="mb-6">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Agency</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Scale your operations with full control.</p>
+</div>
+<div class="flex items-baseline gap-1 mb-8">
+<span class="text-4xl font-black text-slate-900 dark:text-white tracking-tight">$199</span>
+<span class="text-slate-500 dark:text-slate-400 font-medium">/mo</span>
+</div>
+<a class="flex items-center justify-center w-full py-3 px-4 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-semibold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" href="#">
+                        Contact Sales
+                    </a>
+<ul class="mt-8 space-y-4">
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>Dedicated Account Manager</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>White Labeling Options</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>Custom API Access</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>Custom Contracts &amp; SLAs</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>SSO &amp; Advanced Security</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- FAQ Section -->
+<div class="mt-24 max-w-3xl mx-auto">
+<h2 class="text-2xl font-bold text-center text-slate-900 dark:text-white mb-10">Frequently Asked Questions</h2>
+<div class="space-y-4">
+<details class="group glass-card rounded-2xl p-1 [&amp;_summary::-webkit-details-marker]:hidden open:bg-white dark:open:bg-slate-800">
+<summary class="flex cursor-pointer items-center justify-between gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<h3 class="text-sm font-semibold text-slate-900 dark:text-white">Can I change my plan later?</h3>
+<span class="material-symbols-outlined transition duration-300 group-open:-rotate-180 text-slate-500">expand_more</span>
+</summary>
+<div class="px-4 pb-4 pt-0">
+<p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                Yes, absolutely. You can upgrade or downgrade your plan at any time from your account settings. Prorated charges will apply automatically.
+                            </p>
+</div>
+</details>
+<details class="group glass-card rounded-2xl p-1 [&amp;_summary::-webkit-details-marker]:hidden open:bg-white dark:open:bg-slate-800">
+<summary class="flex cursor-pointer items-center justify-between gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<h3 class="text-sm font-semibold text-slate-900 dark:text-white">What payment methods do you accept?</h3>
+<span class="material-symbols-outlined transition duration-300 group-open:-rotate-180 text-slate-500">expand_more</span>
+</summary>
+<div class="px-4 pb-4 pt-0">
+<p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                We accept all major credit cards (Visa, Mastercard, Amex), PayPal, and wire transfers for Agency plans.
+                            </p>
+</div>
+</details>
+<details class="group glass-card rounded-2xl p-1 [&amp;_summary::-webkit-details-marker]:hidden open:bg-white dark:open:bg-slate-800">
+<summary class="flex cursor-pointer items-center justify-between gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<h3 class="text-sm font-semibold text-slate-900 dark:text-white">Is there a free trial available?</h3>
+<span class="material-symbols-outlined transition duration-300 group-open:-rotate-180 text-slate-500">expand_more</span>
+</summary>
+<div class="px-4 pb-4 pt-0">
+<p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                We offer a 14-day free trial on the Professional plan so you can experience the full power of PIXUP before committing.
+                            </p>
+</div>
+</details>
+<details class="group glass-card rounded-2xl p-1 [&amp;_summary::-webkit-details-marker]:hidden open:bg-white dark:open:bg-slate-800">
+<summary class="flex cursor-pointer items-center justify-between gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<h3 class="text-sm font-semibold text-slate-900 dark:text-white">How do I cancel my subscription?</h3>
+<span class="material-symbols-outlined transition duration-300 group-open:-rotate-180 text-slate-500">expand_more</span>
+</summary>
+<div class="px-4 pb-4 pt-0">
+<p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                You can cancel anytime directly from your dashboard. Your access will continue until the end of your current billing period.
+                            </p>
+</div>
+</details>
+</div>
+</div>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm py-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+<p class="text-sm text-slate-500 dark:text-slate-400">© 2024 PIXUP Agency. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-sm text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-white" href="#">Privacy Policy</a>
+<a class="text-sm text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-white" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+</body></html>

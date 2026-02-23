@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PIXUP - Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Masonry CSS as Tailwind doesn't support masonry layout natively yet perfectly */
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 1.5rem;
+        }
+        @media (min-width: 640px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+        @media (min-width: 1024px) {
+            .masonry-grid {
+                column-count: 3;
+            }
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Hide scrollbar for clean UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Modal Transition classes */
+        .modal {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        .modal.open .modal-content {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col antialiased selection:bg-primary selection:text-white">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-40 flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-6 py-4 lg:px-10">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-8 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">auto_awesome_mosaic</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-tight">PIXUP</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+<nav class="flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium" href="#">Services</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium" href="#">About</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium" href="#">Contact</a>
+</nav>
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary hover:bg-primary/90 transition-all text-white text-sm font-bold shadow-lg shadow-primary/20">
+<span>Let's Talk</span>
+</button>
+</div>
+<button class="md:hidden text-slate-900 dark:text-white p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 py-12">
+<!-- Hero / Header Section -->
+<div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="max-w-2xl">
+<h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white mb-4">
+                    Selected <span class="text-primary">Realizations</span>
+</h1>
+<p class="text-lg text-slate-500 dark:text-slate-400 leading-relaxed max-w-xl">
+                    A curated showcase of our best creative work across branding, web design, and digital marketing strategies that drive results.
+                </p>
+</div>
+<!-- Filter Bar -->
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-2 md:pb-0">
+<button class="px-5 py-2.5 rounded-full bg-primary text-white text-sm font-medium transition-all shadow-md shadow-primary/25 whitespace-nowrap">
+                    All Work
+                </button>
+<button class="px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary transition-all text-sm font-medium whitespace-nowrap">
+                    Branding
+                </button>
+<button class="px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary transition-all text-sm font-medium whitespace-nowrap">
+                    Web Design
+                </button>
+<button class="px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary transition-all text-sm font-medium whitespace-nowrap">
+                    Marketing
+                </button>
+<button class="px-5 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary transition-all text-sm font-medium whitespace-nowrap">
+                    UI/UX
+                </button>
+</div>
+</div>
+<!-- Masonry Grid -->
+<div class="masonry-grid">
+<!-- Project Card 1 -->
+<div class="masonry-item group relative cursor-pointer overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800" onclick="document.getElementById('project-modal').classList.add('open')">
+<img alt="Minimalist branding packaging design on concrete surface" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Minimalist branding packaging design on concrete surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4IzNpjAoZRVNOwFF7WigrCLzLdUUlgP-fWjtG-Xfi3xxtoX36FMzCChvZRvV7dxmfpg8UsimUXR885nDr1Ow9QQvJd-jXoKdo1ErZF9V8fCJoo3Osu7zYR7pjYRxkZC4k3JIXF76m-XtmAQIPOsYin9L2WVqdsT6LIaxyeIM-au9q-NqKepof5x6KBmaDcYreixzDO_zwXAwWojiEfWaIthffghPt7IyKvdT6WTWtuy3Ynb2ijgO8Dw_4omOcQKbb23Fo67veatNm"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-primary font-bold text-xs uppercase tracking-wider mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Branding</span>
+<h3 class="text-white text-2xl font-bold mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">Apex Rebrand</h3>
+<p class="text-slate-300 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-150">Redefining identity for a global leader</p>
+<div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-2 rounded-full text-white">
+<span class="material-symbols-outlined text-xl">arrow_outward</span>
+</div>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="masonry-item group relative cursor-pointer overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800" onclick="document.getElementById('project-modal').classList.add('open')">
+<img alt="Dashboard analytics interface on dark mode screen" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Dashboard analytics interface on dark mode screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXdd0LS0sy1BLW5j9SANA-eNuvHhJgpdX3qWC9CzJ1zVvkgZ4X7JTEjOwRvos9sF_9UioMF0wllVZbWqx4Z5Z44i51rigX6cVBmG8ivUn343-8DPQBb12LS1tdLJUvuWh1GvFZgKyyZwuengtbhIRIxGNaM4kF5BIr8zCXsG1U4AyrVXEEkgU8y_sIM0OCEh5lxY4emwj6GJEhkqQTCqnzzMjSzxJRMwPPllwQn2msIyawLPKU2AzbWpnzAtOqY86ayirRwLSQiPe1"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-primary font-bold text-xs uppercase tracking-wider mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">UI/UX Design</span>
+<h3 class="text-white text-2xl font-bold mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">Zenith App</h3>
+<p class="text-slate-300 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-150">Financial freedom in your pocket</p>
+<div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-2 rounded-full text-white">
+<span class="material-symbols-outlined text-xl">arrow_outward</span>
+</div>
+</div>
+</div>
+<!-- Project Card 3 -->
+<div class="masonry-item group relative cursor-pointer overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800" onclick="document.getElementById('project-modal').classList.add('open')">
+<img alt="Social media marketing campaign collage with bright colors" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Social media marketing campaign collage with bright colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-vPNGlHTgzR2Fjkl-ttNekBsD4Y9RefsqX5e85b8R0rezn80Ah_GkH1N215n-idG6nefAPwSYuHTExIja-EpyTJGsZPuP6nQc8dTQ5VD-rWPEHsiztr4FguQyBm4DXK37LVp0pLxN8-0AGjZC3aVpDraxHTtZMWJykn3QljxnC0MOmNyge0ndQQe94WlHUBU3p2OsruytkaEhNfTMKG89x0AFhv6GuLzdw_CPOfR6WNnGdUVlfZgbMAOj9ermJxp48NZgy-iKtc-E"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-primary font-bold text-xs uppercase tracking-wider mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Marketing</span>
+<h3 class="text-white text-2xl font-bold mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">Echo Campaign</h3>
+<p class="text-slate-300 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-150">Viral strategy for a new era</p>
+<div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-2 rounded-full text-white">
+<span class="material-symbols-outlined text-xl">arrow_outward</span>
+</div>
+</div>
+</div>
+<!-- Project Card 4 -->
+<div class="masonry-item group relative cursor-pointer overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800" onclick="document.getElementById('project-modal').classList.add('open')">
+<img alt="Modern website layout displayed on laptop screen in office" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Modern website layout displayed on laptop screen in office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAii0oDkyzY5fQmiiSIgznd2g3TNFJxxu1lNVRAXA30MiOryWFho9rTdivrsOg1zJsOV4J7pDk6N8DRmNL-AwKlwVlNhGRk0MIw0WKbZiFlRY_XbXY8zrlv7TMshVyP3JL0xMy2yrtaYDyrAYxvfsXZfVD5z3w7kvN1sTNNcw57WChraEQq6CrkTYjaqSBriK_dDOafeiusnwhDOJ3wDhiDH--Pv3UJW3sK7s2QZN4M3DJSXylzct8eINQaFxuSO6S3gNT4jRd9y-Fr"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-primary font-bold text-xs uppercase tracking-wider mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Web Design</span>
+<h3 class="text-white text-2xl font-bold mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">Flux Website</h3>
+<p class="text-slate-300 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-150">E-commerce experience redesign</p>
+<div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-2 rounded-full text-white">
+<span class="material-symbols-outlined text-xl">arrow_outward</span>
+</div>
+</div>
+</div>
+<!-- Project Card 5 -->
+<div class="masonry-item group relative cursor-pointer overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800" onclick="document.getElementById('project-modal').classList.add('open')">
+<img alt="Geometric pattern logo identity on business card" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Geometric pattern logo identity on business card" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-evmK-yJcRWDB6X4fP2wrPGbqxENBVaNgFTFAY0gaa9kAXQ0779VaeRqUdTk2gbxEfg-23v3WfaGciLnQfsggxqV6mT_abAzuBr8Js8j7g3TsupC8iMU_wG6hyK16TRnCcHNY2sbND8Ne3JVvShTUAiLsPBVuyD03QcogacO2jHmg__O0CuZz7uMKoVcFM9GwUFEll0RhN4I2Hu3BCUbe6Go1YzIstjepR98XU-u30H1Fb45auFize_CyHkaL5Fsa7bh4VgGEVVl6"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-primary font-bold text-xs uppercase tracking-wider mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Branding</span>
+<h3 class="text-white text-2xl font-bold mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">Nova Identity</h3>
+<p class="text-slate-300 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-150">Crafting a star in the tech galaxy</p>
+<div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-2 rounded-full text-white">
+<span class="material-symbols-outlined text-xl">arrow_outward</span>
+</div>
+</div>
+</div>
+<!-- Project Card 6 -->
+<div class="masonry-item group relative cursor-pointer overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800" onclick="document.getElementById('project-modal').classList.add('open')">
+<img alt="Mobile application wireframes on a whiteboard" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Mobile application wireframes on a whiteboard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPBAaA4qhhVLL2Pliw9vK_YFcgLmtRfiCu19LgoLdhRQVxvKZh7NVcA4KZGMjU5Q6J513-BKffM4CS8ROvSvGdQex2IrNmB6e_z5oF3_6TVJ3MyQUgC6ms6rt4Oh7Cd0IiuSfmPMKD5FO1ZSmQZZSXj0cHmiZHoi86yFO8hETKm-82rzb7HXiQ39snJR73wQfl7gactUqzFu2jqCjxhX_P7gh3IGrCqu4W1U3Tve--p6-0kvUGMQtjnwfTELi8b5q7KZ835520Rwy0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-primary font-bold text-xs uppercase tracking-wider mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">UI/UX</span>
+<h3 class="text-white text-2xl font-bold mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">Vertex Mobile</h3>
+<p class="text-slate-300 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-150">Next-gen communication tool</p>
+<div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-2 rounded-full text-white">
+<span class="material-symbols-outlined text-xl">arrow_outward</span>
+</div>
+</div>
+</div>
+<!-- Project Card 7 -->
+<div class="masonry-item group relative cursor-pointer overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800" onclick="document.getElementById('project-modal').classList.add('open')">
+<img alt="Stylish typography poster on urban wall" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Stylish typography poster on urban wall" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvV0VnhluBJTjBX6qJfpWXR86lnFeKGSQHEkH5mlzMsMhUYHSPub8SNKb14MBUZz0TWiI03NSTO5ZU_rM9WStZfIylQ03ra2uv-p0l636V16Y2jEWxmS8OyrpVScOr2G_QY7DrAC7UjzlrXkU_sqXukig6uqBqwV9rSnmZnakujsW0rDChvok3p7wfXsw2F9kgwnOCMNvoMb45b4p3SGb8f5s-Qg5REmpvTv_DAt4TQR64Uw3jucPBksTnbOnRrg529zj8XUqdakuV"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-primary font-bold text-xs uppercase tracking-wider mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Print</span>
+<h3 class="text-white text-2xl font-bold mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">Urban Expo</h3>
+<p class="text-slate-300 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-150">City-wide event branding</p>
+<div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-2 rounded-full text-white">
+<span class="material-symbols-outlined text-xl">arrow_outward</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 flex justify-center">
+<button class="flex items-center gap-2 px-8 py-3 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary transition-all font-medium">
+                Load More Projects
+                <span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+</main>
+<!-- Project Detail Modal -->
+<div class="modal fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6" id="project-modal">
+<!-- Backdrop -->
+<div class="absolute inset-0 bg-slate-900/70 backdrop-blur-md" onclick="document.getElementById('project-modal').classList.remove('open')"></div>
+<!-- Modal Content Container -->
+<div class="modal-content relative w-full max-w-5xl max-h-[90vh] bg-white dark:bg-slate-900 rounded-2xl shadow-2xl overflow-hidden flex flex-col">
+<!-- Close Button -->
+<button class="absolute top-4 right-4 z-20 p-2 bg-white/20 dark:bg-black/20 backdrop-blur-md hover:bg-white/40 dark:hover:bg-black/40 rounded-full text-white transition-colors" onclick="document.getElementById('project-modal').classList.remove('open')">
+<span class="material-symbols-outlined">close</span>
+</button>
+<!-- Scrollable Content -->
+<div class="overflow-y-auto overflow-x-hidden flex-1 no-scrollbar">
+<!-- Hero Image -->
+<div class="relative h-64 md:h-96 w-full">
+<img alt="High resolution dashboard interface mockup on laptop" class="w-full h-full object-cover" data-alt="High resolution dashboard interface mockup on laptop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl7cPmnrtYSC7pFlnYvv31dy6IdiBf2Zg2r0JisynpfogI7tvG-9Wz8bTLGJlLg2M9kd-Je4P3ZnOz5bs7ZRBBJcRHrzoVYnTc-BEY-y0R94Css5kgOAbE7C0q-sdSllYDHRxpnGZETi7gvEUwZnnmGpoEwT5VGEUHYMo9plBESUABNACNZCkCXOtq6Kp5193NJL8ycTwfqcApeQXGMDWJwyp6Gvrocwad3hELIiN6VuXKnu3yKQrUp3Co2oo6MwtxO6a53RnECfOi"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-0 left-0 p-8 md:p-12 w-full">
+<div class="flex flex-wrap gap-3 mb-4">
+<span class="px-3 py-1 rounded-full bg-primary/90 text-white text-xs font-bold uppercase tracking-wider backdrop-blur-sm">UI/UX Design</span>
+<span class="px-3 py-1 rounded-full bg-white/20 text-white text-xs font-bold uppercase tracking-wider backdrop-blur-sm">Fintech</span>
+</div>
+<h2 class="text-3xl md:text-5xl font-bold text-white mb-2">Zenith App</h2>
+<p class="text-slate-300 text-lg md:text-xl">Revolutionizing personal finance management.</p>
+</div>
+</div>
+<!-- Content Body -->
+<div class="p-8 md:p-12 grid grid-cols-1 lg:grid-cols-3 gap-12">
+<!-- Main Text -->
+<div class="lg:col-span-2 space-y-8">
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">The Challenge</h3>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Zenith Financial approached us with a complex problem: their users were overwhelmed by traditional banking interfaces. They needed a mobile experience that felt effortless, transparent, and empowering. Our goal was to strip away the jargon and clutter, focusing purely on the user's financial health.
+                            </p>
+</div>
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Our Solution</h3>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                We designed a modular dashboard system that adapts to the user's priorities. Using a dark-mode-first approach, we reduced eye strain and highlighted key metrics with vibrant data visualization. The result is an app that doesn't just show numbers, but tells a story about the user's spending habits.
+                            </p>
+</div>
+<!-- Image Grid Inside Modal -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+<img class="rounded-lg w-full h-48 object-cover hover:opacity-90 transition-opacity" data-alt="Close up of mobile app interface showing graphs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCbXMqwiw9_lPS9nxKvE6VdeEV_FyFCB1JyS_MfF_xzK3yxZN6FRsVunteFf9NiPUuL0cUXPZqy7nUsu2efFerVzBVReFhPXSegveFwhAbU4nqtWNFg2k7Ds_Vb3ErbzQlEEPyPFVtvqchfQ5Y9bfZJ49tWK4e_O3IQEFZ9O03uTRutFz_mfhznP_4TIUScZ3RQC0W4Ty-neKWUIGhxTJzraITSg5eL16lWVI1cE8tJWZSoTgGCn9TWxXCQPZ43L1yvv5rZxb0roAP"/>
+<img class="rounded-lg w-full h-48 object-cover hover:opacity-90 transition-opacity" data-alt="User holding smartphone using the app" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqS9vUF-4BB7dxN2MuL3A_nNfINGm5JKQsbSXtT7mpmgF00bDgBXD6r7D-jT0xU862QWHVuchL-0k9gAHNO_Wot2JHW8O9NOiGWFfWoK1FOTqSzh6YjH0eSiDmwXKtb68NQxoLkg-TMgpNYm3OZsN_DsiwhkY9xaqmZdKwv6xGWHLP8OzABrxIJvdsqG56TcqNc3IS2CG_Rx3m2UPhejXZohQPQrwnGt0CDpRT2fO-VmOODVQMF7VhzZXvHZnCUvSko6dApAISPMRM"/>
+</div>
+</div>
+<!-- Sidebar Info -->
+<div class="lg:col-span-1 space-y-8">
+<div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-xl border border-slate-100 dark:border-slate-700/50">
+<div class="space-y-6">
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Client</p>
+<p class="text-slate-900 dark:text-white font-medium">Zenith Financial</p>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Timeline</p>
+<p class="text-slate-900 dark:text-white font-medium">8 Weeks</p>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Services</p>
+<p class="text-slate-900 dark:text-white font-medium">User Research, UI Design, Prototyping</p>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Team</p>
+<div class="flex -space-x-2 mt-2">
+<div class="w-8 h-8 rounded-full bg-slate-300 border-2 border-white dark:border-slate-800 flex items-center justify-center text-xs font-bold text-slate-600">JD</div>
+<div class="w-8 h-8 rounded-full bg-slate-300 border-2 border-white dark:border-slate-800 flex items-center justify-center text-xs font-bold text-slate-600">AS</div>
+<div class="w-8 h-8 rounded-full bg-slate-300 border-2 border-white dark:border-slate-800 flex items-center justify-center text-xs font-bold text-slate-600">MK</div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700">
+<button class="w-full py-3 bg-primary hover:bg-primary/90 text-white rounded-lg font-bold transition-colors shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+                                    Visit Live Site
+                                    <span class="material-symbols-outlined text-lg">arrow_outward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="flex flex-col gap-6 px-5 py-12 text-center border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+<div class="flex flex-col md:flex-row items-center justify-between max-w-[1440px] mx-auto w-full gap-8">
+<div class="flex items-center gap-2 text-slate-900 dark:text-white">
+<div class="size-6 text-primary">
+<span class="material-symbols-outlined">auto_awesome_mosaic</span>
+</div>
+<span class="font-bold text-lg">PIXUP</span>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-slate-500 hover:text-primary transition-colors text-sm font-medium" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-primary transition-colors text-sm font-medium" href="#">Terms of Service</a>
+<a class="text-slate-500 hover:text-primary transition-colors text-sm font-medium" href="#">Careers</a>
+</div>
+<div class="flex gap-4">
+<a class="text-slate-400 hover:text-primary transition-colors p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800" href="#">
+<span class="material-symbols-outlined">alternate_email</span>
+</a>
+</div>
+</div>
+<p class="text-slate-400 text-xs mt-4">© 2023 PIXUP Agency. All rights reserved.</p>
+</footer>
+</body></html>
