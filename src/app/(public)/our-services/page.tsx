@@ -32,12 +32,12 @@ export default function OurServices() {
                     </div>
                 </div>
                 {/*  Hero Image/Graphic Placeholder  */}
-                <div className="mt-16 flow-root sm:mt-24">
+                {/*  <div className="mt-16 flow-root sm:mt-24">
                     <div className="-m-2 rounded-xl bg-gray-900/5 dark:bg-white/5 p-2 ring-1 ring-inset ring-gray-900/10 dark:ring-white/10 lg:-m-4 lg:rounded-2xl lg:p-4">
                         <div className="bg-gradient-to-br from-neutral-200 to-white dark:from-slate-800 dark:to-slate-900 aspect-[16/7] w-full rounded-lg shadow-2xl flex items-center justify-center relative overflow-hidden" data-alt="Abstract colorful digital waves representing creative flow">
-                            <div className="absolute inset-0 bg-slate-900/5 dark:bg-white/5"></div>
-                            {/*  Decorative Shapes  */}
-                            <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+                            <div className="absolute inset-0 bg-slate-900/5 dark:bg-white/5"></div> */}
+                {/*  Decorative Shapes  */}
+                {/* <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
                             <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
                             <div className="relative text-center z-10 px-4">
                                 <span className="material-symbols-outlined text-6xl text-primary/50 mb-4">design_services</span>
@@ -45,7 +45,7 @@ export default function OurServices() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </section>
             {/*  Services Grid Section  */}
             <section className="bg-white dark:bg-background-dark py-24 sm:py-32" id="services">
@@ -57,7 +57,7 @@ export default function OurServices() {
                             {t.servicesPage.expertiseDescription}
                         </p>
                     </div>
-                    <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                    <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 lg:mx-0 lg:max-w-none lg:grid-cols-2">
                         {services.filter(s => s.active).map((service) => (
                             <div key={service.id} className="group relative flex flex-col gap-6 rounded-2xl bg-neutral-100 dark:bg-slate-800/50 p-8 transition-all duration-300 hover:-translate-y-1 hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:shadow-primary/5 ring-1 ring-neutral-200/50 dark:ring-white/5 hover:ring-primary/20">
                                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-white dark:bg-slate-900 ring-1 ring-neutral-200 dark:ring-white/10 shadow-sm group-hover:bg-primary group-hover:text-white transition-colors">
