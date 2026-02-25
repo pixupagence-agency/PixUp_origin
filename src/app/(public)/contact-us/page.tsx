@@ -1,9 +1,11 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageContext";
+import { useData } from "@/context/DataContext";
 
 export default function ContactUs() {
   const { t } = useLanguage();
+  const { settings } = useData();
 
   return (
     <>
@@ -99,7 +101,7 @@ export default function ContactUs() {
                     <div>
                       <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">{t.contactPage.office}</p>
                       <p className="text-base text-slate-900 dark:text-white font-medium leading-relaxed">
-                        {t.contactPage.officeAddress}
+                        {settings.address}
                       </p>
                     </div>
                   </div>
