@@ -124,8 +124,8 @@ export default function ContactUs() {
                     </div>
                     <div>
                       <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">{t.contactPage.phone}</p>
-                      <a className="text-base text-slate-900 dark:text-white font-medium hover:text-primary transition-colors" href="tel:+15551234567">
-                        +1 (555) 123-4567
+                      <a className="text-base text-slate-900 dark:text-white font-medium hover:text-primary transition-colors">
+                        {settings.phone}
                       </a>
                     </div>
                   </div>
