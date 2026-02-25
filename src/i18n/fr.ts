@@ -22,12 +22,14 @@ export const fr = {
         branding: "Identité Visuelle",
         uiux: "Design UI/UX",
         webDev: "Développement Web",
-        seo: "SEO & Marketing",
+        seo: "SEO",
         contactTitle: "Contact",
         rights: "Agence PIXUP. Tous droits réservés.",
         privacy: "Politique de confidentialité",
         terms: "Conditions d'utilisation",
         faq: "FAQ",
+        audit: "Audit",
+        appDev: "Développement d'application multiplateforme",
     },
 
     // Admin Sidebar

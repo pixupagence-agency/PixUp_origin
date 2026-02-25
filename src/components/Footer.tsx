@@ -58,11 +58,9 @@ export default function Footer() {
                     <div>
                         <h4 className="font-bold text-slate-900 dark:text-white mb-6">{t.footer.services}</h4>
                         <ul className="space-y-4 text-sm">
-                            <li><Link className="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="/our-services">{t.footer.branding}</Link></li>
-                            <li><Link className="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="/our-services">{t.footer.uiux}</Link></li>
+                            <li><Link className="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="/our-services">{t.footer.audit}</Link></li>
+                            <li><Link className="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="/our-services">{t.footer.appDev}</Link></li>
                             <li><Link className="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="/our-services">{t.footer.webDev}</Link></li>
-                            <li><Link className="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="/pricing-plans">{t.nav.pricing}</Link></li>
-                            <li><Link className="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="/faq">{t.nav.faq}</Link></li>
                             <li><Link className="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="/our-services">{t.footer.seo}</Link></li>
                         </ul>
                     </div>
