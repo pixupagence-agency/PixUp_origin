@@ -160,16 +160,8 @@ export default function ContactUs() {
               <div className="h-64 sm:h-72 w-full rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 relative group">
                 {/* Overlay subtil au-dessus de la carte */}
                 <div className="absolute inset-0 z-10 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors pointer-events-none"></div>
-
                 {/* Google Maps Iframe */}
-                <iframe
-                  title="Map Vendee France"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2735.6356747262!2d-1.0715!3d46.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4804300000000001%30x123456789!2sVendee%2C%20France!5e0!3m2!1sfr!2sfr!4v1700000000000"
-                  className="w-full h-full border-0 filter contrast-75 saturate-50 hover:contrast-100 hover:saturate-100 transition-all duration-500"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
-
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d495301.1383810971!2d-1.9695918251705749!3d46.702220874948125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48043014abfc9dc1%3A0x30d37521e092ad0!2zVmVuZMOpZQ!5e0!3m2!1sfr!2sfr!4v1772054451557!5m2!1sfr!2sfr" width="600" height="450" style={{ border: 0 }} loading="lazy"></iframe>
                 {/* Bouton d'itinéraire */}
                 <div className="absolute bottom-4 right-4 z-20">
                   <a
