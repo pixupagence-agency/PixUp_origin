@@ -11,7 +11,7 @@ export default function Footer() {
     return (
         <footer className="bg-slate-50 dark:bg-[#0d121b] border-t border-slate-200 dark:border-white/5 pt-16 pb-8 mt-auto">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
                     {/* Brand Column */}
                     <div className="space-y-6">
                         <Link href="/" className="flex items-center gap-3 group">
@@ -45,7 +45,7 @@ export default function Footer() {
                         </div>
                     </div>
                     {/* Links Column 1 */}
-                    <div>
+                    {/* <div>
                         <h4 className="font-bold text-slate-900 dark:text-white mb-6">{t.footer.company}</h4>
                         <ul className="space-y-4 text-sm">
                             <li><Link className="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="/">{t.footer.aboutUs}</Link></li>
@@ -53,7 +53,7 @@ export default function Footer() {
                             <li><Link className="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="/">{t.footer.ourTeam}</Link></li>
                             <li><Link className="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="/">{t.footer.press}</Link></li>
                         </ul>
-                    </div>
+                    </div> */}
                     {/* Links Column 2 */}
                     <div>
                         <h4 className="font-bold text-slate-900 dark:text-white mb-6">{t.footer.services}</h4>
