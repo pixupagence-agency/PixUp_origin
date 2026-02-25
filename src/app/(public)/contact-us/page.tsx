@@ -149,27 +149,9 @@ export default function ContactUs() {
               {/*  Map  */}
               <div className="h-64 sm:h-72 w-full rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 relative group">
                 <div className="absolute inset-0 z-10 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors pointer-events-none"></div>
-                <img alt="Map Vendee in France" className="w-full h-full object-cover filter contrast-75 saturate-50 hover:contrast-100 hover:saturate-100 transition-all duration-500" data-alt="Map Vendee in France" data-location="Vendée" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArd9O43PkJpoOOIvzAg4_svk_mQgqVnGIP8yVqFz_1JNGIjnVXfGStM-d6l7PPxEI2B6QCHeaDzReIqsMo0KZN-PE4UfL10jX8JDqi2P-3_XaUtVDcNRgeeC5QVRG7E4bvwzbO5TxaWK9MiLV-U0MfGJ7lUkViaXPQ-7YNbRdMwBVV2tUcNxMlPkgTKDH4MRSoy2f2ZP7-Y7vrZltzvQwgIiMASYV12c1CN4ajl_ZQLPDDrjeL9_SYwBOBU1x9-2l2e6u4hhIxTtci" />
+                <img alt="Map Vendee in France" className="w-full h-full object-cover filter contrast-75 saturate-50 hover:contrast-100 hover:saturate-100 transition-all duration-500" data-alt="Map Vendee in France" data-location="Vendée" src="ttps://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2732.12345!2d-1.23456!3d46.12345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDbCsDA3JzM0LjUiTiAxwrAxNCcwNC40Ilc!5e0!3m2!1sfr!2sfr!4v123456789" />
                 <div className="absolute bottom-4 right-4 z-20">
                   <a className="bg-white text-slate-900 text-xs font-bold px-3 py-2 rounded-lg shadow-lg hover:bg-primary hover:text-white transition-colors flex items-center gap-1" href="#">
-                    <span className="material-symbols-outlined text-sm">directions</span>
-                    {t.contactPage.getDirections}
-                  </a>
-                </div>
-              </div>
-              <div className="h-64 sm:h-72 w-full rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 relative group">
-                {/* Overlay subtil au-dessus de la carte */}
-                <div className="absolute inset-0 z-10 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors pointer-events-none"></div>
-                {/* Google Maps Iframe */}
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2732.12345!2d-1.23456!3d46.12345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDbCsDA3JzM0LjUiTiAxwrAxNCcwNC40Ilc!5e0!3m2!1sfr!2sfr!4v123456789" width="600" height="450" style={{ border: 0 }} loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArd9O43PkJpoOOIvzAg4_svk_mQgqVnGIP8yVqFz_1JNGIjnVXfGStM-d6l7PPxEI2B6QCHeaDzReIqsMo0KZN-PE4UfL10jX8JDqi2P-3_XaUtVDcNRgeeC5QVRG7E4bvwzbO5TxaWK9MiLV-U0MfGJ7lUkViaXPQ-7YNbRdMwBVV2tUcNxMlPkgTKDH4MRSoy2f2ZP7-Y7vrZltzvQwgIiMASYV12c1CN4ajl_ZQLPDDrjeL9_SYwBOBU1x9-2l2e6u4hhIxTtci"></iframe>
-                {/* Bouton d'itinéraire */}
-                <div className="absolute bottom-4 right-4 z-20">
-                  <a
-                    className="bg-white text-slate-900 text-xs font-bold px-3 py-2 rounded-lg shadow-lg hover:bg-primary hover:text-white transition-colors flex items-center gap-1"
-                    href="https://www.google.com/maps/dir/?api=1&destination=Vendee+France"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
                     <span className="material-symbols-outlined text-sm">directions</span>
                     {t.contactPage.getDirections}
                   </a>
