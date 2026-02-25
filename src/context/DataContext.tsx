@@ -99,7 +99,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         agencyName: "PixUp",
         email: "hello@pixup.agency.com",
         phone: "+33 6 82 55 35 52",
-        address: "123 Design St, San Francisco, CA",
+        address: "Chantonnay, Vendée (85)",
         founderName: "Denis Taveneau",
         founderRole: "Fondateur",
         founderBio: "Passionate about minimal design and creating user-centric digital experiences. Over 10 years of experience in the creative industry.",
