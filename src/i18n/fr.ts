@@ -6,7 +6,7 @@ export const fr = {
         about: "À propos",
         contact: "Contact",
         pricing: "Tarifs",
-        faq: "FAQ",
+        faq: "Faq",
         getStarted: "Démarrer",
         blog: "Blog",
     },
