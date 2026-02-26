@@ -18,23 +18,6 @@ export default function AdminDashboard() {
             <AdminSidebar />
             <main className="flex-1 flex flex-col h-full overflow-hidden relative">
                 {/* Top Header */}
-                <header className="h-20 px-8 flex items-center justify-between shrink-0 glass-panel z-10 m-4 rounded-xl shadow-sm border-white/40 dark:border-slate-800/40 bg-white/80 dark:bg-slate-900/80 transition-colors">
-                    <div className="flex items-center gap-4 flex-1">
-                        <button className="md:hidden text-slate-500">
-                            <span className="material-symbols-outlined">menu</span>
-                        </button>
-                        <div className="relative w-full max-w-md hidden md:block">
-                            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
-                            <input className="w-full bg-slate-50/50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 pl-10 pr-4 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all-300 placeholder-slate-400 dark:text-white" placeholder="Search pages, projects..." type="text" />
-                        </div>
-                    </div>
-                    <div className="flex items-center gap-4">
-                        <button className="relative p-2 text-slate-400 hover:text-primary transition-colors rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800">
-                            <span className="material-symbols-outlined">notifications</span>
-                            <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-red-500 border-2 border-white"></span>
-                        </button>
-                    </div>
-                </header>
 
                 {/* Scrollable Content Area */}
                 <div className="flex-1 overflow-y-auto px-4 pb-8 md:px-8">
