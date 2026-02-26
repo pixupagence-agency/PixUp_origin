@@ -8,6 +8,7 @@ export const fr = {
         pricing: "Tarifs",
         faq: "FAQ",
         getStarted: "Démarrer",
+        blog: "Blog",
     },
 
     // Footer

@@ -32,6 +32,7 @@ export default function Navbar() {
                         <Link href="/our-services" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors">{t.nav.services}</Link>
                         <Link href="/pricing-plans" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors">{t.nav.pricing}</Link>
                         <Link href="/faq" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors">{t.nav.faq}</Link>
+                        <Link href="/blog" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors">{t.nav.blog}</Link>
                         <Link href="/contact-us" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors">{t.nav.contact}</Link>
                     </div>
 

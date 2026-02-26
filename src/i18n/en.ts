@@ -8,6 +8,7 @@ export const en = {
         pricing: "Pricing",
         faq: "FAQ",
         getStarted: "Get Started",
+        blog: "Blog",
     },
 
     // Footer
