@@ -114,9 +114,9 @@ export default function PixupHomePage() {
                                         </div>
                                     </div>
                                 </div>
-                                <Link href="/contact-us" className="inline-block mt-8 px-8 py-3 rounded-lg border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-colors">
+                                {/* <Link href="/contact-us" className="inline-block mt-8 px-8 py-3 rounded-lg border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-colors">
                                     {t.home.meetTheTeam}
-                                </Link>
+                                </Link> */}
                             </div>
                             <div className="relative">
                                 <div className="absolute -inset-4 bg-gradient-to-tr from-primary to-purple-600 rounded-3xl opacity-20 blur-2xl"></div>
