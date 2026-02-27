@@ -200,7 +200,7 @@ export const fr = {
 
         philosophyTag: "Philosophie de l'agence",
         philosophyTitle: "Le design n'est pas qu'une question d'apparence.",
-        philosophyDesc: "Nous croyons au pouvoir du design pour transformer les entreprises. Notre équipe repousse les limites de ce qui est possible dans l'espace numérique, en s'assurant que chaque pixel a une utilité.",
+        philosophyDesc: "Nous croyons au pouvoir du design pour transformer les entreprises. Nous repoussons les limites de ce qui est possible dans l'espace numérique, en s'assurant que notre travail se rapproche le plus possible de votre travail et de vos valeurs.",
         philosophyBullet1Title: "Stratégie basée sur les données",
         philosophyBullet1Desc: "Chaque décision que nous prenons s'appuie sur la recherche et l'analyse.",
         philosophyBullet2Title: "Approche centrée sur l'utilisateur",

@@ -200,7 +200,7 @@ export const en = {
 
         philosophyTag: "Agency Philosophy",
         philosophyTitle: "Design is not just what it looks like.",
-        philosophyDesc: "We believe in the power of design to transform businesses. Our team is dedicated to pushing the boundaries of what is possible in the digital space, ensuring every pixel serves a purpose.",
+        philosophyDesc: "We believe in the power of design to transform businesses. We push the boundaries of what’s possible in the digital space, ensuring our work stays true to your vision and core values.",
         philosophyBullet1Title: "Data-Driven Strategy",
         philosophyBullet1Desc: "Every decision we make is backed by research and analytics.",
         philosophyBullet2Title: "User-Centric Approach",
