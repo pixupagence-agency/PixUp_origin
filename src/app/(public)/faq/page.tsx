@@ -16,11 +16,11 @@ export default function FAQPage() {
     return (
         <div className="bg-white dark:bg-background-dark transition-colors min-h-screen">
             {/* Hero Section */}
-            <section className="relative py-20 overflow-hidden bg-slate-50 dark:bg-slate-800/50">
+            <section className="relative pt-32 pb-20 overflow-hidden bg-slate-50 dark:bg-slate-800/50">
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-3xl mx-auto text-center">
                         <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">
-                            {t.faq.title}
+                            {t.faq.title} <span className="text-primary">{t.faq.titleAccent}</span>
                         </h1>
                         <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
                             {t.faq.subtitle}

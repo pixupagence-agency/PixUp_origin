@@ -14,15 +14,13 @@ export default function Portfolio() {
             {/*  Main Content  */}
             <main className="flex-grow w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 py-12 pt-32">
                 {/*  Hero / Header Section  */}
-                <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
-                    <div className="max-w-2xl">
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white mb-4">
-                            {t.portfolio.title} <span className="text-primary">{t.portfolio.titleAccent}</span>
-                        </h1>
-                        <p className="text-lg text-slate-500 dark:text-slate-400 leading-relaxed max-w-xl">
-                            {t.portfolio.description}
-                        </p>
-                    </div>
+                <div className="mb-16 text-center max-w-3xl mx-auto flex flex-col items-center">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white mb-6">
+                        {t.portfolio.title} <span className="text-primary">{t.portfolio.titleAccent}</span>
+                    </h1>
+                    <p className="text-lg text-slate-500 dark:text-slate-400 leading-relaxed max-w-xl mb-10">
+                        {t.portfolio.description}
+                    </p>
                     {/*  Filter Bar  */}
                     <div className="flex gap-2 overflow-x-auto no-scrollbar pb-2 md:pb-0">
                         <button className="px-5 py-2.5 rounded-full bg-primary text-white text-sm font-medium transition-all shadow-md shadow-primary/25 whitespace-nowrap">

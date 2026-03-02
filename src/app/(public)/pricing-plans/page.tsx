@@ -16,7 +16,7 @@ export default function PricingPlans() {
                 <div className="absolute bottom-[0%] left-[20%] w-[30%] h-[40%] rounded-full bg-indigo-300/10 blur-[90px] dark:bg-indigo-900/10"></div>
             </div>
             {/*  Main Content  */}
-            <main className="relative z-10 flex-grow py-16 px-4 sm:px-6 lg:px-8">
+            <main className="relative z-10 flex-grow pt-32 pb-16 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     {/*  Header Section  */}
                     <div className="text-center max-w-3xl mx-auto mb-16">

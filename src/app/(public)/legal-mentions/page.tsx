@@ -9,18 +9,18 @@ export default function LegalMentions() {
         <>
             <main className="flex-grow w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 py-10 pt-32">
                 {/*  Hero Section  */}
-                <div className="mb-12 lg:mb-20 max-w-4xl">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-6">
+                <div className="mb-16 lg:mb-20 max-w-4xl mx-auto text-center flex flex-col items-center">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-6 w-fit">
                         <span className="material-symbols-outlined text-[16px]">verified_user</span>
                         {t.legal.badge}
                     </div>
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white mb-6">
                         {t.legal.title}
                     </h1>
-                    <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
+                    <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed mx-auto">
                         {t.legal.description}
                     </p>
-                    <div className="mt-6 flex items-center gap-2 text-sm text-slate-500 dark:text-slate-500">
+                    <div className="mt-8 flex items-center justify-center gap-2 text-sm text-slate-500 dark:text-slate-500">
                         <span className="material-symbols-outlined text-[18px]">schedule</span>
                         <span>{t.legal.lastUpdated} October 24, 2023</span>
                     </div>

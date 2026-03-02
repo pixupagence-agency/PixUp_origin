@@ -12,12 +12,11 @@ export default function ContactUs() {
       <main className="flex-grow flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8 mt-20">
         <div className="w-full max-w-7xl">
           {/*  Hero Section  */}
-          <div className="mb-12 text-center md:text-left md:mb-16">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white mb-4">
-              {t.contactPage.title} <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600">{t.contactPage.titleAccent}</span>
+          <div className="mb-16 text-center max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white mb-6">
+              {t.contactPage.title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600">{t.contactPage.titleAccent}</span>
             </h1>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl">
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
               {t.contactPage.description}
             </p>
           </div>

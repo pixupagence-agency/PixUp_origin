@@ -17,7 +17,7 @@ export default function OurServices() {
                 </div>
                 <div className="mx-auto max-w-2xl text-center">
                     <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white sm:text-6xl">
-                        {t.servicesPage.heroTitle}
+                        {t.servicesPage.heroTitle} <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600">{t.servicesPage.heroAccent}</span>
                     </h1>
                     <p className="mt-6 text-lg leading-8 text-neutral-500 dark:text-slate-400">
                         {t.servicesPage.heroDescription}

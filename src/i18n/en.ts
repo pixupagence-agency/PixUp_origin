@@ -247,7 +247,8 @@ export const en = {
 
     // Our Services Page
     servicesPage: {
-        heroTitle: "Crafting Digital Experiences",
+        heroTitle: "Crafting Digital",
+        heroAccent: "Experiences",
         heroDescription: "We blend strategy, design, and technology to help brands grow. From pixel-perfect UI to robust backend architecture, we cover it all.",
         viewWork: "View Our Work",
         learnMore: "Learn more",
@@ -390,7 +391,8 @@ export const en = {
     },
     // FAQ Page
     faq: {
-        title: "Frequently Asked Questions",
+        title: "Frequently Asked",
+        titleAccent: "Questions",
         subtitle: "Everything you need to know about our services and process",
         categories: {
             services: "Services",

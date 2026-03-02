@@ -248,7 +248,8 @@ export const fr = {
 
     // Page Nos Services
     servicesPage: {
-        heroTitle: "Créer des Expériences Digitales",
+        heroTitle: "Créer des Expériences",
+        heroAccent: "Digitales",
         heroDescription: "Nous mêlons stratégie, design et technologie pour aider les marques à se développer. De l'interface utilisateur parfaite à l'architecture backend robuste, nous couvrons tout.",
         viewWork: "Voir nos réalisations",
         learnMore: "En savoir plus",
@@ -391,7 +392,8 @@ export const fr = {
     },
     // FAQ Page
     faq: {
-        title: "Foire Aux Questions",
+        title: "Foire Aux",
+        titleAccent: "Questions",
         subtitle: "Tout ce que vous devez savoir sur nos services et processus",
         categories: {
             services: "Services",
