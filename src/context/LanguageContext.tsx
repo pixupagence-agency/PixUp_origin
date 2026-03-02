@@ -20,15 +20,19 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     const [language, setLanguageState] = useState<Language>("fr");
 
     useEffect(() => {
-        const savedLang = localStorage.getItem("app_lang") as Language;
+        const savedLang = localStorage.getItem("pixup_lang_v2") as Language;
         if (savedLang && (savedLang === "en" || savedLang === "fr")) {
             setLanguageState(savedLang);
+        } else {
+            // Force FR if no version 2 key exists yet
+            setLanguageState("fr");
+            localStorage.setItem("pixup_lang_v2", "fr");
         }
     }, []);
 
     const setLanguage = (lang: Language) => {
         setLanguageState(lang);
-        localStorage.setItem("app_lang", lang);
+        localStorage.setItem("pixup_lang_v2", lang);
     };
 
     const t = language === "fr" ? fr : en;

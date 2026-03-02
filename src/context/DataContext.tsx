@@ -139,10 +139,16 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     ]);
 
     const [faqs, setFaqs] = useState<FAQItem[]>([
-        { id: '1', category: 'services', q: 'What exactly does a web design agency do?', a: 'A web design agency creates user-friendly, visually appealing, and functional websites, handling everything from initial strategy to final launch.', active: true },
-        { id: '2', category: 'process', q: 'How long does it take to build a website?', a: 'Timeline depends on complexity. A simple site can take 4-6 weeks, while more complex projects can take several months.', active: true },
-        { id: '3', category: 'pricing', q: 'How much does a new website cost?', a: 'Cost varies based on your specific needs. We offer plans starting from 49€/month for simple solutions, and custom quotes for bespoke projects.', active: true },
-        { id: '4', category: 'support', q: 'Do you offer ongoing maintenance?', a: 'Yes, we offer various maintenance plans to ensure your site\'s security, performance, and updates.', active: true },
+        { id: '1', category: 'services', q: 'Quels types de projets réalisez-vous chez PixUp ?', a: 'Nous sommes spécialisés dans le design d\'identité de marque (branding), la conception d\'interfaces utilisateur (UI/UX) et le développement web sur mesure.', active: true },
+        { id: '2', category: 'process', q: 'Où est située l\'agence ?', a: 'L\'agence PixUp est fièrement basée à Chantonnay, en Vendée (85). Nous intervenons partout en France et à l\'international grâce au travail à distance.', active: true },
+        { id: '3', category: 'process', q: 'Combien de temps faut-il pour créer un site internet ?', a: 'Le délai varie selon la complexité. Un site vitrine standard prend entre 4 et 6 semaines, tandis qu\'une plateforme sur mesure peut demander 3 à 5 mois.', active: true },
+        { id: '4', category: 'support', q: 'Proposez-vous des services de maintenance ?', a: 'Oui, nous proposons des contrats de maintenance pour assurer la sécurité, les sauvegardes et les mises à jour régulières de votre site internet.', active: true },
+        { id: '5', category: 'pricing', q: 'Quels sont vos tarifs pour la création d\'un site ?', a: 'Nos forfaits commencent à 49€/mois pour l\'offre Starter. Nous proposons également des solutions Professionnel à 99€/mois et Agence à 199€/mois.', active: true },
+        { id: '6', category: 'services', q: 'Puis-je modifier mon site moi-même ?', a: 'Absolument. Nous livrons des outils d\'administration intuitifs qui vous permettent de mettre à jour vos contenus, textes et images sans connaissances techniques.', active: true },
+        { id: '7', category: 'pricing', q: 'Quels sont les modes de paiement acceptés ?', a: 'Nous acceptons les paiements par carte bancaire (Visa, Mastercard, Amex), les virements ainsi que PayPal pour plus de flexibilité.', active: true },
+        { id: '8', category: 'services', q: 'Optimisez-vous le référencement naturel (SEO) ?', a: 'Chaque site est optimisé techniquement pour les moteurs de recherche (Google) afin d\'améliorer votre visibilité en ligne dès le lancement.', active: true },
+        { id: '9', category: 'pricing', q: 'Y a-t-il un engagement sur vos abonnements ?', a: 'Nos plans sont flexibles. Vous pouvez choisir un abonnement mensuel ou annuel. L\'offre annuelle vous permet d\'économiser 20% sur le tarif global.', active: true },
+        { id: '10', category: 'support', q: 'Avez-vous un support technique réactif ?', a: 'Nos clients bénéficient d\'un support dédié. Les comptes Professionnel et Agence profitent d\'une assistance prioritaire 24h/24 et 7j/7 par email et chat.', active: true },
     ]);
 
     const [settings, setSettings] = useState<Settings>({
@@ -173,14 +179,14 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     // Persistence
     useEffect(() => {
-        const savedServices = localStorage.getItem('pixup_services');
-        const savedProjects = localStorage.getItem('pixup_projects');
-        const savedArticles = localStorage.getItem('pixup_articles');
-        const savedSettings = localStorage.getItem('pixup_settings');
-        const savedTestimonials = localStorage.getItem('pixup_testimonials');
-        const savedPlans = localStorage.getItem('pixup_plans');
-        const savedFaqs = localStorage.getItem('pixup_faqs');
-        const savedStats = localStorage.getItem('pixup_stats');
+        const savedServices = localStorage.getItem('pixup_services_v2');
+        const savedProjects = localStorage.getItem('pixup_projects_v2');
+        const savedArticles = localStorage.getItem('pixup_articles_v2');
+        const savedSettings = localStorage.getItem('pixup_settings_v2');
+        const savedTestimonials = localStorage.getItem('pixup_testimonials_v2');
+        const savedPlans = localStorage.getItem('pixup_plans_v2');
+        const savedFaqs = localStorage.getItem('pixup_faqs_v2');
+        const savedStats = localStorage.getItem('pixup_stats_v2');
 
         if (savedServices) setServices(JSON.parse(savedServices));
         if (savedProjects) setProjects(JSON.parse(savedProjects));
@@ -193,14 +199,14 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }, []);
 
     useEffect(() => {
-        localStorage.setItem('pixup_services', JSON.stringify(services));
-        localStorage.setItem('pixup_projects', JSON.stringify(projects));
-        localStorage.setItem('pixup_articles', JSON.stringify(articles));
-        localStorage.setItem('pixup_settings', JSON.stringify(settings));
-        localStorage.setItem('pixup_testimonials', JSON.stringify(testimonials));
-        localStorage.setItem('pixup_plans', JSON.stringify(plans));
-        localStorage.setItem('pixup_faqs', JSON.stringify(faqs));
-        localStorage.setItem('pixup_stats', JSON.stringify(stats));
+        localStorage.setItem('pixup_services_v2', JSON.stringify(services));
+        localStorage.setItem('pixup_projects_v2', JSON.stringify(projects));
+        localStorage.setItem('pixup_articles_v2', JSON.stringify(articles));
+        localStorage.setItem('pixup_settings_v2', JSON.stringify(settings));
+        localStorage.setItem('pixup_testimonials_v2', JSON.stringify(testimonials));
+        localStorage.setItem('pixup_plans_v2', JSON.stringify(plans));
+        localStorage.setItem('pixup_faqs_v2', JSON.stringify(faqs));
+        localStorage.setItem('pixup_stats_v2', JSON.stringify(stats));
     }, [services, projects, articles, settings, testimonials, plans, faqs, stats]);
 
     return (

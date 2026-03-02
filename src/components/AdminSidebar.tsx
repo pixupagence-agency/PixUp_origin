@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function AdminSidebar() {
     const pathname = usePathname();
@@ -99,13 +100,14 @@ export default function AdminSidebar() {
                     <img
                         alt="Admin User Profile"
                         className="h-10 w-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMu9lPu7U1LHHfzEJHm-L1G43fJ47kh_K318q0wbU599eG2mqt1rRjNVYk05yAweiMdi62y8OYXg_9waRkUdDMegbAJv-V_LgPtPtDxLx-Qpl9agQ4YbGH57jbyp55n-6K4471nJ2xNUiOkKY5a11cSpAFvktg7VzvrZ__-Y9uYUNjTlRJ54EmqCvXQ9cnLxc_NyeN0noAtyRucCtghM-eEIGWlMa2NzKtvdOMWOuKEnc39GheUh9hbzCziK7soSqwhgDsWlmmcKZ5"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMu9lPu7U1LHHfzEJHm-L1G43fJ47kh_K318q0wbU599eG2mqt1rRjNVYk05yAweiMdi62y8OYXg_9waRkUdDMegbAJv-V_LgPtPtDxLx-Qpl9agQ4YbGH57jbyp55n-6K4471nJ2xNUiOkKY5a11cSpAFvktg7VzvrZ__-Y9uYUNjTlRJ54EmqCvXQ9cnLxc-NyeN0noAtyRucCtghM-eEIGWlMa2NzKtvdOMWOuKEnc39GheUh9hbzCziK7soSqwhgDsWlmmcKZ5"
                     />
                     <div className="flex flex-col overflow-hidden">
                         <span className="text-sm font-bold text-slate-900 dark:text-white truncate">Alex Morgan</span>
                         <span className="text-xs text-slate-500 dark:text-slate-400 truncate">{t.admin.adminAccess}</span>
                     </div>
-                    <div className="ml-auto flex items-center gap-1">
+                    <div className="flex items-center gap-1">
+                        <LanguageSwitcher />
                         <button
                             onClick={toggleTheme}
                             className="p-1.5 text-slate-400 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors"
@@ -115,10 +117,10 @@ export default function AdminSidebar() {
                                 {theme === 'light' ? 'dark_mode' : 'light_mode'}
                             </span>
                         </button>
-                        <button className="p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200" aria-label={t.admin.logout}>
-                            <span className="material-symbols-outlined text-xl">logout</span>
-                        </button>
                     </div>
+                    <button className="p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200" aria-label={t.admin.logout}>
+                        <span className="material-symbols-outlined text-xl">logout</span>
+                    </button>
                 </div>
             </div>
         </aside>
