@@ -1,13 +1,14 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageContext";
+import { useData } from "@/context/DataContext";
 
 export default function PricingPlans() {
     const { t } = useLanguage();
+    const { plans, faqs } = useData();
 
     return (
         <>
-
             {/*  Background Decoration  */}
             <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
                 <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-blue-400/10 blur-[100px] dark:bg-blue-600/10"></div>
@@ -53,125 +54,48 @@ export default function PricingPlans() {
                     </div>
                     {/*  Pricing Cards Grid  */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start relative">
-                        {/*  Starter Plan  */}
-                        <div className="glass-card rounded-3xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5 group">
-                            <div className="mb-6">
-                                <h3 className="text-lg font-bold text-slate-900 dark:text-white">{t.pricing.starter.name}</h3>
-                                <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">{t.pricing.starter.desc}</p>
+                        {plans.filter(p => p.active).map((plan) => (
+                            <div key={plan.id} className={`glass-card rounded-3xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5 group ${plan.popular ? 'border-primary/30 dark:border-primary/50 shadow-2xl shadow-primary/10 relative z-10 md:-mt-4 md:mb-4 bg-white/90 dark:bg-slate-800/90' : ''}`}>
+                                {plan.popular && (
+                                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-primary text-white shadow-lg shadow-primary/30 tracking-wide uppercase">
+                                            {t.pricing.mostPopular}
+                                        </span>
+                                    </div>
+                                )}
+                                <div className="mb-6">
+                                    <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                                        {plan.name}
+                                        {plan.popular && <span className="material-symbols-outlined text-primary" style={{ fontSize: '20px' }}>star</span>}
+                                    </h3>
+                                    <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">{plan.description}</p>
+                                </div>
+                                <div className="flex items-baseline gap-1 mb-8">
+                                    <span className="text-5xl font-black text-slate-900 dark:text-white tracking-tight">{plan.price}</span>
+                                    {plan.billingCycle === 'monthly' && (
+                                        <span className="text-slate-500 dark:text-slate-400 font-medium">/mo</span>
+                                    )}
+                                </div>
+                                <a className={`flex items-center justify-center w-full py-3 px-4 rounded-xl font-bold text-sm transition-all ${plan.popular ? 'bg-primary text-white shadow-lg shadow-primary/25 hover:bg-primary-dark hover:shadow-primary/40' : 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700'}`} href="#">
+                                    {t.pricing.getStarted}
+                                </a>
+                                <ul className="mt-8 space-y-4">
+                                    {plan.features.map((feature, i) => (
+                                        <li key={i} className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+                                            <span className="material-symbols-outlined text-primary text-[20px] fill-current">check_circle</span>
+                                            <span>{feature}</span>
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
-                            <div className="flex items-baseline gap-1 mb-8">
-                                <span className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">{t.pricing.starter.price}</span>
-                                <span className="text-slate-500 dark:text-slate-400 font-medium">/mo</span>
-                            </div>
-                            <a className="flex items-center justify-center w-full py-3 px-4 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-semibold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" href="#">
-                                {t.pricing.getStarted}
-                            </a>
-                            <ul className="mt-8 space-y-4">
-                                <li className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
-                                    <span className="material-symbols-outlined text-primary text-[20px]">check_circle</span>
-                                    <span>{t.pricing.features.projects5}</span>
-                                </li>
-                                <li className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
-                                    <span className="material-symbols-outlined text-primary text-[20px]">check_circle</span>
-                                    <span>{t.pricing.features.basicSupport}</span>
-                                </li>
-                                <li className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
-                                    <span className="material-symbols-outlined text-primary text-[20px]">check_circle</span>
-                                    <span>{t.pricing.features.community}</span>
-                                </li>
-                                <li className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
-                                    <span className="material-symbols-outlined text-primary text-[20px]">check_circle</span>
-                                    <span>{t.pricing.features.analytics}</span>
-                                </li>
-                            </ul>
-                        </div>
-                        {/*  Professional Plan (Highlighted)  */}
-                        <div className="glass-card rounded-3xl p-8 border-primary/30 dark:border-primary/50 shadow-2xl shadow-primary/10 relative z-10 md:-mt-4 md:mb-4 bg-white/90 dark:bg-slate-800/90 transition-all duration-300 hover:-translate-y-2">
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-primary text-white shadow-lg shadow-primary/30 tracking-wide uppercase">
-                                    {t.pricing.mostPopular}
-                                </span>
-                            </div>
-                            <div className="mb-6">
-                                <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                                    {t.pricing.professional.name}
-                                    <span className="material-symbols-outlined text-primary" style={{ fontSize: '20px' }}>star</span>
-                                </h3>
-                                <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">{t.pricing.professional.desc}</p>
-                            </div>
-                            <div className="flex items-baseline gap-1 mb-8">
-                                <span className="text-5xl font-black text-slate-900 dark:text-white tracking-tight">{t.pricing.professional.price}</span>
-                                <span className="text-slate-500 dark:text-slate-400 font-medium">/mo</span>
-                            </div>
-                            <a className="flex items-center justify-center w-full py-3 px-4 rounded-xl bg-primary text-white font-bold text-sm shadow-lg shadow-primary/25 hover:bg-primary-dark hover:shadow-primary/40 transition-all" href="#">
-                                {t.pricing.getStarted}
-                            </a>
-                            <ul className="mt-8 space-y-4">
-                                <li className="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-200 font-medium">
-                                    <span className="material-symbols-outlined text-primary text-[20px] fill-current">check_circle</span>
-                                    <span>{t.pricing.features.unlimitedProjects}</span>
-                                </li>
-                                <li className="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-200 font-medium">
-                                    <span className="material-symbols-outlined text-primary text-[20px] fill-current">check_circle</span>
-                                    <span>{t.pricing.features.prioritySupport}</span>
-                                </li>
-                                <li className="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-200 font-medium">
-                                    <span className="material-symbols-outlined text-primary text-[20px] fill-current">check_circle</span>
-                                    <span>{t.pricing.features.sourceFiles}</span>
-                                </li>
-                                <li className="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-200 font-medium">
-                                    <span className="material-symbols-outlined text-primary text-[20px] fill-current">check_circle</span>
-                                    <span>{t.pricing.features.advancedAnalytics}</span>
-                                </li>
-                                <li className="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-200 font-medium">
-                                    <span className="material-symbols-outlined text-primary text-[20px] fill-current">check_circle</span>
-                                    <span>{t.pricing.features.collaboration}</span>
-                                </li>
-                            </ul>
-                        </div>
-                        {/*  Agency Plan  */}
-                        <div className="glass-card rounded-3xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5 group">
-                            <div className="mb-6">
-                                <h3 className="text-lg font-bold text-slate-900 dark:text-white">{t.pricing.agency.name}</h3>
-                                <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">{t.pricing.agency.desc}</p>
-                            </div>
-                            <div className="flex items-baseline gap-1 mb-8">
-                                <span className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">{t.pricing.agency.price}</span>
-                                <span className="text-slate-500 dark:text-slate-400 font-medium">/mo</span>
-                            </div>
-                            <a className="flex items-center justify-center w-full py-3 px-4 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-semibold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" href="/contact-us">
-                                {t.pricing.contactSales}
-                            </a>
-                            <ul className="mt-8 space-y-4">
-                                <li className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
-                                    <span className="material-symbols-outlined text-primary text-[20px]">check_circle</span>
-                                    <span>{t.pricing.features.accountManager}</span>
-                                </li>
-                                <li className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
-                                    <span className="material-symbols-outlined text-primary text-[20px]">check_circle</span>
-                                    <span>{t.pricing.features.whiteLabel}</span>
-                                </li>
-                                <li className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
-                                    <span className="material-symbols-outlined text-primary text-[20px]">check_circle</span>
-                                    <span>{t.pricing.features.apiAccess}</span>
-                                </li>
-                                <li className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
-                                    <span className="material-symbols-outlined text-primary text-[20px]">check_circle</span>
-                                    <span>{t.pricing.features.contracts}</span>
-                                </li>
-                                <li className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
-                                    <span className="material-symbols-outlined text-primary text-[20px]">check_circle</span>
-                                    <span>{t.pricing.features.security}</span>
-                                </li>
-                            </ul>
-                        </div>
+                        ))}
                     </div>
                     {/*  FAQ Section  */}
                     <div className="mt-24 max-w-3xl mx-auto">
                         <h2 className="text-2xl font-bold text-center text-slate-900 dark:text-white mb-10">{t.pricing.faqTitle}</h2>
                         <div className="space-y-4">
-                            {t.pricing.faqs.map((faq: any, index: number) => (
-                                <details key={index} className="group glass-card rounded-2xl p-1 [&_summary::-webkit-details-marker]:hidden open:bg-white dark:open:bg-slate-800">
+                            {faqs.filter(f => f.category === 'pricing').map((faq) => (
+                                <details key={faq.id} className="group glass-card rounded-2xl p-1 [&_summary::-webkit-details-marker]:hidden open:bg-white dark:open:bg-slate-800">
                                     <summary className="flex cursor-pointer items-center justify-between gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
                                         <h3 className="text-sm font-semibold text-slate-900 dark:text-white">{faq.q}</h3>
                                         <span className="material-symbols-outlined transition duration-300 group-open:-rotate-180 text-slate-500">expand_more</span>

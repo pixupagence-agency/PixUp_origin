@@ -145,6 +145,7 @@ export const en = {
         archived: "Archived",
         filter: "Filter",
         confirmDeleteArticle: "Are you sure you want to delete this article?",
+        content: "Content",
 
         // Settings Management
         globalSettings: "Global Settings",
@@ -183,6 +184,12 @@ export const en = {
         delete: "Delete",
         name: "Name",
         category: "Category",
+        excerpt: "Excerpt",
+        excerptPlaceholder: "Short summary of the article...",
+        imageUrl: "Image URL",
+        actions: "Actions",
+        monthly: "Monthly",
+        oneTime: "One-time",
     },
 
     // Home Page
@@ -417,5 +424,19 @@ export const en = {
                 a: "Yes, we offer various maintenance plans to ensure your site's security, performance, and updates."
             }
         ]
+    },
+    // Blog Page
+    blogPage: {
+        title: "Our",
+        titleAccent: "Blog",
+        description: "Insights, trends, and stories from our team of designers and developers. Stay updated with the latest in digital innovation.",
+        readTime: "min read",
+        readMore: "Read More",
+        newsletter: {
+            title: "Never miss an update",
+            description: "Subscribe to our newsletter for the latest design trends and development tips.",
+            placeholder: "Enter your email",
+            button: "Subscribe",
+        }
     },
 };

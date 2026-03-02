@@ -139,7 +139,7 @@ export default function PixupHomePage() {
                         <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">{t.home.testimonialDesc}</p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {testimonials.map((testimonial) => (
+                        {testimonials.filter(t => t.active).map((testimonial) => (
                             <div key={testimonial.id} className="p-8 rounded-2xl bg-white dark:bg-slate-900 shadow-xl shadow-primary/5 border border-slate-50 dark:border-white/5 flex flex-col gap-6 relative group hover:-translate-y-2 transition-transform duration-300">
                                 <div className="absolute top-8 right-8 text-primary/10 group-hover:text-primary/20 transition-colors">
                                     <span className="material-symbols-outlined text-6xl italic">format_quote</span>

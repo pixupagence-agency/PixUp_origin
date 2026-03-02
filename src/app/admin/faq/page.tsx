@@ -3,25 +3,19 @@
 import { useState } from "react";
 import AdminSidebar from "@/components/AdminSidebar";
 import { useLanguage } from "@/context/LanguageContext";
-
-interface FAQItem {
-    id: string;
-    category: string;
-    q: string;
-    a: string;
-}
+import { useData, FAQItem } from "@/context/DataContext";
 
 export default function AdminFAQ() {
     const { t } = useLanguage();
-
-    const [faqs, setFaqs] = useState<FAQItem[]>(t.faq.questions);
+    const { faqs, setFaqs } = useData();
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingFaq, setEditingFaq] = useState<FAQItem | null>(null);
     const [formData, setFormData] = useState({
         category: "services",
         q: "",
-        a: ""
+        a: "",
+        active: true
     });
 
     const openModal = (faq: FAQItem | null = null) => {
@@ -30,14 +24,16 @@ export default function AdminFAQ() {
             setFormData({
                 category: faq.category,
                 q: faq.q,
-                a: faq.a
+                a: faq.a,
+                active: faq.active !== undefined ? faq.active : true
             });
         } else {
             setEditingFaq(null);
             setFormData({
                 category: "services",
                 q: "",
-                a: ""
+                a: "",
+                active: true
             });
         }
         setIsModalOpen(true);
@@ -95,6 +91,9 @@ export default function AdminFAQ() {
                                         <div className="flex items-center gap-2 mb-2">
                                             <span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wider">
                                                 {faq.category}
+                                            </span>
+                                            <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${faq.active ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-100 text-slate-400'}`}>
+                                                {faq.active ? t.admin.active : t.admin.inactive}
                                             </span>
                                         </div>
                                         <h3 className="text-lg font-bold text-slate-900 mb-2">{faq.q}</h3>
@@ -167,6 +166,17 @@ export default function AdminFAQ() {
                                     className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all h-32 resize-none"
                                     placeholder="Type the answer..."
                                 />
+                            </div>
+                            <div className="flex items-center gap-2 pt-2">
+                                <label className="flex items-center gap-2 cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        checked={formData.active}
+                                        onChange={(e) => setFormData({ ...formData, active: e.target.checked })}
+                                        className="w-4 h-4 rounded text-primary focus:ring-primary border-slate-300"
+                                    />
+                                    <span className="text-sm font-medium text-slate-700">{t.admin.active}</span>
+                                </label>
                             </div>
                             <div className="flex gap-3 pt-4">
                                 <button

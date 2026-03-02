@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { useLanguage } from "@/context/LanguageContext";
 import { useData } from "@/context/DataContext";
 import AdminSidebar from "@/components/AdminSidebar";
+import RichTextEditor from "@/components/RichTextEditor";
+import ImageUpload from "@/components/ImageUpload";
 
 export default function AdminBlog() {
     const { t } = useLanguage();
@@ -13,6 +15,7 @@ export default function AdminBlog() {
     const [formData, setFormData] = useState({
         title: '',
         excerpt: '',
+        content: '',
         image: '',
         category: '',
         author: 'Alex Morgan',
@@ -26,6 +29,7 @@ export default function AdminBlog() {
             setFormData({
                 title: article.title,
                 excerpt: article.excerpt,
+                content: article.content || '',
                 image: article.image,
                 category: article.category,
                 author: article.author,
@@ -37,6 +41,7 @@ export default function AdminBlog() {
             setFormData({
                 title: '',
                 excerpt: '',
+                content: '',
                 image: '',
                 category: '',
                 author: 'Alex Morgan',
@@ -138,7 +143,7 @@ export default function AdminBlog() {
                                         <th className="px-6 py-4 font-semibold">{t.admin.author}</th>
                                         <th className="px-6 py-4 font-semibold">{t.admin.publishDate}</th>
                                         <th className="px-6 py-4 font-semibold">{t.admin.status}</th>
-                                        <th className="px-6 py-4 text-right font-semibold">Actions</th>
+                                        <th className="px-6 py-4 text-right font-semibold">{t.admin.actions}</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
@@ -177,78 +182,83 @@ export default function AdminBlog() {
             {/* Modal */}
             {isModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 dark:bg-slate-900/60 backdrop-blur-sm p-4">
-                    <div className="w-full max-w-md bg-white dark:bg-slate-900 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200 border dark:border-slate-800">
+                    <div className="w-full max-w-2xl bg-white dark:bg-slate-900 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200 border dark:border-slate-800">
                         <div className="bg-slate-50 dark:bg-slate-800/50 px-6 py-4 border-b border-slate-100 dark:border-slate-700 flex items-center justify-between">
                             <h3 className="font-bold text-slate-900 dark:text-white">{editingArticle ? t.admin.editArticle : t.admin.newArticle}</h3>
                             <button onClick={() => setIsModalOpen(false)} className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
                                 <span className="material-symbols-outlined">close</span>
                             </button>
                         </div>
-                        <form onSubmit={handleSave} className="p-6 space-y-4">
-                            <div>
-                                <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">{t.admin.articleTitle}</label>
-                                <input
-                                    required
-                                    type="text"
-                                    value={formData.title}
-                                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                                    className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                                    placeholder="e.g. The Future of AI"
-                                />
+                        <form onSubmit={handleSave} className="p-6 space-y-4 max-h-[80vh] overflow-y-auto">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">{t.admin.articleTitle}</label>
+                                    <input
+                                        required
+                                        type="text"
+                                        value={formData.title}
+                                        onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                                        className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                                        placeholder="e.g. The Future of AI"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">{t.admin.category}</label>
+                                    <input
+                                        required
+                                        type="text"
+                                        value={formData.category}
+                                        onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                                        className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                                        placeholder="e.g. Design Trends"
+                                    />
+                                </div>
                             </div>
                             <div>
-                                <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">Excerpt</label>
+                                <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">{t.admin.excerpt}</label>
                                 <textarea
                                     required
                                     value={formData.excerpt}
                                     onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
-                                    className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all h-20"
-                                    placeholder="Short summary of the article..."
+                                    className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all h-20 resize-none"
+                                    placeholder={t.admin.excerptPlaceholder}
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">Image URL</label>
-                                <input
-                                    required
-                                    type="text"
+                                <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">{t.admin.content}</label>
+                                <RichTextEditor
+                                    content={formData.content}
+                                    onChange={(content) => setFormData({ ...formData, content })}
+                                />
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <ImageUpload
+                                    label={t.admin.imageUrl}
                                     value={formData.image}
-                                    onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                                    className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                                    placeholder="https://images.unsplash.com/..."
+                                    onChange={(val) => setFormData({ ...formData, image: val })}
                                 />
-                            </div>
-                            <div>
-                                <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">{t.admin.category}</label>
-                                <input
-                                    required
-                                    type="text"
-                                    value={formData.category}
-                                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                                    className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                                    placeholder="e.g. Design Trends"
-                                />
-                            </div>
-                            <div className="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">{t.admin.author}</label>
-                                    <input
-                                        required
-                                        type="text"
-                                        value={formData.author}
-                                        onChange={(e) => setFormData({ ...formData, author: e.target.value })}
-                                        className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">{t.admin.status}</label>
-                                    <select
-                                        value={formData.status}
-                                        onChange={(e) => setFormData({ ...formData, status: e.target.value as any })}
-                                        className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white"
-                                    >
-                                        <option value="published">{t.admin.published}</option>
-                                        <option value="draft">{t.admin.draft}</option>
-                                    </select>
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">{t.admin.author}</label>
+                                        <input
+                                            required
+                                            type="text"
+                                            value={formData.author}
+                                            onChange={(e) => setFormData({ ...formData, author: e.target.value })}
+                                            className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">{t.admin.status}</label>
+                                        <select
+                                            value={formData.status}
+                                            onChange={(e) => setFormData({ ...formData, status: e.target.value as any })}
+                                            className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white h-[42px]"
+                                        >
+                                            <option value="published">{t.admin.published}</option>
+                                            <option value="draft">{t.admin.draft}</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div className="flex gap-3 pt-4">

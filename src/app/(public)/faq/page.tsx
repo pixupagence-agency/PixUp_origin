@@ -1,10 +1,12 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageContext";
+import { useData } from "@/context/DataContext";
 import { useState } from "react";
 
 export default function FAQPage() {
     const { t } = useLanguage();
+    const { faqs } = useData();
     const [openIndex, setOpenIndex] = useState<string | null>(null);
 
     const toggleAccordion = (id: string) => {
@@ -30,8 +32,8 @@ export default function FAQPage() {
             {/* FAQ List */}
             <section className="py-20">
                 <div className="container mx-auto px-4">
-                    <div className="max-w-3xl mx-auto space-y-4">
-                        {t.faq.questions.map((faq: any) => (
+                    <div className="space-y-6">
+                        {faqs.filter(f => f.active).map((faq) => (
                             <div
                                 key={faq.id}
                                 className="border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden transition-all duration-300 hover:border-primary/30"

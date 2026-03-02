@@ -29,8 +29,8 @@ export default function AdminSidebar() {
                     <span className="material-symbols-outlined text-primary text-2xl">auto_awesome_mosaic</span>
                 </div>
                 <div className="flex flex-col">
-                    <h1 className="text-slate-900 text-lg font-bold tracking-tight">{t.admin.title}</h1>
-                    <p className="text-slate-500 text-xs font-bold uppercase tracking-widest mt-0.5">{t.admin.subtitle}</p>
+                    <h1 className="text-slate-900 dark:text-white text-lg font-bold tracking-tight">{t.admin.title}</h1>
+                    <p className="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-widest mt-0.5">{t.admin.subtitle}</p>
                 </div>
             </div>
             <nav className="flex-1 flex flex-col gap-2 p-4 overflow-y-auto">
@@ -98,7 +98,7 @@ export default function AdminSidebar() {
                 <div className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 border border-slate-200 dark:border-slate-700">
                     <img
                         alt="Admin User Profile"
-                        className="h-10 w-10 rounded-full object-cover border-2 border-white shadow-sm"
+                        className="h-10 w-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm"
                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMu9lPu7U1LHHfzEJHm-L1G43fJ47kh_K318q0wbU599eG2mqt1rRjNVYk05yAweiMdi62y8OYXg_9waRkUdDMegbAJv-V_LgPtPtDxLx-Qpl9agQ4YbGH57jbyp55n-6K4471nJ2xNUiOkKY5a11cSpAFvktg7VzvrZ__-Y9uYUNjTlRJ54EmqCvXQ9cnLxc_NyeN0noAtyRucCtghM-eEIGWlMa2NzKtvdOMWOuKEnc39GheUh9hbzCziK7soSqwhgDsWlmmcKZ5"
                     />
                     <div className="flex flex-col overflow-hidden">

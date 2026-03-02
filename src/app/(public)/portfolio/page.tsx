@@ -32,7 +32,7 @@ export default function Portfolio() {
                 </div>
                 {/*  Masonry Grid  */}
                 <div className="masonry-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {projects.map((project) => (
+                    {projects.filter(p => p.active).map((project) => (
                         <div key={project.id} className="masonry-item group relative cursor-pointer overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800/50 border border-transparent dark:border-white/5 hover:border-primary/30 transition-all duration-300" onClick={() => setSelectedProject(project)}>
                             <img alt={project.title} className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105" src={project.image || "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=2194&auto=format&fit=crop"} />
                             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">

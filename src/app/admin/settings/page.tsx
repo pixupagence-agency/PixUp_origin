@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useLanguage } from "@/context/LanguageContext";
 import { useData } from "@/context/DataContext";
 import AdminSidebar from "@/components/AdminSidebar";
+import ImageUpload from "@/components/ImageUpload";
 
 export default function AdminSettings() {
   const { t } = useLanguage();
@@ -15,7 +16,8 @@ export default function AdminSettings() {
     name: '',
     role: '',
     content: '',
-    avatar: ''
+    avatar: '',
+    active: true
   });
 
   const handleSettingsChange = (field: string, value: string) => {
@@ -34,7 +36,8 @@ export default function AdminSettings() {
         name: testimonial.name,
         role: testimonial.role,
         content: testimonial.content,
-        avatar: testimonial.avatar
+        avatar: testimonial.avatar,
+        active: testimonial.active !== undefined ? testimonial.active : true
       });
     } else {
       setEditingTestimonial(null);
@@ -42,7 +45,8 @@ export default function AdminSettings() {
         name: '',
         role: '',
         content: '',
-        avatar: ''
+        avatar: '',
+        active: true
       });
     }
     setIsTestimonialModalOpen(true);
@@ -152,17 +156,11 @@ export default function AdminSettings() {
                 <div className="p-6">
                   <div className="flex flex-col gap-6 md:flex-row">
                     <div className="flex-shrink-0">
-                      <span className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">{t.admin.avatar}</span>
-                      <div className="relative group size-32 overflow-hidden rounded-full border-4 border-slate-100 dark:border-slate-700 shadow-sm cursor-pointer">
-                        <img
-                          alt="Founder"
-                          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                          src={localSettings.founderAvatar}
-                        />
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity group-hover:opacity-100">
-                          <span className="material-symbols-outlined text-white">edit</span>
-                        </div>
-                      </div>
+                      <ImageUpload
+                        label={t.admin.avatar}
+                        value={localSettings.founderAvatar}
+                        onChange={(val) => handleSettingsChange('founderAvatar', val)}
+                      />
                     </div>
                     <div className="flex-1 space-y-4">
                       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -200,11 +198,11 @@ export default function AdminSettings() {
               </div>
 
               {/* Testimonials */}
-              <div className="rounded-xl border border-slate-200 bg-white shadow-sm">
-                <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4">
+              <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
+                <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 px-6 py-4">
                   <div>
-                    <h2 className="text-lg font-semibold text-slate-900">{t.admin.testimonials}</h2>
-                    <p className="text-sm text-slate-500">{t.admin.testimonialsDesc}</p>
+                    <h2 className="text-lg font-semibold text-slate-900 dark:text-white">{t.admin.testimonials}</h2>
+                    <p className="text-sm text-slate-500 dark:text-slate-400">{t.admin.testimonialsDesc}</p>
                   </div>
                   <button
                     onClick={() => openTestimonialModal()}
@@ -221,7 +219,12 @@ export default function AdminSettings() {
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="text-sm font-semibold text-slate-900 dark:text-white">{testimonial.name}</p>
+                            <div className="flex items-center gap-2">
+                              <p className="text-sm font-semibold text-slate-900 dark:text-white">{testimonial.name}</p>
+                              <span className={`px-1.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider ${testimonial.active ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-100 text-slate-400'}`}>
+                                {testimonial.active ? t.admin.active : t.admin.inactive}
+                              </span>
+                            </div>
                             <p className="text-xs text-slate-400 dark:text-slate-500">{testimonial.role}</p>
                           </div>
                           <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -330,67 +333,75 @@ export default function AdminSettings() {
             </div>
           </div>
         </div>
-      </main>
+      </main >
 
       {/* Testimonial Modal */}
-      {isTestimonialModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 dark:bg-slate-900/60 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md bg-white dark:bg-slate-900 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200 border dark:border-slate-800">
-            <div className="bg-slate-50 dark:bg-slate-800/50 px-6 py-4 border-b border-slate-100 dark:border-slate-700 flex items-center justify-between">
-              <h3 className="font-bold text-slate-900 dark:text-white">{editingTestimonial ? t.admin.editTestimonial : t.admin.addTestimonial}</h3>
-              <button onClick={() => setIsTestimonialModalOpen(false)} className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
-                <span className="material-symbols-outlined">close</span>
-              </button>
-            </div>
-            <form onSubmit={handleSaveTestimonial} className="p-6 space-y-4">
-              <div>
-                <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">{t.admin.name}</label>
-                <input
-                  required
-                  type="text"
-                  value={testimonialForm.name}
-                  onChange={(e) => setTestimonialForm({ ...testimonialForm, name: e.target.value })}
-                  className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                />
+      {
+        isTestimonialModalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 dark:bg-slate-900/60 backdrop-blur-sm p-4">
+            <div className="w-full max-w-md bg-white dark:bg-slate-900 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200 border dark:border-slate-800">
+              <div className="bg-slate-50 dark:bg-slate-800/50 px-6 py-4 border-b border-slate-100 dark:border-slate-700 flex items-center justify-between">
+                <h3 className="font-bold text-slate-900 dark:text-white">{editingTestimonial ? t.admin.editTestimonial : t.admin.addTestimonial}</h3>
+                <button onClick={() => setIsTestimonialModalOpen(false)} className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                  <span className="material-symbols-outlined">close</span>
+                </button>
               </div>
-              <div>
-                <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">{t.admin.role}</label>
-                <input
-                  required
-                  type="text"
-                  value={testimonialForm.role}
-                  onChange={(e) => setTestimonialForm({ ...testimonialForm, role: e.target.value })}
-                  className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                  placeholder="e.g. CEO at Techflow"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">{t.admin.answer}</label>
-                <textarea
-                  required
-                  value={testimonialForm.content}
-                  onChange={(e) => setTestimonialForm({ ...testimonialForm, content: e.target.value })}
-                  className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all h-24"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">Avatar URL</label>
-                <input
-                  required
-                  type="text"
+              <form onSubmit={handleSaveTestimonial} className="p-6 space-y-4">
+                <div>
+                  <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">{t.admin.name}</label>
+                  <input
+                    required
+                    type="text"
+                    value={testimonialForm.name}
+                    onChange={(e) => setTestimonialForm({ ...testimonialForm, name: e.target.value })}
+                    className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">{t.admin.role}</label>
+                  <input
+                    required
+                    type="text"
+                    value={testimonialForm.role}
+                    onChange={(e) => setTestimonialForm({ ...testimonialForm, role: e.target.value })}
+                    className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                    placeholder="e.g. CEO at Techflow"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">{t.admin.answer}</label>
+                  <textarea
+                    required
+                    value={testimonialForm.content}
+                    onChange={(e) => setTestimonialForm({ ...testimonialForm, content: e.target.value })}
+                    className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all h-24"
+                  />
+                </div>
+                <ImageUpload
+                  label={t.admin.avatar}
                   value={testimonialForm.avatar}
-                  onChange={(e) => setTestimonialForm({ ...testimonialForm, avatar: e.target.value })}
-                  className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                  onChange={(val) => setTestimonialForm({ ...testimonialForm, avatar: val })}
                 />
-              </div>
-              <div className="flex gap-3 pt-4">
-                <button type="button" onClick={() => setIsTestimonialModalOpen(false)} className="flex-1 px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">{t.admin.cancel}</button>
-                <button type="submit" className="flex-1 px-4 py-2 rounded-xl bg-primary text-white font-bold shadow-lg shadow-primary/25 hover:bg-blue-600 transition-all">{t.admin.save}</button>
-              </div>
-            </form>
+                <div className="flex items-center gap-2 pt-2">
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={testimonialForm.active}
+                      onChange={(e) => setTestimonialForm({ ...testimonialForm, active: e.target.checked })}
+                      className="w-4 h-4 rounded text-primary focus:ring-primary border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                    />
+                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.admin.active}</span>
+                  </label>
+                </div>
+                <div className="flex gap-3 pt-4">
+                  <button type="button" onClick={() => setIsTestimonialModalOpen(false)} className="flex-1 px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">{t.admin.cancel}</button>
+                  <button type="submit" className="flex-1 px-4 py-2 rounded-xl bg-primary text-white font-bold shadow-lg shadow-primary/25 hover:bg-blue-600 transition-all">{t.admin.save}</button>
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
-      )}
-    </div>
+        )
+      }
+    </div >
   );
 }

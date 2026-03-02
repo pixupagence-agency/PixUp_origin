@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useLanguage } from "@/context/LanguageContext";
 import { useData } from "@/context/DataContext";
 import AdminSidebar from "@/components/AdminSidebar";
+import ImageUpload from "@/components/ImageUpload";
 
 export default function AdminPortfolio() {
     const { t } = useLanguage();
@@ -15,6 +16,7 @@ export default function AdminPortfolio() {
         category: '',
         image: '',
         featured: false,
+        active: true,
         addedDate: new Date().toLocaleDateString('en-US', { month: 'short', day: '2-digit' })
     });
 
@@ -26,6 +28,7 @@ export default function AdminPortfolio() {
                 category: project.category,
                 image: project.image,
                 featured: project.featured,
+                active: project.active !== undefined ? project.active : true,
                 addedDate: project.addedDate
             });
         } else {
@@ -35,6 +38,7 @@ export default function AdminPortfolio() {
                 category: '',
                 image: '',
                 featured: false,
+                active: true,
                 addedDate: new Date().toLocaleDateString('en-US', { month: 'short', day: '2-digit' })
             });
         }
@@ -91,11 +95,16 @@ export default function AdminPortfolio() {
                                         alt={project.title}
                                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                                     />
-                                    {project.featured && (
-                                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/60 to-transparent p-4">
-                                            <span className="rounded-full bg-white/20 px-2 py-1 text-xs font-semibold text-white backdrop-blur-md">{t.admin.featured}</span>
+                                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/60 to-transparent p-4 flex justify-between items-end">
+                                        <div className="flex gap-2">
+                                            {project.featured && (
+                                                <span className="rounded-full bg-primary/80 px-2 py-0.5 text-[10px] font-bold text-white backdrop-blur-md uppercase tracking-wider">{t.admin.featured}</span>
+                                            )}
+                                            <span className={`rounded-full px-2 py-0.5 text-[10px] font-bold text-white backdrop-blur-md uppercase tracking-wider ${project.active ? 'bg-emerald-500/80' : 'bg-slate-500/80'}`}>
+                                                {project.active ? t.admin.active : t.admin.inactive}
+                                            </span>
                                         </div>
-                                    )}
+                                    </div>
                                 </div>
                                 <div className="flex flex-1 flex-col p-5">
                                     <h3 className="text-lg font-bold text-slate-900 dark:text-white line-clamp-1">{project.title}</h3>
@@ -159,26 +168,32 @@ export default function AdminPortfolio() {
                                     placeholder="e.g. UI/UX Design, Development"
                                 />
                             </div>
-                            <div>
-                                <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">Image URL</label>
-                                <input
-                                    required
-                                    type="text"
-                                    value={formData.image}
-                                    onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                                    className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                                    placeholder="https://..."
-                                />
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <input
-                                    type="checkbox"
-                                    id="featured"
-                                    checked={formData.featured}
-                                    onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
-                                    className="w-4 h-4 rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary bg-white dark:bg-slate-800"
-                                />
-                                <label htmlFor="featured" className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.admin.featured}</label>
+                            <ImageUpload
+                                label="Image du projet"
+                                value={formData.image}
+                                onChange={(val) => setFormData({ ...formData, image: val })}
+                            />
+                            <div className="flex flex-wrap items-center gap-4">
+                                <div className="flex items-center gap-2">
+                                    <input
+                                        type="checkbox"
+                                        id="active"
+                                        checked={formData.active}
+                                        onChange={(e) => setFormData({ ...formData, active: e.target.checked })}
+                                        className="w-4 h-4 rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary bg-white dark:bg-slate-800"
+                                    />
+                                    <label htmlFor="active" className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.admin.active}</label>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <input
+                                        type="checkbox"
+                                        id="featured"
+                                        checked={formData.featured}
+                                        onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
+                                        className="w-4 h-4 rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary bg-white dark:bg-slate-800"
+                                    />
+                                    <label htmlFor="featured" className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.admin.featured}</label>
+                                </div>
                             </div>
                             <div className="flex gap-3 pt-4">
                                 <button type="button" onClick={() => setIsModalOpen(false)} className="flex-1 px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">{t.admin.cancel}</button>

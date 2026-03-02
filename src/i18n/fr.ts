@@ -145,6 +145,7 @@ export const fr = {
         archived: "Archivé",
         filter: "Filtrer",
         confirmDeleteArticle: "Voulez-vous vraiment supprimer cet article ?",
+        content: "Contenu",
 
         // Settings Management
         globalSettings: "Paramètres Globaux",
@@ -183,6 +184,13 @@ export const fr = {
         delete: "Supprimer",
         name: "Nom",
         category: "Catégorie",
+        excerpt: "Extrait",
+        excerptPlaceholder: "Bref résumé de l'article...",
+        imageUrl: "URL de l'image",
+        imageUrlPlaceholder: "https://images.unsplash.com/...",
+        actions: "Actions",
+        monthly: "Mensuel",
+        oneTime: "Tarif Unique",
     },
 
     // Home Page
@@ -417,5 +425,19 @@ export const fr = {
                 a: "Oui, nous proposons différents forfaits de maintenance pour assurer la sécurité, la performance et la mise à jour de votre site."
             }
         ]
+    },
+    // Page Blog
+    blogPage: {
+        title: "Notre",
+        titleAccent: "Blog",
+        description: "Insights, tendances et histoires de notre équipe de designers et de développeurs. Restez à jour avec les dernières innovations numériques.",
+        readTime: "min de lecture",
+        readMore: "Lire la suite",
+        newsletter: {
+            title: "Ne manquez aucune mise à jour",
+            description: "Abonnez-vous à notre newsletter pour les dernières tendances en design et conseils de développement.",
+            placeholder: "Entrez votre email",
+            button: "S'abonner",
+        }
     },
 };

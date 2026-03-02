@@ -3,49 +3,11 @@
 import { useState } from "react";
 import AdminSidebar from "@/components/AdminSidebar";
 import { useLanguage } from "@/context/LanguageContext";
-
-interface PricingPlan {
-    id: string;
-    name: string;
-    price: string;
-    description: string;
-    active: boolean;
-    popular: boolean;
-    users: number;
-}
+import { useData, PricingPlan } from "@/context/DataContext";
 
 export default function AdminPricing() {
     const { t } = useLanguage();
-
-    const [plans, setPlans] = useState<PricingPlan[]>([
-        {
-            id: "1",
-            name: "Starter",
-            price: "49€",
-            description: "Perfect for freelancers and solo creators.",
-            active: true,
-            popular: false,
-            users: 128
-        },
-        {
-            id: "2",
-            name: "Professional",
-            price: "99€",
-            description: "For growing teams demanding power.",
-            active: true,
-            popular: true,
-            users: 542
-        },
-        {
-            id: "3",
-            name: "Agency",
-            price: "199€",
-            description: "Scale your operations with full control.",
-            active: true,
-            popular: false,
-            users: 86
-        }
-    ]);
+    const { plans, setPlans } = useData();
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingPlan, setEditingPlan] = useState<PricingPlan | null>(null);
@@ -53,6 +15,8 @@ export default function AdminPricing() {
         name: "",
         price: "",
         description: "",
+        features: "",
+        billingCycle: "monthly" as "monthly" | "one-time",
         active: true,
         popular: false
     });
@@ -64,6 +28,8 @@ export default function AdminPricing() {
                 name: plan.name,
                 price: plan.price,
                 description: plan.description,
+                features: plan.features?.join(', ') || "",
+                billingCycle: plan.billingCycle || "monthly",
                 active: plan.active,
                 popular: plan.popular
             });
@@ -73,6 +39,8 @@ export default function AdminPricing() {
                 name: "",
                 price: "",
                 description: "",
+                features: "",
+                billingCycle: "monthly",
                 active: true,
                 popular: false
             });
@@ -87,12 +55,12 @@ export default function AdminPricing() {
 
     const handleSave = (e: React.FormEvent) => {
         e.preventDefault();
+        const featuresArray = formData.features.split(',').map(f => f.trim()).filter(f => f !== "");
+
         if (editingPlan) {
             setPlans(plans.map(p => {
                 if (p.id === editingPlan.id) {
-                    // If this plan is set to popular, unset others
-                    const updatedPlan = { ...p, ...formData };
-                    return updatedPlan;
+                    return { ...p, ...formData, features: featuresArray };
                 }
                 if (formData.popular) return { ...p, popular: false };
                 return p;
@@ -101,6 +69,7 @@ export default function AdminPricing() {
             const newPlan: PricingPlan = {
                 id: Math.random().toString(36).substr(2, 9),
                 ...formData,
+                features: featuresArray,
                 users: 0
             };
             setPlans(formData.popular
@@ -187,7 +156,12 @@ export default function AdminPricing() {
                                     </div>
                                     <div>
                                         <h3 className="text-lg font-bold text-slate-900">{plan.name}</h3>
-                                        <p className="text-2xl font-black text-slate-900 mt-1">{plan.price}<span className="text-sm font-normal text-slate-500">/mo</span></p>
+                                        <p className="text-2xl font-black text-slate-900 mt-1">
+                                            {plan.price}
+                                            <span className="text-sm font-normal text-slate-500">
+                                                {plan.billingCycle === 'monthly' ? '/mo' : ` (${t.admin.oneTime})`}
+                                            </span>
+                                        </p>
                                         <p className="mt-2 text-sm leading-relaxed text-slate-500 line-clamp-2">
                                             {plan.description}
                                         </p>
@@ -265,16 +239,29 @@ export default function AdminPricing() {
                                     placeholder="e.g. Starter"
                                 />
                             </div>
-                            <div>
-                                <label className="block text-sm font-bold text-slate-700 mb-1">{t.admin.price}</label>
-                                <input
-                                    required
-                                    type="text"
-                                    value={formData.price}
-                                    onChange={(e) => setFormData({ ...formData, price: e.target.value })}
-                                    className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                                    placeholder="e.g. 49€"
-                                />
+                            <div className="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-sm font-bold text-slate-700 mb-1">{t.admin.price}</label>
+                                    <input
+                                        required
+                                        type="text"
+                                        value={formData.price}
+                                        onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+                                        className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                                        placeholder="e.g. 49€"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-bold text-slate-700 mb-1">Type</label>
+                                    <select
+                                        value={formData.billingCycle}
+                                        onChange={(e) => setFormData({ ...formData, billingCycle: e.target.value as 'monthly' | 'one-time' })}
+                                        className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all bg-white"
+                                    >
+                                        <option value="monthly">{t.admin.monthly}</option>
+                                        <option value="one-time">{t.admin.oneTime}</option>
+                                    </select>
+                                </div>
                             </div>
                             <div>
                                 <label className="block text-sm font-bold text-slate-700 mb-1">{t.admin.description}</label>
@@ -284,6 +271,16 @@ export default function AdminPricing() {
                                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                                     className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all h-24 resize-none"
                                     placeholder="Short description..."
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-bold text-slate-700 mb-1">Features (comma separated)</label>
+                                <textarea
+                                    required
+                                    value={formData.features}
+                                    onChange={(e) => setFormData({ ...formData, features: e.target.value })}
+                                    className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all h-20 resize-none"
+                                    placeholder="Feature 1, Feature 2, Feature 3..."
                                 />
                             </div>
                             <div className="flex items-center gap-6 pt-2">

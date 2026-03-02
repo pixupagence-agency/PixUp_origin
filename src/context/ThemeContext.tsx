@@ -17,14 +17,19 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
     useEffect(() => {
         const savedTheme = localStorage.getItem('pixup_theme') as Theme | null;
+        let initialTheme: Theme = 'light';
+
         if (savedTheme) {
-            setTheme(savedTheme);
-            if (savedTheme === 'dark') {
-                document.documentElement.classList.add('dark');
-            }
+            initialTheme = savedTheme;
         } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            setTheme('dark');
+            initialTheme = 'dark';
+        }
+
+        setTheme(initialTheme);
+        if (initialTheme === 'dark') {
             document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
         }
         setMounted(true);
     }, []);

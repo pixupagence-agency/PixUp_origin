@@ -164,7 +164,7 @@ export default function AdminServices() {
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm font-bold text-slate-700 mb-1">{t.admin.icon}</label>
+                                    <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">{t.admin.icon}</label>
                                     <select
                                         value={formData.icon}
                                         onChange={(e) => setFormData({ ...formData, icon: e.target.value })}
