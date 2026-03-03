@@ -3,13 +3,30 @@
 @variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-primary: #135bec;
-  --color-primary-content: #ffffff;
-  --color-primary-dark: #0e45b8;
-  --color-background-light: #f6f6f8;
-  --color-background-dark: #101622;
+  /* Brand Colors */
+  --color-primary: #3B82F6;
+  --color-secondary: #9333EA;
+  --color-accent: #06B6D4;
+  --color-highlight: #EC4899;
+  
+  /* Tech Palette */
+  --color-tech-blue: #0EA5E9;
+  --color-tech-indigo: #6366F1;
+  --color-tech-purple: #A855F7;
+  --color-tech-magenta: #D946EF;
+
+  /* Neutrals */
+  --color-neutral-50: #F8F9FA;
+  --color-neutral-100: #E9ECEF;
+  --color-neutral-500: #6C757D;
+  --color-neutral-900: #212529;
+
+  /* UI Aliases */
+  --color-background-light: var(--color-neutral-50);
+  --color-background-dark: #0f172a;
   --color-surface-light: #ffffff;
   --color-surface-dark: #1e293b;
+
   --font-display: "Inter", "sans-serif";
   --font-sans: "Inter", "sans-serif";
   --radius-xl: 0.75rem;
@@ -18,6 +35,18 @@
 }
 
 @layer utilities {
+  .brand-gradient {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  }
+  .brand-gradient-alt {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-highlight));
+  }
+  .text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  }
   .glass-card {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(12px);

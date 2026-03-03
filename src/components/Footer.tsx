@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { useData } from "@/context/DataContext";
+import BrandLogo from "./BrandLogo";
 
 export default function Footer() {
     const { t } = useLanguage();
@@ -14,15 +15,7 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
                     {/* Brand Column */}
                     <div className="space-y-6">
-                        <Link href="/" className="flex items-center gap-3 group">
-                            <div className="bg-primary/10 p-2 rounded-lg group-hover:bg-primary/20 transition-colors">
-                                <span className="material-symbols-outlined text-primary text-2xl">auto_awesome_mosaic</span>
-                            </div>
-                            <div className="flex flex-col">
-                                <span className="text-slate-900 dark:text-white text-lg font-bold tracking-tight leading-none uppercase">{settings.agencyName || "PIXUP"}</span>
-                                <span className="text-slate-500 dark:text-slate-400 text-[10px] font-bold uppercase tracking-widest mt-0.5">CREATIVE STUDIO</span>
-                            </div>
-                        </Link>
+                        <BrandLogo />
                         <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                             {t.footer.description}
                         </p>

@@ -3,6 +3,7 @@
 import { useLanguage } from "@/context/LanguageContext";
 import { useData } from "@/context/DataContext";
 import Link from "next/link";
+import PixelGrid from "@/components/PixelGrid";
 
 export default function PixupHomePage() {
     const { t } = useLanguage();
@@ -12,30 +13,46 @@ export default function PixupHomePage() {
         <>
             {/*  Main Content Wrapper  */}
             <main className="flex-grow pt-20">
-                {/*  Hero Section  ... */}
-                {/* ... (keep existing hero code) ... */}
-                <section className="relative min-h-[600px] lg:min-h-[800px] flex items-center justify-center px-4 overflow-hidden">
+                {/*  Hero Section  */}
+                <section className="relative min-h-[600px] lg:min-h-[800px] flex items-center justify-center px-4 overflow-hidden bg-neutral-50 dark:bg-[#0f172a]">
                     {/*  Background Decoration  */}
-                    <div className="absolute inset-0 z-0">
-                        <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-primary/20 blur-[120px]"></div>
-                        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-purple-500/10 blur-[100px]"></div>
-                        {/*  Abstract 3D Render Placeholder  */}
-                        <img alt="Abstract 3D Design Background" className="w-full h-full object-cover opacity-60 dark:opacity-40 mix-blend-overlay" data-alt="Abstract 3D fluid shapes with blue and purple gradients" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAF2eKocx5A56vpK0iavRHzPgzQYmiVTqy1_8RKKMlEJmtDKKP41wP6z-ockgCOlwuBzhhNJQmn1k4L3Ie9Qz179UXIQBD2-k9bAGAwObSk-wTUDM5fnKPDuxza1bR0DgtLJUmHeBCMQQolIgevoINjYnrwwem3ve3qIa326rBzGk-nBWqGsX2NQZ09snLdZBAFJcXv0vWNwaMS-VDNk20Re8-JLDMlZuTU-GOiJpdYshZeeHiyWOd5T7D2zqYBpeJNLPiTtNX4Iva" />
+                    <div className="absolute inset-0 z-0 overflow-hidden">
+                        <div
+                            className="absolute inset-0 bg-cover bg-center opacity-30 dark:opacity-10 pointer-events-none"
+                            style={{
+                                backgroundImage: 'url("/brand/banner.png")',
+                                maskImage: 'radial-gradient(ellipse at center, black 0%, transparent 80%)',
+                                WebkitMaskImage: 'radial-gradient(ellipse at center, black 0%, transparent 80%)'
+                            }}
+                        ></div>
+
+                        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] rounded-full bg-primary/10 blur-[120px]"></div>
+                        <div className="absolute bottom-[-5%] left-[-5%] w-[500px] h-[500px] rounded-full bg-secondary/10 blur-[100px]"></div>
+
+                        {/* Brand Decoration Bottom Right */}
+                        <div className="absolute bottom-10 right-10 opacity-20 hidden md:block">
+                            <PixelGrid rows={12} cols={12} size={8} gap={4} className="text-secondary" />
+                        </div>
+                        {/* Brand Decoration Top Left */}
+                        <div className="absolute top-10 left-10 opacity-10 hidden md:block">
+                            <PixelGrid rows={8} cols={20} size={10} gap={2} className="text-primary" variant="diagonal" />
+                        </div>
                     </div>
+
                     <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center gap-8">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/50 dark:bg-white/10 border border-white/20 backdrop-blur-sm">
-                            <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/50 dark:bg-white/10 border border-white/20 backdrop-blur-sm shadow-sm">
+                            <span className="w-2 h-2 rounded-full brand-gradient animate-pulse"></span>
                             <span className="text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-200">{t.home.heroBadge}</span>
                         </div>
                         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[1.1] tracking-tight text-slate-900 dark:text-white">
                             {t.home.heroTitleLine1} <br className="hidden sm:block" />
-                            <span className="text-gradient">{t.home.heroTitleLine2}</span>
+                            <span className="text-gradient leading-tight">{t.home.heroTitleLine2}</span>
                         </h1>
                         <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
                             {t.home.heroDescription}
                         </p>
                         <div className="flex flex-col sm:flex-row items-center gap-4 mt-4 w-full sm:w-auto">
-                            <Link href="/portfolio" className="w-full sm:w-auto h-12 px-8 rounded-full bg-primary hover:bg-blue-600 text-white font-bold text-base transition-all hover:shadow-xl hover:shadow-primary/30 flex items-center justify-center gap-2 group">
+                            <Link href="/portfolio" className="w-full sm:w-auto h-12 px-8 rounded-full brand-gradient hover:opacity-90 text-white font-bold text-base transition-all hover:shadow-xl hover:shadow-primary/30 flex items-center justify-center gap-2 group">
                                 {t.home.viewOurWork}
                                 <span className="material-symbols-outlined transition-transform group-hover:translate-x-1 text-lg">arrow_forward</span>
                             </Link>
@@ -45,34 +62,29 @@ export default function PixupHomePage() {
                         </div>
                     </div>
                 </section>
-                {/*  Marquee / Client Logos  */}
-                {/* <div className="py-8 border-y border-slate-200 dark:border-white/5 bg-white/50 dark:bg-white/5 backdrop-blur-sm overflow-hidden">
-                    <div className="flex items-center justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500 flex-wrap px-4">
-                        <span className="text-xl font-black font-display tracking-tighter">ACME</span>
-                        <span className="text-xl font-bold font-serif italic">Globex</span>
-                        <span className="text-xl font-extrabold tracking-widest uppercase">Soylent</span>
-                        <span className="text-xl font-bold font-mono">Umbrella</span>
-                        <span className="text-xl font-black tracking-tight">Initech</span>
-                    </div>
-                </div> */}
+
                 {/*  Services Section  */}
-                <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto">
+                <section className="relative py-24 px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto overflow-hidden">
+                    <div className="absolute top-0 right-0 opacity-[0.05] pointer-events-none">
+                        <PixelGrid rows={20} cols={4} size={6} gap={2} className="text-accent" />
+                    </div>
+
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
                         <div className="max-w-xl">
                             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white tracking-tight">{t.home.expertiseTitle}</h2>
                             <p className="text-slate-600 dark:text-slate-400 text-lg">{t.home.expertiseDesc}</p>
                         </div>
-                        <Link className="text-primary font-bold hover:underline decoration-2 underline-offset-4 flex items-center gap-1" href="/our-services">
-                            {t.home.viewAllServices} <span className="material-symbols-outlined text-sm">arrow_outward</span>
+                        <Link className="text-primary font-bold hover:underline decoration-2 underline-offset-4 flex items-center gap-1 group" href="/our-services">
+                            {t.home.viewAllServices} <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">arrow_outward</span>
                         </Link>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {services.filter(s => s.active).slice(0, 4).map((service) => (
                             <div key={service.id} className="group p-8 rounded-2xl bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-white/5 shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
-                                <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                                <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:brand-gradient group-hover:text-white transition-all duration-300">
                                     <span className="material-symbols-outlined text-2xl">{service.icon}</span>
                                 </div>
-                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{service.name}</h3>
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-primary transition-colors">{service.name}</h3>
                                 <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3">
                                     {service.description}
                                 </p>
@@ -80,14 +92,15 @@ export default function PixupHomePage() {
                         ))}
                     </div>
                 </section>
-                {/*  Selected Work / Philosophy Section  */}
-                <section className="py-24 bg-surface-light dark:bg-surface-dark border-y border-slate-200 dark:border-white/5 relative overflow-hidden">
+
+                {/*  Philosophy Section  */}
+                <section className="py-24 bg-white dark:bg-[#0f172a] border-y border-slate-200 dark:border-white/5 relative overflow-hidden">
                     {/*  Background pattern  */}
-                    <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" style={{ backgroundImage: 'radial-gradient(#135bec 1px, transparent 1px)', backgroundSize: '32px 32px' }}></div>
+                    <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" style={{ backgroundImage: 'radial-gradient(var(--color-primary) 1px, transparent 1px)', backgroundSize: '32px 32px' }}></div>
                     <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                         <div className="grid lg:grid-cols-2 gap-16 items-center">
                             <div className="space-y-8">
-                                <div className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold uppercase tracking-wide">{t.home.philosophyTag}</div>
+                                <div className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold uppercase tracking-wide border border-primary/20">{t.home.philosophyTag}</div>
                                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white leading-tight tracking-tight">
                                     {t.home.philosophyTitle}
                                 </h2>
@@ -114,17 +127,18 @@ export default function PixupHomePage() {
                                         </div>
                                     </div>
                                 </div>
-                                {/* <Link href="/contact-us" className="inline-block mt-8 px-8 py-3 rounded-lg border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-colors">
-                                    {t.home.meetTheTeam}
-                                </Link> */}
                             </div>
                             <div className="relative">
-                                <div className="absolute -inset-4 bg-gradient-to-tr from-primary to-purple-600 rounded-3xl opacity-20 blur-2xl"></div>
-                                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                                    <img alt="Team Collaboration" className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700" data-alt="Creative team collaborating in a modern office with sticky notes on glass wall" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFxyuy6LR-Ky27XKnBFTYVNSFnmCWB3X4M1KbivtOVXldDwIp_9zVPe1vdwrwe-0xNLP4_4RSRTsU9jDEz-_f05PnJDbmgw-AalgwkP_VtYJe-4cBbPZcOLIDXLOU71g5P-E2jCT5FbgFfgOLG4uMLkRZ-IPJmOqIpfY4c0hf8e9RX7rBZWZ-EAu8ckd3N3SvPruTZcCuU_xdKVn2AawDNhL6j2R1kDxX-fU4dCPCxim76GX85afomwT69LV5P35UvWbNAQXUZiack" />
+                                <div className="absolute -inset-4 bg-gradient-to-tr from-primary/30 to-secondary/30 rounded-3xl opacity-20 blur-2xl animate-pulse"></div>
+                                <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                                    <img alt="Team Collaboration" className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700" src="/brand/hero.png" />
+                                </div>
+                                {/* Pixel decorative element on image */}
+                                <div className="absolute -top-6 -right-6 lg:-right-10 pointer-events-none">
+                                    <PixelGrid rows={6} cols={6} size={12} gap={4} className="text-primary shadow-2xl" />
                                 </div>
                                 {/*  Floating Stat Card  */}
-                                <div className="absolute -bottom-8 -left-8 md:bottom-8 md:-left-12 bg-white dark:bg-slate-800 p-6 rounded-xl shadow-xl border border-slate-100 dark:border-white/10 max-w-[200px]">
+                                <div className="absolute -bottom-8 -left-8 md:bottom-8 md:-left-12 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md p-6 rounded-xl shadow-xl border border-slate-100 dark:border-white/10 max-w-[200px]">
                                     <div className="text-4xl font-black text-primary mb-1">10+</div>
                                     <div className="text-sm font-medium text-slate-600 dark:text-slate-400">{t.home.statsYears}</div>
                                 </div>

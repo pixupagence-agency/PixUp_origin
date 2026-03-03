@@ -5,6 +5,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { useData } from "@/context/DataContext";
 import { useTheme } from "@/context/ThemeContext";
 import LanguageSwitcher from "./LanguageSwitcher";
+import BrandLogo from "./BrandLogo";
 
 export default function Navbar() {
     const { t } = useLanguage();
@@ -16,15 +17,7 @@ export default function Navbar() {
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-3 group">
-                        <div className="bg-primary/10 p-2 rounded-lg group-hover:bg-primary/20 transition-colors">
-                            <span className="material-symbols-outlined text-primary text-2xl">auto_awesome_mosaic</span>
-                        </div>
-                        <div className="flex flex-col">
-                            <span className="text-slate-900 dark:text-white text-lg font-bold tracking-tight leading-none uppercase">{settings.agencyName || "PIXUP"}</span>
-                            <span className="text-slate-500 dark:text-slate-400 text-[10px] font-bold uppercase tracking-widest mt-0.5">CREATIVE STUDIO</span>
-                        </div>
-                    </Link>
+                    <BrandLogo />
 
                     {/* Desktop Menu */}
                     <div className="hidden md:flex items-center gap-8">
