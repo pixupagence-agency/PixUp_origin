@@ -6,6 +6,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { useData } from "@/context/DataContext";
 import { useTheme } from "@/context/ThemeContext";
 import LanguageSwitcher from "./LanguageSwitcher";
+import BrandLogo from "./BrandLogo";
 
 export default function AdminSidebar() {
     const pathname = usePathname();
@@ -27,13 +28,11 @@ export default function AdminSidebar() {
 
     return (
         <aside className="hidden md:flex flex-col w-72 h-full glass-sidebar z-20 shrink-0 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors">
-            <div className="flex items-center gap-3 p-6 border-b border-slate-100/50 dark:border-slate-800/50">
-                <div className="bg-primary/10 p-2 rounded-lg">
-                    <span className="material-symbols-outlined text-primary text-2xl">auto_awesome_mosaic</span>
-                </div>
-                <div className="flex flex-col">
-                    <h1 className="text-slate-900 dark:text-white text-lg font-bold tracking-tight">{t.admin.title}</h1>
-                    <p className="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-widest mt-0.5">{t.admin.subtitle}</p>
+            <div className="flex flex-col p-6 border-b border-slate-100/50 dark:border-slate-800/50 gap-4">
+                <BrandLogo />
+                <div>
+                    <h1 className="text-slate-900 dark:text-white text-base font-bold tracking-tight">{t.admin.title}</h1>
+                    <p className="text-slate-500 dark:text-slate-400 text-[10px] font-bold uppercase tracking-widest mt-0.5">{t.admin.subtitle}</p>
                 </div>
             </div>
             <nav className="flex-1 flex flex-col gap-2 p-4 overflow-y-auto">
