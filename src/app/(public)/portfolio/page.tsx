@@ -8,6 +8,15 @@ export default function Portfolio() {
     const { t } = useLanguage();
     const { projects } = useData();
     const [selectedProject, setSelectedProject] = useState<any>(null);
+    const [visibleCount, setVisibleCount] = useState(6);
+
+    const activeProjects = projects.filter(p => p.active);
+    const displayedProjects = activeProjects.slice(0, visibleCount);
+    const hasMore = activeProjects.length > visibleCount;
+
+    const loadMore = () => {
+        setVisibleCount(prev => prev + 6);
+    };
 
     return (
         <>
@@ -30,7 +39,7 @@ export default function Portfolio() {
                 </div>
                 {/*  Masonry Grid  */}
                 <div className="masonry-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {projects.filter(p => p.active).map((project) => (
+                    {displayedProjects.map((project) => (
                         <div key={project.id} className="masonry-item group relative cursor-pointer overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800/50 border border-transparent dark:border-white/5 hover:border-primary/30 transition-all duration-300" onClick={() => setSelectedProject(project)}>
                             <img alt={project.title} className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105" src={project.image || "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=2194&auto=format&fit=crop"} />
                             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
@@ -44,12 +53,17 @@ export default function Portfolio() {
                     ))}
                 </div>
                 {/*  Load More Button  */}
-                <div className="mt-12 flex justify-center">
-                    <button className="flex items-center gap-2 px-8 py-3 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary transition-all font-medium">
-                        {t.portfolio.loadMore}
-                        <span className="material-symbols-outlined">expand_more</span>
-                    </button>
-                </div>
+                {hasMore && (
+                    <div className="mt-12 flex justify-center">
+                        <button
+                            onClick={loadMore}
+                            className="flex items-center gap-2 px-8 py-3 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary transition-all font-medium"
+                        >
+                            {t.portfolio.loadMore}
+                            <span className="material-symbols-outlined">expand_more</span>
+                        </button>
+                    </div>
+                )}
             </main>
 
             {/*  Project Detail Modal  */}
