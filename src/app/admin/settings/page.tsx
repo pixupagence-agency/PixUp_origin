@@ -5,6 +5,9 @@ import { useLanguage } from "@/context/LanguageContext";
 import { useData } from "@/context/DataContext";
 import AdminSidebar from "@/components/AdminSidebar";
 import ImageUpload from "@/components/ImageUpload";
+import AdminSection from "@/components/AdminSection";
+import AdminInput from "@/components/AdminInput";
+import AdminToggle from "@/components/AdminToggle";
 
 export default function AdminSettings() {
   const { t } = useLanguage();
@@ -104,112 +107,75 @@ export default function AdminSettings() {
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
             <div className="lg:col-span-2 flex flex-col gap-8">
               {/* Contact Information */}
-              <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
-                <div className="border-b border-slate-100 dark:border-slate-700 px-6 py-4">
-                  <h2 className="text-lg font-semibold text-slate-900 dark:text-white">{t.admin.contactInfo}</h2>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">{t.admin.contactInfoDesc}</p>
+              <AdminSection title={t.admin.contactInfo} description={t.admin.contactInfoDesc}>
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                  <AdminInput
+                    label={t.admin.agencyName}
+                    value={localSettings.agencyName}
+                    onChange={(val) => handleSettingsChange('agencyName', val)}
+                  />
+                  <AdminInput
+                    label={t.admin.contactEmail}
+                    type="email"
+                    value={localSettings.email}
+                    onChange={(val) => handleSettingsChange('email', val)}
+                  />
+                  <AdminInput
+                    label={t.admin.phoneNumber}
+                    type="tel"
+                    value={localSettings.phone}
+                    onChange={(val) => handleSettingsChange('phone', val)}
+                  />
+                  <AdminInput
+                    label={t.admin.address}
+                    value={localSettings.address}
+                    onChange={(val) => handleSettingsChange('address', val)}
+                  />
+                  <AdminInput
+                    label={t.admin.adminPassword}
+                    type="password"
+                    value={localSettings.adminPassword || ''}
+                    onChange={(val) => handleSettingsChange('adminPassword', val)}
+                    placeholder="••••••••"
+                  />
                 </div>
-                <div className="p-6">
-                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                    <label className="block">
-                      <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.admin.agencyName}</span>
-                      <input
-                        className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white focus:border-primary focus:ring-primary sm:text-sm"
-                        type="text"
-                        value={localSettings.agencyName}
-                        onChange={(e) => handleSettingsChange('agencyName', e.target.value)}
-                      />
-                    </label>
-                    <label className="block">
-                      <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.admin.contactEmail}</span>
-                      <input
-                        className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white focus:border-primary focus:ring-primary sm:text-sm"
-                        type="email"
-                        value={localSettings.email}
-                        onChange={(e) => handleSettingsChange('email', e.target.value)}
-                      />
-                    </label>
-                    <label className="block">
-                      <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.admin.phoneNumber}</span>
-                      <input
-                        className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white focus:border-primary focus:ring-primary sm:text-sm"
-                        type="tel"
-                        value={localSettings.phone}
-                        onChange={(e) => handleSettingsChange('phone', e.target.value)}
-                      />
-                    </label>
-                    <label className="block">
-                      <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.admin.address}</span>
-                      <input
-                        className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white focus:border-primary focus:ring-primary sm:text-sm"
-                        type="text"
-                        value={localSettings.address}
-                        onChange={(e) => handleSettingsChange('address', e.target.value)}
-                      />
-                    </label>
-                    <label className="block">
-                      <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.admin.adminPassword}</span>
-                      <input
-                        className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white focus:border-primary focus:ring-primary sm:text-sm"
-                        type="password"
-                        value={localSettings.adminPassword || ''}
-                        onChange={(e) => handleSettingsChange('adminPassword', e.target.value)}
-                        placeholder="••••••••"
-                      />
-                    </label>
-                  </div>
-                </div>
-              </div>
+              </AdminSection>
 
               {/* Founder Profile */}
-              <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
-                <div className="border-b border-slate-100 dark:border-slate-700 px-6 py-4">
-                  <h2 className="text-lg font-semibold text-slate-900 dark:text-white">{t.admin.founderProfile}</h2>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">{t.admin.founderDesc}</p>
-                </div>
-                <div className="p-6">
-                  <div className="flex flex-col gap-6 md:flex-row">
-                    <div className="flex-shrink-0">
-                      <ImageUpload
-                        label={t.admin.avatar}
-                        value={localSettings.founderAvatar}
-                        onChange={(val) => handleSettingsChange('founderAvatar', val)}
+              <AdminSection title={t.admin.founderProfile} description={t.admin.founderDesc}>
+                <div className="flex flex-col gap-6 md:flex-row">
+                  <div className="flex-shrink-0">
+                    <ImageUpload
+                      label={t.admin.avatar}
+                      value={localSettings.founderAvatar}
+                      onChange={(val) => handleSettingsChange('founderAvatar', val)}
+                    />
+                  </div>
+                  <div className="flex-1 space-y-4">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                      <AdminInput
+                        label={t.admin.fullName}
+                        value={localSettings.founderName}
+                        onChange={(val) => handleSettingsChange('founderName', val)}
+                      />
+                      <AdminInput
+                        label={t.admin.role}
+                        value={localSettings.founderRole}
+                        onChange={(val) => handleSettingsChange('founderRole', val)}
                       />
                     </div>
-                    <div className="flex-1 space-y-4">
-                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                        <label className="block">
-                          <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.admin.fullName}</span>
-                          <input
-                            className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white focus:border-primary focus:ring-primary sm:text-sm"
-                            type="text"
-                            value={localSettings.founderName}
-                            onChange={(e) => handleSettingsChange('founderName', e.target.value)}
-                          />
-                        </label>
-                        <label className="block">
-                          <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.admin.role}</span>
-                          <input
-                            className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white focus:border-primary focus:ring-primary sm:text-sm"
-                            type="text"
-                            value={localSettings.founderRole}
-                            onChange={(e) => handleSettingsChange('founderRole', e.target.value)}
-                          />
-                        </label>
-                      </div>
-                      <label className="block">
-                        <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.admin.bio}</span>
-                        <textarea
-                          className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white focus:border-primary focus:ring-primary sm:text-sm"
-                          rows={4}
-                          value={localSettings.founderBio}
-                          onChange={(e) => handleSettingsChange('founderBio', e.target.value)}
-                        />
-                      </label>
-                    </div>
+                    <label className="block">
+                      <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.admin.bio}</span>
+                      <textarea
+                        className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white focus:border-primary focus:ring-primary sm:text-sm px-4 py-2.5 transition-all"
+                        rows={4}
+                        value={localSettings.founderBio}
+                        onChange={(e) => handleSettingsChange('founderBio', e.target.value)}
+                      />
+                    </label>
                   </div>
                 </div>
-              </div>
+              </AdminSection>
 
               {/* Testimonials */}
               <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
@@ -260,104 +226,48 @@ export default function AdminSettings() {
 
             <div className="flex flex-col gap-8">
               {/* Social connections */}
-              <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
-                <div className="border-b border-slate-100 dark:border-slate-700 px-6 py-4">
-                  <h2 className="text-lg font-semibold text-slate-900 dark:text-white">{t.admin.socialConnections}</h2>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">{t.admin.socialDesc}</p>
+              <AdminSection title={t.admin.socialConnections} description={t.admin.socialDesc}>
+                <div className="space-y-4">
+                  <AdminInput
+                    label="LinkedIn"
+                    icon="work"
+                    value={localSettings.linkedin}
+                    onChange={(val) => handleSettingsChange('linkedin', val)}
+                  />
+                  <AdminInput
+                    label="Instagram"
+                    icon="photo_camera"
+                    value={localSettings.instagram}
+                    onChange={(val) => handleSettingsChange('instagram', val)}
+                  />
+                  <AdminInput
+                    label="Dribbble"
+                    icon="sports_basketball"
+                    value={localSettings.dribbble}
+                    onChange={(val) => handleSettingsChange('dribbble', val)}
+                  />
                 </div>
-                <div className="p-6 space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">LinkedIn</label>
-                    <div className="relative rounded-md shadow-sm">
-                      <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                        <span className="material-symbols-outlined text-slate-400 dark:text-slate-500 text-[20px]">work</span>
-                      </div>
-                      <input
-                        className="block w-full rounded-lg border-slate-300 dark:border-slate-700 pl-10 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white focus:border-primary focus:ring-primary sm:text-sm"
-                        type="text"
-                        value={localSettings.linkedin}
-                        onChange={(e) => handleSettingsChange('linkedin', e.target.value)}
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Instagram</label>
-                    <div className="relative rounded-md shadow-sm">
-                      <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                        <span className="material-symbols-outlined text-slate-400 dark:text-slate-500 text-[20px]">photo_camera</span>
-                      </div>
-                      <input
-                        className="block w-full rounded-lg border-slate-300 dark:border-slate-700 pl-10 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white focus:border-primary focus:ring-primary sm:text-sm"
-                        type="text"
-                        value={localSettings.instagram}
-                        onChange={(e) => handleSettingsChange('instagram', e.target.value)}
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Dribbble</label>
-                    <div className="relative rounded-md shadow-sm">
-                      <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                        <span className="material-symbols-outlined text-slate-400 dark:text-slate-500 text-[20px]">sports_basketball</span>
-                      </div>
-                      <input
-                        className="block w-full rounded-lg border-slate-300 dark:border-slate-700 pl-10 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white focus:border-primary focus:ring-primary sm:text-sm"
-                        type="text"
-                        value={localSettings.dribbble}
-                        onChange={(e) => handleSettingsChange('dribbble', e.target.value)}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </AdminSection>
 
-              {/* Visibility Settings */}
-              <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
-                <div className="border-b border-slate-100 dark:border-slate-700 px-6 py-4">
-                  <h2 className="text-lg font-semibold text-slate-900 dark:text-white">{t.admin.visibilitySettings}</h2>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">{t.admin.visibilityDesc}</p>
+              <AdminSection title={t.admin.visibilitySettings} description={t.admin.visibilityDesc}>
+                <div className="space-y-4">
+                  <AdminToggle
+                    label={t.admin.showPricing}
+                    checked={localSettings.showPricing ?? true}
+                    onChange={(val) => handleSettingsChange('showPricing', val)}
+                  />
+                  <AdminToggle
+                    label={t.admin.showTestimonials}
+                    checked={localSettings.showTestimonials ?? true}
+                    onChange={(val) => handleSettingsChange('showTestimonials', val)}
+                  />
+                  <AdminToggle
+                    label={t.admin.showBlog}
+                    checked={localSettings.showBlog ?? true}
+                    onChange={(val) => handleSettingsChange('showBlog', val)}
+                  />
                 </div>
-                <div className="p-6 space-y-4">
-                  <label className="flex items-center justify-between cursor-pointer group">
-                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">{t.admin.showPricing}</span>
-                    <div className="relative inline-flex items-center">
-                      <input
-                        type="checkbox"
-                        className="sr-only peer"
-                        checked={localSettings.showPricing ?? true}
-                        onChange={(e) => handleSettingsChange('showPricing', e.target.checked)}
-                      />
-                      <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 dark:bg-slate-700 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
-                    </div>
-                  </label>
-
-                  <label className="flex items-center justify-between cursor-pointer group">
-                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">{t.admin.showTestimonials}</span>
-                    <div className="relative inline-flex items-center">
-                      <input
-                        type="checkbox"
-                        className="sr-only peer"
-                        checked={localSettings.showTestimonials ?? true}
-                        onChange={(e) => handleSettingsChange('showTestimonials', e.target.checked)}
-                      />
-                      <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 dark:bg-slate-700 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
-                    </div>
-                  </label>
-
-                  <label className="flex items-center justify-between cursor-pointer group">
-                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">{t.admin.showBlog}</span>
-                    <div className="relative inline-flex items-center">
-                      <input
-                        type="checkbox"
-                        className="sr-only peer"
-                        checked={localSettings.showBlog ?? true}
-                        onChange={(e) => handleSettingsChange('showBlog', e.target.checked)}
-                      />
-                      <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 dark:bg-slate-700 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
-                    </div>
-                  </label>
-                </div>
-              </div>
+              </AdminSection>
 
               {/* Status and Actions */}
               <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm overflow-hidden">

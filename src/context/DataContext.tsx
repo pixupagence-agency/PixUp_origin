@@ -191,45 +191,53 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         trafficHistory: [30, 40, 35, 50, 49, 60, 70, 91, 125, 100, 110, 140, 130] // Data points for the chart
     });
 
-    // Persistence
-    useEffect(() => {
-        const savedServices = localStorage.getItem('pixup_services_v2');
-        const savedProjects = localStorage.getItem('pixup_projects_v2');
-        const savedArticles = localStorage.getItem('pixup_articles_v2');
-        const savedSettings = localStorage.getItem('pixup_settings_v2');
-        const savedTestimonials = localStorage.getItem('pixup_testimonials_v2');
-        const savedPlans = localStorage.getItem('pixup_plans_v2');
-        const savedFaqs = localStorage.getItem('pixup_faqs_v2');
-        const savedStats = localStorage.getItem('pixup_stats_v2');
+    // Persistence Helpers
+    const STORAGE_KEY_PREFIX = 'pixup_v3_';
 
-        if (savedServices) setServices(JSON.parse(savedServices));
-        if (savedProjects) setProjects(JSON.parse(savedProjects));
-        if (savedArticles) setArticles(JSON.parse(savedArticles));
-        if (savedSettings) {
-            const parsed = JSON.parse(savedSettings);
-            setSettings(prev => ({ ...prev, ...parsed }));
-        }
-        if (savedTestimonials) setTestimonials(JSON.parse(savedTestimonials));
-        if (savedPlans) setPlans(JSON.parse(savedPlans));
-        if (savedFaqs) setFaqs(JSON.parse(savedFaqs));
-        if (savedStats) setStats(JSON.parse(savedStats));
+    useEffect(() => {
+        const loadData = () => {
+            const keys = {
+                services: setServices,
+                projects: setProjects,
+                articles: setArticles,
+                testimonials: setTestimonials,
+                plans: setPlans,
+                faqs: setFaqs,
+                stats: setStats,
+                settings: (data: any) => setSettings(prev => ({ ...prev, ...data }))
+            };
+
+            Object.entries(keys).forEach(([key, setter]) => {
+                const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}${key}`);
+                if (saved) {
+                    try {
+                        setter(JSON.parse(saved));
+                    } catch (e) {
+                        console.error(`Failed to parse ${key}`, e);
+                    }
+                }
+            });
+        };
+
+        loadData();
     }, []);
 
     useEffect(() => {
-        localStorage.setItem('pixup_services_v2', JSON.stringify(services));
-        localStorage.setItem('pixup_projects_v2', JSON.stringify(projects));
-        localStorage.setItem('pixup_articles_v2', JSON.stringify(articles));
-        localStorage.setItem('pixup_settings_v2', JSON.stringify(settings));
-        localStorage.setItem('pixup_testimonials_v2', JSON.stringify(testimonials));
-        localStorage.setItem('pixup_plans_v2', JSON.stringify(plans));
-        localStorage.setItem('pixup_faqs_v2', JSON.stringify(faqs));
-        localStorage.setItem('pixup_stats_v2', JSON.stringify(stats));
+        const dataToSave = {
+            services, projects, articles, settings, testimonials, plans, faqs, stats
+        };
+
+        Object.entries(dataToSave).forEach(([key, value]) => {
+            localStorage.setItem(`${STORAGE_KEY_PREFIX}${key}`, JSON.stringify(value));
+        });
     }, [services, projects, articles, settings, testimonials, plans, faqs, stats]);
 
     const login = (password: string) => {
         if (password === (settings.adminPassword || "admin")) {
             setIsLoggedIn(true);
             sessionStorage.setItem('pixup_is_logged_in', 'true');
+            // Set cookie for middleware (expires in 24h)
+            document.cookie = "pixup_admin_auth=true; path=/; max-age=86400; SameSite=Strict";
             return true;
         }
         return false;
@@ -238,6 +246,8 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const logout = () => {
         setIsLoggedIn(false);
         sessionStorage.removeItem('pixup_is_logged_in');
+        // Remove cookie
+        document.cookie = "pixup_admin_auth=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Strict";
     };
 
     // Initialize auth from session
@@ -245,8 +255,22 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         const savedAuth = sessionStorage.getItem('pixup_is_logged_in');
         if (savedAuth === 'true') {
             setIsLoggedIn(true);
+            // Refresh cookie for middleware
+            if (!document.cookie.includes('pixup_admin_auth')) {
+                document.cookie = "pixup_admin_auth=true; path=/; max-age=86400; SameSite=Strict";
+            }
         }
     }, []);
+
+    // Mask sensitive data for non-admin context
+    const safeSettings = isLoggedIn ? settings : { ...settings, adminPassword: '••••••••' };
+    const safeStats = isLoggedIn ? stats : {
+        totalViews: { value: '0', trend: '0%', isPositive: true },
+        portfolioVisits: { value: '0', trend: '0%', isPositive: true },
+        newLeads: { value: '0', trend: '0%', isPositive: true },
+        recentActivities: [],
+        trafficHistory: []
+    };
 
     return (
         <DataContext.Provider value={{
@@ -256,8 +280,8 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
             testimonials, setTestimonials,
             plans, setPlans,
             faqs, setFaqs,
-            settings, setSettings,
-            stats, setStats,
+            settings: safeSettings, setSettings,
+            stats: safeStats, setStats,
             isLoggedIn,
             login,
             logout
