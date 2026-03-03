@@ -177,6 +177,23 @@ export const fr = {
         backupData: "Sauvegarder les données",
         confirmDeleteTestimonial: "Voulez-vous vraiment supprimer ce témoignage ?",
 
+        // Visibility Settings
+        visibilitySettings: "Gestion de l'affichage",
+        visibilityDesc: "Choisissez les sections et pages à afficher sur le site public.",
+        showPricing: "Afficher la page Tarifs",
+        showTestimonials: "Afficher la section Témoignages",
+        showBlog: "Afficher la page Blog",
+
+        // Auth
+        passwordLabel: "Mot de passe",
+        loginButton: "Se connecter",
+        loginTitle: "Accès Administration",
+        loginError: "Mot de passe incorrect",
+        accessDenied: "Accès refusé",
+        changePassword: "Changer le mot de passe",
+        adminPassword: "Mot de passe Admin",
+        backToSite: "Retour au site public",
+
         // Common
         save: "Enregistrer",
         cancel: "Annuler",

@@ -3,12 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
+import { useData } from "@/context/DataContext";
 import { useTheme } from "@/context/ThemeContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function AdminSidebar() {
     const pathname = usePathname();
     const { t } = useLanguage();
+    const { logout } = useData();
     const { theme, toggleTheme } = useTheme();
 
     const isActive = (path: string) => {
@@ -94,6 +96,16 @@ export default function AdminSidebar() {
                     <span className={`material-symbols-outlined ${isIconActive("/admin/settings")}`}>settings</span>
                     <span className="text-sm font-medium">{t.admin.settings}</span>
                 </Link>
+
+                <div className="mt-auto pt-6 border-t border-slate-100/50 dark:border-slate-800/50">
+                    <Link
+                        href="/"
+                        className="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-500 hover:text-primary hover:bg-primary/5 transition-all group"
+                    >
+                        <span className="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">arrow_back</span>
+                        <span className="text-sm font-medium">{t.admin.backToSite}</span>
+                    </Link>
+                </div>
             </nav>
             <div className="p-4 border-t border-slate-100/50 dark:border-slate-800/50">
                 <div className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 border border-slate-200 dark:border-slate-700">
@@ -118,7 +130,11 @@ export default function AdminSidebar() {
                             </span>
                         </button>
                     </div>
-                    <button className="p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200" aria-label={t.admin.logout}>
+                    <button
+                        onClick={logout}
+                        className="p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+                        aria-label={t.admin.logout}
+                    >
                         <span className="material-symbols-outlined text-xl">logout</span>
                     </button>
                 </div>

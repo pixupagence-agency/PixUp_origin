@@ -3,10 +3,15 @@
 import { useLanguage } from "@/context/LanguageContext";
 import { useData } from "@/context/DataContext";
 import PixelGrid from "@/components/PixelGrid";
+import { notFound } from "next/navigation";
 
 export default function PricingPlans() {
     const { t } = useLanguage();
-    const { plans, faqs } = useData();
+    const { plans, faqs, settings } = useData();
+
+    if (!settings.showPricing) {
+        notFound();
+    }
 
     return (
         <>

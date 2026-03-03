@@ -75,6 +75,11 @@ export interface Settings {
     linkedin: string;
     instagram: string;
     dribbble: string;
+    // Section visibility
+    showPricing: boolean;
+    showTestimonials: boolean;
+    showBlog: boolean;
+    adminPassword?: string;
 }
 
 export interface DashboardStats {
@@ -102,6 +107,9 @@ interface DataContextType {
     setSettings: React.Dispatch<React.SetStateAction<Settings>>;
     stats: DashboardStats;
     setStats: React.Dispatch<React.SetStateAction<DashboardStats>>;
+    isLoggedIn: boolean;
+    login: (password: string) => boolean;
+    logout: () => void;
 }
 
 const DataContext = createContext<DataContextType | undefined>(undefined);
@@ -163,7 +171,13 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         linkedin: "https://linkedin.com/company/pixup",
         instagram: "https://instagram.com/pixup_agency",
         dribbble: "https://dribbble.com/pixup",
+        showPricing: true,
+        showTestimonials: true,
+        showBlog: true,
+        adminPassword: "admin", // Default password
     });
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const [stats, setStats] = useState<DashboardStats>({
         totalViews: { value: '124.5k', trend: '+12%', isPositive: true },
@@ -191,7 +205,10 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         if (savedServices) setServices(JSON.parse(savedServices));
         if (savedProjects) setProjects(JSON.parse(savedProjects));
         if (savedArticles) setArticles(JSON.parse(savedArticles));
-        if (savedSettings) setSettings(JSON.parse(savedSettings));
+        if (savedSettings) {
+            const parsed = JSON.parse(savedSettings);
+            setSettings(prev => ({ ...prev, ...parsed }));
+        }
         if (savedTestimonials) setTestimonials(JSON.parse(savedTestimonials));
         if (savedPlans) setPlans(JSON.parse(savedPlans));
         if (savedFaqs) setFaqs(JSON.parse(savedFaqs));
@@ -209,6 +226,28 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         localStorage.setItem('pixup_stats_v2', JSON.stringify(stats));
     }, [services, projects, articles, settings, testimonials, plans, faqs, stats]);
 
+    const login = (password: string) => {
+        if (password === (settings.adminPassword || "admin")) {
+            setIsLoggedIn(true);
+            sessionStorage.setItem('pixup_is_logged_in', 'true');
+            return true;
+        }
+        return false;
+    };
+
+    const logout = () => {
+        setIsLoggedIn(false);
+        sessionStorage.removeItem('pixup_is_logged_in');
+    };
+
+    // Initialize auth from session
+    useEffect(() => {
+        const savedAuth = sessionStorage.getItem('pixup_is_logged_in');
+        if (savedAuth === 'true') {
+            setIsLoggedIn(true);
+        }
+    }, []);
+
     return (
         <DataContext.Provider value={{
             services, setServices,
@@ -218,7 +257,10 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
             plans, setPlans,
             faqs, setFaqs,
             settings, setSettings,
-            stats, setStats
+            stats, setStats,
+            isLoggedIn,
+            login,
+            logout
         }}>
             {children}
         </DataContext.Provider>

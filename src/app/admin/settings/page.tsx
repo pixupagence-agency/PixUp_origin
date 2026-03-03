@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from "@/context/LanguageContext";
 import { useData } from "@/context/DataContext";
 import AdminSidebar from "@/components/AdminSidebar";
@@ -20,7 +20,11 @@ export default function AdminSettings() {
     active: true
   });
 
-  const handleSettingsChange = (field: string, value: string) => {
+  useEffect(() => {
+    setLocalSettings(settings);
+  }, [settings]);
+
+  const handleSettingsChange = (field: string, value: any) => {
     setLocalSettings(prev => ({ ...prev, [field]: value }));
   };
 
@@ -141,6 +145,16 @@ export default function AdminSettings() {
                         type="text"
                         value={localSettings.address}
                         onChange={(e) => handleSettingsChange('address', e.target.value)}
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t.admin.adminPassword}</span>
+                      <input
+                        className="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white focus:border-primary focus:ring-primary sm:text-sm"
+                        type="password"
+                        value={localSettings.adminPassword || ''}
+                        onChange={(e) => handleSettingsChange('adminPassword', e.target.value)}
+                        placeholder="••••••••"
                       />
                     </label>
                   </div>
@@ -294,6 +308,54 @@ export default function AdminSettings() {
                       />
                     </div>
                   </div>
+                </div>
+              </div>
+
+              {/* Visibility Settings */}
+              <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
+                <div className="border-b border-slate-100 dark:border-slate-700 px-6 py-4">
+                  <h2 className="text-lg font-semibold text-slate-900 dark:text-white">{t.admin.visibilitySettings}</h2>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">{t.admin.visibilityDesc}</p>
+                </div>
+                <div className="p-6 space-y-4">
+                  <label className="flex items-center justify-between cursor-pointer group">
+                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">{t.admin.showPricing}</span>
+                    <div className="relative inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        className="sr-only peer"
+                        checked={localSettings.showPricing ?? true}
+                        onChange={(e) => handleSettingsChange('showPricing', e.target.checked)}
+                      />
+                      <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 dark:bg-slate-700 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                    </div>
+                  </label>
+
+                  <label className="flex items-center justify-between cursor-pointer group">
+                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">{t.admin.showTestimonials}</span>
+                    <div className="relative inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        className="sr-only peer"
+                        checked={localSettings.showTestimonials ?? true}
+                        onChange={(e) => handleSettingsChange('showTestimonials', e.target.checked)}
+                      />
+                      <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 dark:bg-slate-700 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                    </div>
+                  </label>
+
+                  <label className="flex items-center justify-between cursor-pointer group">
+                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">{t.admin.showBlog}</span>
+                    <div className="relative inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        className="sr-only peer"
+                        checked={localSettings.showBlog ?? true}
+                        onChange={(e) => handleSettingsChange('showBlog', e.target.checked)}
+                      />
+                      <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 dark:bg-slate-700 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                    </div>
+                  </label>
                 </div>
               </div>
 

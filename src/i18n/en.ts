@@ -177,6 +177,23 @@ export const en = {
         backupData: "Backup Data",
         confirmDeleteTestimonial: "Are you sure you want to delete this testimonial?",
 
+        // Visibility Settings
+        visibilitySettings: "Visibility Management",
+        visibilityDesc: "Choose which sections and pages to display on the public site.",
+        showPricing: "Show Pricing page",
+        showTestimonials: "Show Testimonials section",
+        showBlog: "Show Blog page",
+
+        // Auth
+        passwordLabel: "Password",
+        loginButton: "Login",
+        loginTitle: "Admin Access",
+        loginError: "Incorrect password",
+        accessDenied: "Access Denied",
+        changePassword: "Change Password",
+        adminPassword: "Admin Password",
+        backToSite: "Back to public site",
+
         // Common
         save: "Save",
         cancel: "Cancel",

@@ -7,7 +7,7 @@ import PixelGrid from "@/components/PixelGrid";
 
 export default function PixupHomePage() {
     const { t } = useLanguage();
-    const { services, testimonials } = useData();
+    const { services, testimonials, settings } = useData();
 
     return (
         <>
@@ -147,36 +147,38 @@ export default function PixupHomePage() {
                     </div>
                 </section>
                 {/*  Testimonials Section  */}
-                <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto bg-white/30 dark:bg-black/20 rounded-3xl mb-24 backdrop-blur-sm border border-slate-100 dark:border-white/5">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-4">{t.home.testimonialTitle}</h2>
-                        <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">{t.home.testimonialDesc}</p>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {testimonials.filter(t => t.active).map((testimonial) => (
-                            <div key={testimonial.id} className="p-8 rounded-2xl bg-white dark:bg-slate-900 shadow-xl shadow-primary/5 border border-slate-50 dark:border-white/5 flex flex-col gap-6 relative group hover:-translate-y-2 transition-transform duration-300">
-                                <div className="absolute top-8 right-8 text-primary/10 group-hover:text-primary/20 transition-colors">
-                                    <span className="material-symbols-outlined text-6xl italic">format_quote</span>
-                                </div>
-                                <div className="flex gap-1 text-primary">
-                                    {[...Array(5)].map((_, i) => (
-                                        <span key={i} className="material-symbols-outlined text-sm filled">star</span>
-                                    ))}
-                                </div>
-                                <p className="text-slate-700 dark:text-slate-300 leading-relaxed italic relative z-10">"{testimonial.content}"</p>
-                                <div className="flex items-center gap-4 mt-auto">
-                                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/20 bg-slate-100 flex items-center justify-center text-primary font-bold">
-                                        {testimonial.avatar ? <img src={testimonial.avatar} alt={testimonial.name} className="w-full h-full object-cover" /> : testimonial.name.charAt(0)}
+                {settings.showTestimonials && (
+                    <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto bg-white/30 dark:bg-black/20 rounded-3xl mb-24 backdrop-blur-sm border border-slate-100 dark:border-white/5">
+                        <div className="text-center mb-16">
+                            <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-4">{t.home.testimonialTitle}</h2>
+                            <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">{t.home.testimonialDesc}</p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {testimonials.filter(t => t.active).map((testimonial) => (
+                                <div key={testimonial.id} className="p-8 rounded-2xl bg-white dark:bg-slate-900 shadow-xl shadow-primary/5 border border-slate-50 dark:border-white/5 flex flex-col gap-6 relative group hover:-translate-y-2 transition-transform duration-300">
+                                    <div className="absolute top-8 right-8 text-primary/10 group-hover:text-primary/20 transition-colors">
+                                        <span className="material-symbols-outlined text-6xl italic">format_quote</span>
                                     </div>
-                                    <div>
-                                        <h4 className="font-bold text-slate-900 dark:text-white">{testimonial.name}</h4>
-                                        <p className="text-sm text-slate-500 dark:text-slate-500">{testimonial.role}</p>
+                                    <div className="flex gap-1 text-primary">
+                                        {[...Array(5)].map((_, i) => (
+                                            <span key={i} className="material-symbols-outlined text-sm filled">star</span>
+                                        ))}
+                                    </div>
+                                    <p className="text-slate-700 dark:text-slate-300 leading-relaxed italic relative z-10">"{testimonial.content}"</p>
+                                    <div className="flex items-center gap-4 mt-auto">
+                                        <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/20 bg-slate-100 flex items-center justify-center text-primary font-bold">
+                                            {testimonial.avatar ? <img src={testimonial.avatar} alt={testimonial.name} className="w-full h-full object-cover" /> : testimonial.name.charAt(0)}
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-slate-900 dark:text-white">{testimonial.name}</h4>
+                                            <p className="text-sm text-slate-500 dark:text-slate-500">{testimonial.role}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
-                </section>
+                            ))}
+                        </div>
+                    </section>
+                )}
                 {/*  CTA Section  */}
                 <section className="py-24 px-4">
                     <div className="max-w-5xl mx-auto bg-primary rounded-3xl p-8 md:p-16 text-center relative overflow-hidden shadow-2xl shadow-primary/30">

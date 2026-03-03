@@ -23,9 +23,9 @@ export default function Navbar() {
                     <div className="hidden md:flex items-center gap-8">
                         <Link href="/portfolio" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors">{t.nav.work}</Link>
                         <Link href="/our-services" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors">{t.nav.services}</Link>
-                        <Link href="/pricing-plans" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors">{t.nav.pricing}</Link>
+                        {settings.showPricing && <Link href="/pricing-plans" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors">{t.nav.pricing}</Link>}
                         <Link href="/faq" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors">{t.nav.faq}</Link>
-                        <Link href="/blog" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors">{t.nav.blog}</Link>
+                        {settings.showBlog && <Link href="/blog" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors">{t.nav.blog}</Link>}
                         <Link href="/contact-us" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors">{t.nav.contact}</Link>
                     </div>
 
