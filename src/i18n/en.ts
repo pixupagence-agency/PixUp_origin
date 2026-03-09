@@ -456,6 +456,7 @@ export const en = {
             description: "Subscribe to our newsletter for the latest design trends and development tips.",
             placeholder: "Enter your email",
             button: "Subscribe",
-        }
+        },
+        backToBlog: "Back to Blog",
     },
 };

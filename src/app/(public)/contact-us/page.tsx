@@ -2,10 +2,55 @@
 
 import { useLanguage } from "@/context/LanguageContext";
 import { useData } from "@/context/DataContext";
+import { useState } from "react";
 
 export default function ContactUs() {
   const { t } = useLanguage();
   const { settings } = useData();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState("");
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    projectType: "",
+    message: ""
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSuccess(true);
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          projectType: "",
+          message: ""
+        });
+      } else {
+        setError(data.message || "Something went wrong.");
+      }
+    } catch (err) {
+      setError("An error occurred. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <>
@@ -25,65 +70,134 @@ export default function ContactUs() {
             {/*  Left Column: Contact Form  */}
             <div className="lg:col-span-7 w-full order-2 lg:order-1">
               <div className="glass-panel p-6 sm:p-8 rounded-2xl shadow-xl shadow-slate-200/50 dark:shadow-none">
-                <form action="#" className="space-y-6" method="POST">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/*  First Name  */}
-                    <div className="space-y-2">
-                      <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200" htmlFor="first-name">{t.contactPage.form.firstName}</label>
-                      <div className="relative">
-                        <input className="block w-full h-12 rounded-lg border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 px-4 py-3 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-primary focus:ring-opacity-50 transition-all duration-200" id="first-name" placeholder="Jane" type="text" />
-                        <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-400">
-                          <span className="material-symbols-outlined text-lg">person</span>
+                {isSuccess ? (
+                  <div className="text-center py-12 space-y-4">
+                    <div className="w-20 h-20 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <span className="material-symbols-outlined text-4xl">check_circle</span>
+                    </div>
+                    <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Message Envoyé !</h2>
+                    <p className="text-slate-600 dark:text-slate-400">Merci de nous avoir contactés. Nous vous répondrons dans les plus brefs délais.</p>
+                    <button
+                      onClick={() => setIsSuccess(false)}
+                      className="mt-6 px-8 py-3 bg-primary text-white rounded-xl font-bold shadow-lg hover:bg-primary/90 transition-all"
+                    >
+                      Envoyer un autre message
+                    </button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {/*  First Name  */}
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200" htmlFor="first-name">{t.contactPage.form.firstName}</label>
+                        <div className="relative">
+                          <input
+                            required
+                            className="block w-full h-12 rounded-lg border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 px-4 py-3 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-primary focus:ring-opacity-50 transition-all duration-200"
+                            id="first-name"
+                            placeholder="Jane"
+                            type="text"
+                            value={formData.firstName}
+                            onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                          />
+                          <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-400">
+                            <span className="material-symbols-outlined text-lg">person</span>
+                          </div>
+                        </div>
+                      </div>
+                      {/*  Last Name  */}
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200" htmlFor="last-name">{t.contactPage.form.lastName}</label>
+                        <div className="relative">
+                          <input
+                            required
+                            className="block w-full h-12 rounded-lg border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 px-4 py-3 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-primary focus:ring-opacity-50 transition-all duration-200"
+                            id="last-name"
+                            placeholder="Doe"
+                            type="text"
+                            value={formData.lastName}
+                            onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                          />
                         </div>
                       </div>
                     </div>
-                    {/*  Last Name  */}
+                    {/*  Email  */}
                     <div className="space-y-2">
-                      <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200" htmlFor="last-name">{t.contactPage.form.lastName}</label>
+                      <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200" htmlFor="email">{t.contactPage.form.email}</label>
                       <div className="relative">
-                        <input className="block w-full h-12 rounded-lg border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 px-4 py-3 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-primary focus:ring-opacity-50 transition-all duration-200" id="last-name" placeholder="Doe" type="text" />
+                        <input
+                          required
+                          className="block w-full h-12 rounded-lg border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 px-4 py-3 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-primary focus:ring-opacity-50 transition-all duration-200"
+                          id="email"
+                          placeholder="jane@company.com"
+                          type="email"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        />
+                        <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-400">
+                          <span className="material-symbols-outlined text-lg">mail</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  {/*  Email  */}
-                  <div className="space-y-2">
-                    <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200" htmlFor="email">{t.contactPage.form.email}</label>
-                    <div className="relative">
-                      <input className="block w-full h-12 rounded-lg border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 px-4 py-3 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-primary focus:ring-opacity-50 transition-all duration-200" id="email" placeholder="jane@company.com" type="email" />
-                      <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-400">
-                        <span className="material-symbols-outlined text-lg">mail</span>
+                    {/*  Project Type  */}
+                    <div className="space-y-2">
+                      <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200" htmlFor="project-type">{t.contactPage.form.interest}</label>
+                      <div className="relative">
+                        <select
+                          required
+                          className="block w-full h-12 rounded-lg border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 px-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-primary focus:ring-opacity-50 transition-all duration-200 appearance-none"
+                          id="project-type"
+                          value={formData.projectType}
+                          onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
+                        >
+                          <option value="" disabled>{t.contactPage.form.selectType}</option>
+                          <option value="web-design">{t.contactPage.form.webDev}</option>
+                          <option value="branding">{t.contactPage.form.branding}</option>
+                          <option value="marketing">{t.contactPage.form.marketing}</option>
+                          <option value="other">{t.contactPage.form.other}</option>
+                        </select>
+                        <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-400">
+                          <span className="material-symbols-outlined">expand_more</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  {/*  Project Type  */}
-                  <div className="space-y-2">
-                    <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200" htmlFor="project-type">{t.contactPage.form.interest}</label>
-                    <div className="relative">
-                      <select className="block w-full h-12 rounded-lg border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 px-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-primary focus:ring-opacity-50 transition-all duration-200 appearance-none" id="project-type">
-                        <option disabled defaultValue="" value="">{t.contactPage.form.selectType}</option>
-                        <option value="web-design">{t.contactPage.form.webDev}</option>
-                        <option value="branding">{t.contactPage.form.branding}</option>
-                        <option value="marketing">{t.contactPage.form.marketing}</option>
-                        <option value="other">{t.contactPage.form.other}</option>
-                      </select>
-                      <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-400">
-                        <span className="material-symbols-outlined">expand_more</span>
-                      </div>
+                    {/*  Message  */}
+                    <div className="space-y-2">
+                      <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200" htmlFor="message">{t.contactPage.form.message}</label>
+                      <textarea
+                        required
+                        className="block w-full rounded-lg border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 px-4 py-3 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-primary focus:ring-opacity-50 transition-all duration-200 resize-none"
+                        id="message"
+                        placeholder={t.contactPage.form.placeholder}
+                        rows={4}
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      ></textarea>
                     </div>
-                  </div>
-                  {/*  Message  */}
-                  <div className="space-y-2">
-                    <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200" htmlFor="message">{t.contactPage.form.message}</label>
-                    <textarea className="block w-full rounded-lg border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 px-4 py-3 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-primary focus:ring-opacity-50 transition-all duration-200 resize-none" id="message" placeholder={t.contactPage.form.placeholder} rows={4}></textarea>
-                  </div>
-                  {/*  Submit Button  */}
-                  <div className="pt-2">
-                    <button className="w-full h-12 flex items-center justify-center gap-2 rounded-lg bg-primary hover:bg-primary-hover text-white font-bold text-base shadow-lg shadow-primary/30 transition-all duration-200 transform hover:-translate-y-0.5 focus:ring-4 focus:ring-primary/20" type="submit">
-                      <span>{t.contactPage.form.send}</span>
-                      <span className="material-symbols-outlined text-lg">send</span>
-                    </button>
-                  </div>
-                </form>
+
+                    {error && (
+                      <p className="text-red-500 text-sm font-medium">{error}</p>
+                    )}
+
+                    {/*  Submit Button  */}
+                    <div className="pt-2">
+                      <button
+                        disabled={isSubmitting}
+                        className="w-full h-12 flex items-center justify-center gap-2 rounded-lg bg-primary hover:bg-primary-hover text-white font-bold text-base shadow-lg shadow-primary/30 transition-all duration-200 transform hover:-translate-y-0.5 focus:ring-4 focus:ring-primary/20 disabled:opacity-70 disabled:cursor-not-allowed"
+                        type="submit"
+                      >
+                        {isSubmitting ? (
+                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        ) : (
+                          <>
+                            <span>{t.contactPage.form.send}</span>
+                            <span className="material-symbols-outlined text-lg">send</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </form>
+                )}
               </div>
             </div>
             {/*  Right Column: Info & Map  */}
@@ -148,7 +262,7 @@ export default function ContactUs() {
               {/*  Map  */}
               <div className="h-64 sm:h-72 w-full rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 relative group">
                 <div className="absolute inset-0 z-10 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors pointer-events-none"></div>
-                <img alt="Map Vendee in France" className="w-full h-full object-cover filter contrast-75 saturate-50 hover:contrast-100 hover:saturate-100 transition-all duration-500" data-alt="Map Vendee in France" data-location="Vendée" src="ttps://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2732.12345!2d-1.23456!3d46.12345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDbCsDA3JzM0LjUiTiAxwrAxNCcwNC40Ilc!5e0!3m2!1sfr!2sfr!4v123456789" />
+                <img alt="Map Vendee in France" className="w-full h-full object-cover filter contrast-75 saturate-50 hover:contrast-100 hover:saturate-100 transition-all duration-500" data-alt="Map Vendee in France" data-location="Vendée" src="https://images.unsplash.com/photo-1516738901171-ec3b0548d9f4?q=80&w=2070&auto=format&fit=crop" />
                 <div className="absolute bottom-4 right-4 z-20">
                   <a className="bg-white text-slate-900 text-xs font-bold px-3 py-2 rounded-lg shadow-lg hover:bg-primary hover:text-white transition-colors flex items-center gap-1" href="#">
                     <span className="material-symbols-outlined text-sm">directions</span>
