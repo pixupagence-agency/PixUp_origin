@@ -8,7 +8,7 @@ import ImageUpload from "@/components/ImageUpload";
 
 export default function AdminPortfolio() {
     const { t } = useLanguage();
-    const { projects, setProjects } = useData();
+    const { projects, setProjects, recordActivity } = useData();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingProject, setEditingProject] = useState<any>(null);
     const [formData, setFormData] = useState({
@@ -49,19 +49,40 @@ export default function AdminPortfolio() {
         e.preventDefault();
         if (editingProject) {
             setProjects(projects.map(p => p.id === editingProject.id ? { ...p, ...formData } : p));
+            recordActivity(
+                `Project "${formData.title}" updated`,
+                'edit_document',
+                'text-primary',
+                'bg-blue-100 dark:bg-blue-900/20'
+            );
         } else {
             const newProject = {
                 id: Math.random().toString(36).substr(2, 9),
                 ...formData
             };
             setProjects([...projects, newProject]);
+            recordActivity(
+                `New project "${formData.title}" created`,
+                'add_circle',
+                'text-emerald-600',
+                'bg-emerald-100 dark:bg-emerald-900/20'
+            );
         }
         setIsModalOpen(false);
     };
 
     const handleDelete = (id: string) => {
+        const project = projects.find(p => p.id === id);
         if (window.confirm(t.admin.confirmDeleteProject)) {
             setProjects(projects.filter(p => p.id !== id));
+            if (project) {
+                recordActivity(
+                    `Project "${project.title}" deleted`,
+                    'delete',
+                    'text-red-600',
+                    'bg-red-100 dark:bg-red-900/20'
+                );
+            }
         }
     };
 

@@ -9,7 +9,7 @@ import ImageUpload from "@/components/ImageUpload";
 
 export default function AdminBlog() {
     const { t } = useLanguage();
-    const { articles, setArticles } = useData();
+    const { articles, setArticles, recordActivity } = useData();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingArticle, setEditingArticle] = useState<any>(null);
     const [formData, setFormData] = useState({
@@ -56,19 +56,40 @@ export default function AdminBlog() {
         e.preventDefault();
         if (editingArticle) {
             setArticles(articles.map(a => a.id === editingArticle.id ? { ...a, ...formData } : a));
+            recordActivity(
+                `Article "${formData.title}" updated`,
+                'edit_note',
+                'text-primary',
+                'bg-blue-100 dark:bg-blue-900/20'
+            );
         } else {
             const newArticle = {
                 id: Math.random().toString(36).substr(2, 9),
                 ...formData
             };
             setArticles([...articles, newArticle]);
+            recordActivity(
+                `New article "${formData.title}" published`,
+                'article',
+                'text-emerald-600',
+                'bg-emerald-100 dark:bg-emerald-900/20'
+            );
         }
         setIsModalOpen(false);
     };
 
     const handleDelete = (id: string) => {
+        const article = articles.find(a => a.id === id);
         if (window.confirm(t.admin.confirmDeleteArticle)) {
             setArticles(articles.filter(a => a.id !== id));
+            if (article) {
+                recordActivity(
+                    `Article "${article.title}" deleted`,
+                    'delete',
+                    'text-red-600',
+                    'bg-red-100 dark:bg-red-900/20'
+                );
+            }
         }
     };
 

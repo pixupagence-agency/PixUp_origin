@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 
 export interface Service {
     id: string;
@@ -110,6 +110,10 @@ interface DataContextType {
     isLoggedIn: boolean;
     login: (password: string) => boolean;
     logout: () => void;
+    trackView: () => void;
+    trackPortfolioVisit: () => void;
+    trackLead: () => void;
+    recordActivity: (title: string, icon: string, colorClass: string, bgClass: string) => void;
 }
 
 const DataContext = createContext<DataContextType | undefined>(undefined);
@@ -180,15 +184,11 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const [stats, setStats] = useState<DashboardStats>({
-        totalViews: { value: '124.5k', trend: '+12%', isPositive: true },
-        portfolioVisits: { value: '8,230', trend: '+5%', isPositive: true },
-        newLeads: { value: '45', trend: '+18%', isPositive: true },
-        recentActivities: [
-            { id: '1', title: 'Portfolio Updated', time: '2 mins ago', icon: 'edit_document', colorClass: 'text-primary', bgClass: 'bg-blue-100 dark:bg-blue-900/20' },
-            { id: '2', title: 'New article published', time: '1 hour ago', icon: 'article', colorClass: 'text-green-600', bgClass: 'bg-green-100 dark:bg-green-900/20' },
-            { id: '3', title: 'New lead received', time: '3 hours ago', icon: 'person_add', colorClass: 'text-orange-600', bgClass: 'bg-orange-100 dark:bg-orange-900/20' }
-        ],
-        trafficHistory: [30, 40, 35, 50, 49, 60, 70, 91, 125, 100, 110, 140, 130] // Data points for the chart
+        totalViews: { value: '0', trend: '+0%', isPositive: true },
+        portfolioVisits: { value: '0', trend: '+0%', isPositive: true },
+        newLeads: { value: '0', trend: '+0%', isPositive: true },
+        recentActivities: [],
+        trafficHistory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     });
 
     // Persistence Helpers
@@ -250,6 +250,51 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         document.cookie = "pixup_admin_auth=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Strict";
     };
 
+    const recordActivity = useCallback((title: string, icon: string, colorClass: string, bgClass: string) => {
+        const newActivity = {
+            id: Date.now().toString(),
+            title,
+            time: "Just now",
+            icon,
+            colorClass,
+            bgClass
+        };
+        setStats(prev => ({
+            ...prev,
+            recentActivities: [newActivity, ...prev.recentActivities].slice(0, 10)
+        }));
+    }, []);
+
+    const trackView = useCallback(() => {
+        setStats(prev => {
+            const current = parseInt(prev.totalViews.value.replace(/[^0-9]/g, '')) || 0;
+            return {
+                ...prev,
+                totalViews: { ...prev.totalViews, value: (current + 1).toString() }
+            };
+        });
+    }, []);
+
+    const trackPortfolioVisit = useCallback(() => {
+        setStats(prev => {
+            const current = parseInt(prev.portfolioVisits.value.replace(/[^0-9]/g, '')) || 0;
+            return {
+                ...prev,
+                portfolioVisits: { ...prev.portfolioVisits, value: (current + 1).toString() }
+            };
+        });
+    }, []);
+
+    const trackLead = useCallback(() => {
+        setStats(prev => {
+            const current = parseInt(prev.newLeads.value.replace(/[^0-9]/g, '')) || 0;
+            return {
+                ...prev,
+                newLeads: { ...prev.newLeads, value: (current + 1).toString() }
+            };
+        });
+    }, []);
+
     // Initialize auth from session
     useEffect(() => {
         const savedAuth = sessionStorage.getItem('pixup_is_logged_in');
@@ -284,7 +329,11 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
             stats: safeStats, setStats,
             isLoggedIn,
             login,
-            logout
+            logout,
+            trackView,
+            trackPortfolioVisit,
+            trackLead,
+            recordActivity
         }}>
             {children}
         </DataContext.Provider>

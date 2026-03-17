@@ -102,6 +102,7 @@ export const fr = {
         trafficOverview: "Aperçu du Trafic",
         recentActivity: "Activité Récente",
         viewAll: "Tout Voir",
+        last30Days: "30 derniers jours",
 
         // Services Management
         servicesManagement: "Gestion des Services",

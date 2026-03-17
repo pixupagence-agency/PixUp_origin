@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useData } from "@/context/DataContext";
+import StatTracker from "@/components/StatTracker";
 
 export default function Portfolio() {
     const { t } = useLanguage();
@@ -20,6 +21,7 @@ export default function Portfolio() {
 
     return (
         <>
+            <StatTracker type="portfolio" />
             {/*  Main Content  */}
             <main className="flex-grow w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 py-12 pt-32">
                 {/*  Hero / Header Section  */}

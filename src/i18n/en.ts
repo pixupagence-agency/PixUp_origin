@@ -102,6 +102,7 @@ export const en = {
         trafficOverview: "Traffic Overview",
         recentActivity: "Recent Activity",
         viewAll: "View All",
+        last30Days: "Last 30 Days",
 
         // Services Management
         servicesManagement: "Services Management",

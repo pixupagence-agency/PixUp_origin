@@ -58,7 +58,7 @@ export default function AdminDashboard() {
                             </div>
                             <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 bg-white/60 dark:bg-slate-800/60 px-3 py-1.5 rounded-lg border border-white/50 dark:border-slate-700/50 shadow-sm backdrop-blur-sm">
                                 <span className="material-symbols-outlined text-lg">calendar_today</span>
-                                <span>Last 30 Days</span>
+                                <span>{t.admin.last30Days}</span>
                             </div>
                         </div>
 
@@ -131,17 +131,24 @@ export default function AdminDashboard() {
                                     <button className="text-primary text-sm font-semibold hover:underline">{t.admin.viewAll}</button>
                                 </div>
                                 <div className="space-y-6">
-                                    {stats.recentActivities.map((activity) => (
-                                        <div key={activity.id} className="flex gap-4">
-                                            <div className={`h-10 w-10 rounded-full flex items-center justify-center ${activity.bgClass} ${activity.colorClass}`}>
-                                                <span className="material-symbols-outlined text-xl">{activity.icon}</span>
-                                            </div>
-                                            <div>
-                                                <p className="text-sm text-slate-900 dark:text-white font-medium">{activity.title}</p>
-                                                <span className="text-xs text-slate-400 dark:text-slate-500">{activity.time}</span>
-                                            </div>
+                                    {stats.recentActivities.length === 0 ? (
+                                        <div className="flex flex-col items-center justify-center py-8 text-center">
+                                            <span className="material-symbols-outlined text-4xl text-slate-300 dark:text-slate-600 mb-2">history</span>
+                                            <p className="text-sm text-slate-400">No activity yet</p>
                                         </div>
-                                    ))}
+                                    ) : (
+                                        stats.recentActivities.map((activity) => (
+                                            <div key={activity.id} className="flex gap-4">
+                                                <div className={`h-10 w-10 rounded-full flex-shrink-0 flex items-center justify-center ${activity.bgClass} ${activity.colorClass}`}>
+                                                    <span className="material-symbols-outlined text-xl">{activity.icon}</span>
+                                                </div>
+                                                <div>
+                                                    <p className="text-sm text-slate-900 dark:text-white font-medium line-clamp-1">{activity.title}</p>
+                                                    <span className="text-xs text-slate-400 dark:text-slate-500">{activity.time}</span>
+                                                </div>
+                                            </div>
+                                        ))
+                                    )}
                                 </div>
                             </div>
                         </div>

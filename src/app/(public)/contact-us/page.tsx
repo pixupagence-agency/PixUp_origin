@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function ContactUs() {
   const { t } = useLanguage();
-  const { settings } = useData();
+  const { settings, trackLead, recordActivity } = useData();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState("");
@@ -35,6 +35,13 @@ export default function ContactUs() {
 
       if (data.success) {
         setIsSuccess(true);
+        if (trackLead) trackLead();
+        if (recordActivity) recordActivity(
+          `New lead from ${formData.firstName}`,
+          'person_add',
+          'text-orange-600',
+          'bg-orange-100 dark:bg-orange-900/20'
+        );
         setFormData({
           firstName: "",
           lastName: "",
