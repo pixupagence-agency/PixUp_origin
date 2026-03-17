@@ -149,7 +149,7 @@ export default function AdminServices() {
                                     value={formData.name}
                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                     className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                                    placeholder="e.g. Web Development"
+                                    placeholder={t.admin.placeholderServiceName}
                                 />
                             </div>
                             <div>
@@ -159,7 +159,7 @@ export default function AdminServices() {
                                     value={formData.description}
                                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                                     className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all h-24"
-                                    placeholder="Describe the service..."
+                                    placeholder={t.admin.describeService}
                                 />
                             </div>
                             <div className="grid grid-cols-2 gap-4">
@@ -170,12 +170,12 @@ export default function AdminServices() {
                                         onChange={(e) => setFormData({ ...formData, icon: e.target.value })}
                                         className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white"
                                     >
-                                        <option value="diamond">Diamond</option>
-                                        <option value="layers">Layers</option>
-                                        <option value="code">Code</option>
-                                        <option value="campaign">Campaign</option>
-                                        <option value="brush">Brush</option>
-                                        <option value="smartphone">Smartphone</option>
+                                        <option value="diamond">{t.admin.icons.diamond}</option>
+                                        <option value="layers">{t.admin.icons.layers}</option>
+                                        <option value="code">{t.admin.icons.code}</option>
+                                        <option value="campaign">{t.admin.icons.campaign}</option>
+                                        <option value="brush">{t.admin.icons.brush}</option>
+                                        <option value="smartphone">{t.admin.icons.smartphone}</option>
                                     </select>
                                 </div>
                                 <div>

@@ -100,13 +100,13 @@ export default function Portfolio() {
                                     <div>
                                         <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{t.portfolio.modal.challenge}</h3>
                                         <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                                            {selectedProject.title} was a unique project that required a creative approach to fulfill the client's needs.
+                                            {selectedProject.title} {t.portfolio.modal.challengeDesc}
                                         </p>
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{t.portfolio.modal.solution}</h3>
                                         <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                                            Our team developed a custom solution focusing on user experience and brand identity.
+                                            {t.portfolio.modal.solutionDesc}
                                         </p>
                                     </div>
                                 </div>
@@ -116,7 +116,7 @@ export default function Portfolio() {
                                         <div className="space-y-6">
                                             <div>
                                                 <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">{t.portfolio.modal.client}</p>
-                                                <p className="text-slate-900 dark:text-white font-medium">{selectedProject.title} Client</p>
+                                                <p className="text-slate-900 dark:text-white font-medium">{t.portfolio.modal.clientName} {selectedProject.title}</p>
                                             </div>
                                             <div>
                                                 <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">{t.portfolio.modal.timeline}</p>

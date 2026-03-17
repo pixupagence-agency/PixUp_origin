@@ -24,12 +24,12 @@ export default function AdminPortfolio() {
         if (project) {
             setEditingProject(project);
             setFormData({
-                title: project.title,
-                category: project.category,
-                image: project.image,
-                featured: project.featured,
+                title: project.title || '',
+                category: project.category || '',
+                image: project.image || '',
+                featured: !!project.featured,
                 active: project.active !== undefined ? project.active : true,
-                addedDate: project.addedDate
+                addedDate: project.addedDate || ''
             });
         } else {
             setEditingProject(null);
@@ -175,7 +175,7 @@ export default function AdminPortfolio() {
                                     value={formData.title}
                                     onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                                     className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                                    placeholder="e.g. Fintech App"
+                                    placeholder={t.admin.placeholderProjectTitle}
                                 />
                             </div>
                             <div>
@@ -186,11 +186,11 @@ export default function AdminPortfolio() {
                                     value={formData.category}
                                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                                     className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                                    placeholder="e.g. UI/UX Design, Development"
+                                    placeholder={t.admin.placeholderCategory}
                                 />
                             </div>
                             <ImageUpload
-                                label="Image du projet"
+                                label={t.admin.imageUrl}
                                 value={formData.image}
                                 onChange={(val) => setFormData({ ...formData, image: val })}
                             />

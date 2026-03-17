@@ -133,8 +133,7 @@ export default function AdminDashboard() {
                                 <div className="space-y-6">
                                     {stats.recentActivities.length === 0 ? (
                                         <div className="flex flex-col items-center justify-center py-8 text-center">
-                                            <span className="material-symbols-outlined text-4xl text-slate-300 dark:text-slate-600 mb-2">history</span>
-                                            <p className="text-sm text-slate-400">No activity yet</p>
+                                            <p className="text-sm text-slate-400">{t.admin.noActivity}</p>
                                         </div>
                                     ) : (
                                         stats.recentActivities.map((activity) => (

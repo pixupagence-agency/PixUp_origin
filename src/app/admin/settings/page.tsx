@@ -276,7 +276,7 @@ export default function AdminSettings() {
                     <h3 className="text-sm font-semibold text-primary uppercase tracking-wider">{t.admin.siteStatus}</h3>
                     <span className="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/20 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-400">
                       <span className="mr-1.5 h-2 w-2 rounded-full bg-green-500"></span>
-                      Live
+                      {t.admin.statusLive}
                     </span>
                   </div>
                   <div className="flex items-end gap-2">

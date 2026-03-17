@@ -82,13 +82,13 @@ export default function ContactUs() {
                     <div className="w-20 h-20 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
                       <span className="material-symbols-outlined text-4xl">check_circle</span>
                     </div>
-                    <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Message Envoyé !</h2>
-                    <p className="text-slate-600 dark:text-slate-400">Merci de nous avoir contactés. Nous vous répondrons dans les plus brefs délais.</p>
+                    <h2 className="text-2xl font-bold text-slate-900 dark:text-white">{t.contactPage.successTitle}</h2>
+                    <p className="text-slate-600 dark:text-slate-400">{t.contactPage.successDesc}</p>
                     <button
                       onClick={() => setIsSuccess(false)}
                       className="mt-6 px-8 py-3 bg-primary text-white rounded-xl font-bold shadow-lg hover:bg-primary/90 transition-all"
                     >
-                      Envoyer un autre message
+                      {t.contactPage.sendAnother}
                     </button>
                   </div>
                 ) : (

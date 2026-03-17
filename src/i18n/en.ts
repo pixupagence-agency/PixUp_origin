@@ -103,6 +103,23 @@ export const en = {
         recentActivity: "Recent Activity",
         viewAll: "View All",
         last30Days: "Last 30 Days",
+        noActivity: "No activity yet",
+        statusLive: "Live",
+        typeQuestion: "Type the question...",
+        typeAnswer: "Type the answer...",
+        describeService: "Describe the service...",
+        placeholderServiceName: "e.g. Web Development",
+        placeholderProjectTitle: "e.g. Fintech App",
+        placeholderCategory: "e.g. UI/UX Design",
+        placeholderArticleTitle: "e.g. The Future of AI",
+        icons: {
+            diamond: "Diamond",
+            layers: "Layers",
+            code: "Code",
+            campaign: "Campaign",
+            brush: "Brush",
+            smartphone: "Smartphone"
+        },
 
         // Services Management
         servicesManagement: "Services Management",
@@ -260,6 +277,9 @@ export const en = {
             services: "Services",
             team: "Team",
             visitSite: "Visit Live Site",
+            challengeDesc: "was a unique project that required a creative approach to fulfill the client's needs.",
+            solutionDesc: "Our team developed a custom solution focusing on user experience and brand identity.",
+            clientName: "Client of",
         }
     },
 
@@ -406,6 +426,9 @@ export const en = {
         phone: "Phone",
         followUs: "Follow us",
         getDirections: "Get Directions",
+        successTitle: "Message Sent!",
+        successDesc: "Thank you for contacting us. We will get back to you as soon as possible.",
+        sendAnother: "Send another message",
     },
     // FAQ Page
     faq: {
@@ -445,13 +468,15 @@ export const en = {
             }
         ]
     },
-    // Blog Page
     blogPage: {
-        title: "Our",
-        titleAccent: "Blog",
-        description: "Insights, trends, and stories from our team of designers and developers. Stay updated with the latest in digital innovation.",
+        title: "Latest News",
+        titleAccent: "Our Blog",
+        description: "Insights, trends, and stories from our team of designers and developers.",
         readTime: "min read",
         readMore: "Read More",
+        allCategories: "All categories",
+        noArticles: "No articles found",
+        defaultAuthor: "Alex Morgan",
         newsletter: {
             title: "Never miss an update",
             description: "Subscribe to our newsletter for the latest design trends and development tips.",

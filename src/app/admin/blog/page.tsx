@@ -27,14 +27,14 @@ export default function AdminBlog() {
         if (article) {
             setEditingArticle(article);
             setFormData({
-                title: article.title,
-                excerpt: article.excerpt,
+                title: article.title || '',
+                excerpt: article.excerpt || '',
                 content: article.content || '',
-                image: article.image,
-                category: article.category,
-                author: article.author,
-                date: article.date,
-                status: article.status
+                image: article.image || '',
+                category: article.category || '',
+                author: article.author || 'Alex Morgan',
+                date: article.date || '',
+                status: article.status || 'published'
             });
         } else {
             setEditingArticle(null);
@@ -220,7 +220,7 @@ export default function AdminBlog() {
                                         value={formData.title}
                                         onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                                         className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                                        placeholder="e.g. The Future of AI"
+                                        placeholder={t.admin.placeholderArticleTitle}
                                     />
                                 </div>
                                 <div>
@@ -231,7 +231,7 @@ export default function AdminBlog() {
                                         value={formData.category}
                                         onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                                         className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                                        placeholder="e.g. Design Trends"
+                                        placeholder={t.admin.placeholderCategory}
                                     />
                                 </div>
                             </div>
@@ -267,6 +267,7 @@ export default function AdminBlog() {
                                             value={formData.author}
                                             onChange={(e) => setFormData({ ...formData, author: e.target.value })}
                                             className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                                            placeholder={t.blogPage.defaultAuthor}
                                         />
                                     </div>
                                     <div>

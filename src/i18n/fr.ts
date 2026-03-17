@@ -103,6 +103,23 @@ export const fr = {
         recentActivity: "Activité Récente",
         viewAll: "Tout Voir",
         last30Days: "30 derniers jours",
+        noActivity: "Aucune activité pour le moment",
+        statusLive: "En ligne",
+        typeQuestion: "Saisissez la question...",
+        typeAnswer: "Saisissez la réponse...",
+        describeService: "Décrivez le service...",
+        placeholderServiceName: "ex: Développement Web",
+        placeholderProjectTitle: "ex: App Fintech",
+        placeholderCategory: "ex: Design UI/UX",
+        placeholderArticleTitle: "ex: L'avenir de l'IA",
+        icons: {
+            diamond: "Diamant",
+            layers: "Couches",
+            code: "Code",
+            campaign: "Campagne",
+            brush: "Pinceau",
+            smartphone: "Smartphone"
+        },
 
         // Services Management
         servicesManagement: "Gestion des Services",
@@ -261,6 +278,9 @@ export const fr = {
             services: "Services",
             team: "Équipe",
             visitSite: "Visiter le site",
+            challengeDesc: "était un projet unique qui a nécessité une approche créative pour répondre aux besoins du client.",
+            solutionDesc: "Notre équipe a développé une solution personnalisée axée sur l'expérience utilisateur et l'identité de la marque.",
+            clientName: "Client de",
         }
     },
 
@@ -407,6 +427,9 @@ export const fr = {
         phone: "Téléphone",
         followUs: "Suivez-nous",
         getDirections: "Obtenir l'itinéraire",
+        successTitle: "Message Envoyé !",
+        successDesc: "Merci de nous avoir contactés. Nous vous répondrons dans les plus brefs délais.",
+        sendAnother: "Envoyer un autre message",
     },
     // FAQ Page
     faq: {
@@ -446,13 +469,15 @@ export const fr = {
             }
         ]
     },
-    // Page Blog
     blogPage: {
-        title: "Notre",
-        titleAccent: "Blog",
-        description: "Insights, tendances et histoires de notre équipe de designers et de développeurs. Restez à jour avec les dernières innovations numériques.",
+        title: "Dernières Actualités",
+        titleAccent: "Notre Blog",
+        description: "Insights, tendances et histoires de notre équipe de designers et de développeurs.",
         readTime: "min de lecture",
         readMore: "Lire la suite",
+        allCategories: "Toutes les catégories",
+        noArticles: "Aucun article trouvé",
+        defaultAuthor: "Alex Morgan",
         newsletter: {
             title: "Ne manquez aucune mise à jour",
             description: "Abonnez-vous à notre newsletter pour les dernières tendances en design et conseils de développement.",

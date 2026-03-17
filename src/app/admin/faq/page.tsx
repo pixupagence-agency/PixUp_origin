@@ -154,7 +154,7 @@ export default function AdminFAQ() {
                                     value={formData.q}
                                     onChange={(e) => setFormData({ ...formData, q: e.target.value })}
                                     className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                                    placeholder="Type the question..."
+                                    placeholder={t.admin.typeQuestion}
                                 />
                             </div>
                             <div>
@@ -164,7 +164,7 @@ export default function AdminFAQ() {
                                     value={formData.a}
                                     onChange={(e) => setFormData({ ...formData, a: e.target.value })}
                                     className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all h-32 resize-none"
-                                    placeholder="Type the answer..."
+                                    placeholder={t.admin.typeAnswer}
                                 />
                             </div>
                             <div className="flex items-center gap-2 pt-2">

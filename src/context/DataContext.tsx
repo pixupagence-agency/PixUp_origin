@@ -228,7 +228,16 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         };
 
         Object.entries(dataToSave).forEach(([key, value]) => {
-            localStorage.setItem(`${STORAGE_KEY_PREFIX}${key}`, JSON.stringify(value));
+            try {
+                localStorage.setItem(`${STORAGE_KEY_PREFIX}${key}`, JSON.stringify(value));
+            } catch (e) {
+                if (e instanceof Error && (e.name === 'QuotaExceededError' || e.name === 'NS_ERROR_DOM_QUOTA_REACHED')) {
+                    console.error('LocalStorage quota exceeded! Some data might not be saved.', key);
+                    // We could alert here, but it might be annoying on every change
+                } else {
+                    console.error('Failed to save to localStorage', key, e);
+                }
+            }
         });
     }, [services, projects, articles, settings, testimonials, plans, faqs, stats]);
 
