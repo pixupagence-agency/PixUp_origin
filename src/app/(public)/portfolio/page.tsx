@@ -128,10 +128,16 @@ export default function Portfolio() {
                                             </div>
                                         </div>
                                         <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700">
-                                            <button className="w-full py-3 bg-primary hover:bg-primary/90 text-white rounded-lg font-bold transition-colors shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
-                                                {t.portfolio.modal.visitSite}
-                                                <span className="material-symbols-outlined text-lg">arrow_outward</span>
-                                            </button>
+                                            {selectedProject.url ? (
+                                                <a href={selectedProject.url} target="_blank" rel="noopener noreferrer" className="w-full py-3 bg-primary hover:bg-primary/90 text-white rounded-lg font-bold transition-colors shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+                                                    {t.portfolio.modal.visitSite}
+                                                    <span className="material-symbols-outlined text-lg">arrow_outward</span>
+                                                </a>
+                                            ) : (
+                                                <button className="w-full py-3 bg-primary opacity-50 cursor-not-allowed text-white rounded-lg font-bold transition-colors flex items-center justify-center gap-2">
+                                                    Bientôt disponible
+                                                </button>
+                                            )}
                                         </div>
                                     </div>
                                 </div>

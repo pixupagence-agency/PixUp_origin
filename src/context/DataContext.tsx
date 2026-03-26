@@ -20,6 +20,7 @@ export interface Project {
     featured: boolean;
     addedDate: string;
     active: boolean;
+    url?: string;
 }
 
 export interface PricingPlan {
@@ -131,6 +132,9 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         { id: '1', title: 'Fintech Mobile App', category: 'UI/UX Design, Development', image: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=2194&auto=format&fit=crop', featured: true, addedDate: 'Oct 20', active: true },
         { id: '2', title: 'E-Commerce Platform Redesign', category: 'Web Development, Branding', image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop', featured: false, addedDate: 'Sep 15', active: true },
         { id: '3', title: 'Oasis Corporate Identity', category: 'Branding, Marketing', image: 'https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=2070&auto=format&fit=crop', featured: false, addedDate: 'Aug 02', active: true },
+        { id: 'lawyer_1', title: 'Cabinet d\'Avocats - Landing Page', category: 'Web Development, UI/UX Design', image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2000&auto=format&fit=crop', featured: true, addedDate: 'Oct 26', active: true, url: '/templates/avocat' },
+        { id: 'barber_1', title: 'The Vintage Barber - Landing Page', category: 'Web Development, Branding', image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=2000&auto=format&fit=crop', featured: false, addedDate: 'Oct 25', active: true, url: '/templates/barbier' },
+        { id: 'sport_1', title: 'Club Sportif Elite - Landing Page', category: 'Web Development, UX', image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=2000&auto=format&fit=crop', featured: false, addedDate: 'Oct 24', active: true, url: '/templates/asso-sportive' },
     ]);
 
     const [articles, setArticles] = useState<Article[]>([
@@ -165,7 +169,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     const [settings, setSettings] = useState<Settings>({
         agencyName: "PixUp",
-        email: "hello@pixup.agency.com",
+        email: "hello@pixup.agency",
         phone: "+33 6 82 55 35 52",
         address: "Chantonnay, Vendée (85)",
         founderName: "Denis Taveneau",
@@ -211,7 +215,33 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}${key}`);
                 if (saved) {
                     try {
-                        setter(JSON.parse(saved));
+                        let parsed = JSON.parse(saved);
+                        if (key === 'projects') {
+                            const newProjectsMap: Record<string, string> = {
+                                'lawyer_1': '/templates/avocat',
+                                'barber_1': '/templates/barbier',
+                                'sport_1': '/templates/asso-sportive'
+                            };
+                            
+                            // Add missing URLs to existing entries
+                            parsed = parsed.map((p: any) => {
+                                if (newProjectsMap[p.id] && !p.url) {
+                                    return { ...p, url: newProjectsMap[p.id] };
+                                }
+                                return p;
+                            });
+
+                            const hasNew = parsed.some((p: any) => p.id === 'lawyer_1');
+                            if (!hasNew) {
+                                const newProjects = [
+                                    { id: 'lawyer_1', title: 'Cabinet d\'Avocats - Landing Page', category: 'Web Development, UI/UX Design', image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2000&auto=format&fit=crop', featured: true, addedDate: 'Oct 26', active: true, url: '/templates/avocat' },
+                                    { id: 'barber_1', title: 'The Vintage Barber - Landing Page', category: 'Web Development, Branding', image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=2000&auto=format&fit=crop', featured: false, addedDate: 'Oct 25', active: true, url: '/templates/barbier' },
+                                    { id: 'sport_1', title: 'Club Sportif Elite - Landing Page', category: 'Web Development, UX', image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=2000&auto=format&fit=crop', featured: false, addedDate: 'Oct 24', active: true, url: '/templates/asso-sportive' },
+                                ];
+                                parsed = [...parsed, ...newProjects];
+                            }
+                        }
+                        setter(parsed);
                     } catch (e) {
                         console.error(`Failed to parse ${key}`, e);
                     }

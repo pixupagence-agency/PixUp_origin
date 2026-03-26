@@ -1,0 +1,200 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "PixUp Logo PixUpTech & Innovation" [ref=e5]:
+        - /url: /
+        - img "PixUp Logo" [ref=e7]
+        - generic [ref=e8]:
+          - generic [ref=e9]: PixUp
+          - text: Tech & Innovation
+      - generic [ref=e10]:
+        - link "Réalisations" [ref=e11]:
+          - /url: /portfolio
+        - link "Services" [ref=e12]:
+          - /url: /our-services
+        - link "Tarifs" [ref=e13]:
+          - /url: /pricing-plans
+        - link "Faq" [ref=e14]:
+          - /url: /faq
+        - link "Blog" [ref=e15]:
+          - /url: /blog
+        - link "Contact" [ref=e16]:
+          - /url: /contact-us
+      - generic [ref=e17]:
+        - generic [ref=e18]:
+          - button "Toggle theme" [ref=e19]:
+            - generic [ref=e20]: dark_mode
+          - generic [ref=e21]:
+            - button "FR" [ref=e22]
+            - button "EN" [ref=e23]
+        - link "Démarrer" [ref=e24]:
+          - /url: /contact-us
+        - generic [ref=e25]:
+          - button "Toggle theme" [ref=e26]:
+            - generic [ref=e27]: dark_mode
+          - generic [ref=e28]:
+            - button "FR" [ref=e29]
+            - button "EN" [ref=e30]
+          - button "menu" [ref=e31]:
+            - generic [ref=e32]: menu
+  - main [ref=e33]:
+    - generic [ref=e344]:
+      - generic [ref=e345]: Nouvelle agence en Vendée.
+      - heading "Révélez votre potentiel digital" [level=1] [ref=e346]:
+        - text: Révélez votre
+        - text: potentiel digital
+      - paragraph [ref=e347]: De la conception de sites web vitrines à la création d'applications mobiles et web complexes, nous transformons vos idées en outils performants.
+      - generic [ref=e348]:
+        - link "Voir nos réalisations arrow_forward" [ref=e349]:
+          - /url: /portfolio
+          - text: Voir nos réalisations
+          - generic [ref=e350]: arrow_forward
+        - link "Nos services" [ref=e351]:
+          - /url: /our-services
+    - generic [ref=e352]:
+      - generic [ref=e435]:
+        - generic [ref=e436]:
+          - heading "Notre Expertise" [level=2] [ref=e437]
+          - paragraph [ref=e438]: Nous créons des produits numériques robustes et évolutifs, pensés pour répondre précisément aux besoins de vos clients et à vos objectifs de croissance.
+        - link "Voir tous les services arrow_outward" [ref=e439]:
+          - /url: /our-services
+          - text: Voir tous les services
+          - generic [ref=e440]: arrow_outward
+      - generic [ref=e441]:
+        - generic [ref=e442]:
+          - generic [ref=e444]: diamond
+          - heading "Branding" [level=3] [ref=e445]
+          - paragraph [ref=e446]: Crafting unique visual identities that resonate with your audience and tell your story.
+        - generic [ref=e447]:
+          - generic [ref=e449]: layers
+          - heading "UI/UX Design" [level=3] [ref=e450]
+          - paragraph [ref=e451]: Designing intuitive, user-centric interfaces that provide seamless digital experiences.
+        - generic [ref=e452]:
+          - generic [ref=e454]: code
+          - heading "Web Development" [level=3] [ref=e455]
+          - paragraph [ref=e456]: Building robust, scalable websites and applications using modern technologies.
+    - generic [ref=e459]:
+      - generic [ref=e460]:
+        - generic [ref=e461]: Philosophie de l'agence
+        - heading "Le design n'est pas qu'une question d'apparence." [level=2] [ref=e462]
+        - paragraph [ref=e463]: Nous croyons au pouvoir du design pour transformer les entreprises. Nous repoussons les limites de ce qui est possible dans l'espace numérique, en s'assurant que notre travail se rapproche le plus possible de votre travail et de vos valeurs.
+        - generic [ref=e464]:
+          - generic [ref=e465]:
+            - generic [ref=e467]: check_circle
+            - generic [ref=e468]:
+              - heading "Stratégie basée sur les données" [level=4] [ref=e469]
+              - paragraph [ref=e470]: Chaque décision que nous prenons s'appuie sur la recherche et l'analyse.
+          - generic [ref=e471]:
+            - generic [ref=e473]: check_circle
+            - generic [ref=e474]:
+              - heading "Approche centrée sur l'utilisateur" [level=4] [ref=e475]
+              - paragraph [ref=e476]: Nous plaçons vos utilisateurs au cœur de tout ce que nous concevons.
+      - generic [ref=e477]:
+        - img "Team Collaboration" [ref=e479]
+        - generic [ref=e518]:
+          - generic [ref=e519]: 10+
+          - generic [ref=e520]: Années d'excellence numérique
+    - generic [ref=e521]:
+      - generic [ref=e522]:
+        - heading "Ce que disent nos clients" [level=2] [ref=e523]
+        - paragraph [ref=e524]: Nous sommes fiers des relations à long terme avec nos clients, en les aidant à naviguer dans le paysage numérique.
+      - generic [ref=e525]:
+        - generic [ref=e526]:
+          - generic [ref=e528]: format_quote
+          - generic [ref=e529]:
+            - generic [ref=e530]: star
+            - generic [ref=e531]: star
+            - generic [ref=e532]: star
+            - generic [ref=e533]: star
+            - generic [ref=e534]: star
+          - paragraph [ref=e535]: "\"PIXUP transformed our brand identity completely. Their attention to detail is unmatched in the industry.\""
+          - generic [ref=e536]:
+            - img "Sarah Johnson" [ref=e538]
+            - generic [ref=e539]:
+              - heading "Sarah Johnson" [level=4] [ref=e540]
+              - paragraph [ref=e541]: CEO at Techflow
+        - generic [ref=e542]:
+          - generic [ref=e544]: format_quote
+          - generic [ref=e545]:
+            - generic [ref=e546]: star
+            - generic [ref=e547]: star
+            - generic [ref=e548]: star
+            - generic [ref=e549]: star
+            - generic [ref=e550]: star
+          - paragraph [ref=e551]: "\"Incredible work ethic and stunning designs. The team went above and beyond our expectations.\""
+          - generic [ref=e552]:
+            - img "Michael Chen" [ref=e554]
+            - generic [ref=e555]:
+              - heading "Michael Chen" [level=4] [ref=e556]
+              - paragraph [ref=e557]: Marketing Director at Innovate
+    - generic [ref=e560]:
+      - heading "Prêt à élever votre marque ?" [level=2] [ref=e561]
+      - paragraph [ref=e562]: Collaborons pour bâtir quelque chose d'extraordinaire. Notre équipe est prête à donner vie à votre vision.
+      - generic [ref=e563]:
+        - link "Démarrer un projet" [ref=e564]:
+          - /url: /contact-us
+        - link "Planifier un appel" [ref=e565]:
+          - /url: /contact-us
+  - link "chat" [ref=e566]:
+    - /url: "#"
+    - generic [ref=e567]: chat
+  - contentinfo [ref=e568]:
+    - generic [ref=e569]:
+      - generic [ref=e570]:
+        - generic [ref=e571]:
+          - link "PixUp Logo PixUpTech & Innovation" [ref=e572]:
+            - /url: /
+            - img "PixUp Logo" [ref=e574]
+            - generic [ref=e575]:
+              - generic [ref=e576]: PixUp
+              - text: Tech & Innovation
+          - paragraph [ref=e577]: Expertise Web & Mobile | Sites internet | Applications sur mesure.Nous transformons la complexité technique en interfaces simples et élégantes pour faire briller votre business
+          - generic [ref=e578]:
+            - link [ref=e579]:
+              - /url: https://dribbble.com/pixup
+              - img [ref=e580]
+            - link [ref=e582]:
+              - /url: https://instagram.com/pixup_agency
+              - img [ref=e583]
+            - link [ref=e586]:
+              - /url: https://linkedin.com/company/pixup
+              - img [ref=e587]
+        - generic [ref=e591]:
+          - heading "Services" [level=4] [ref=e592]
+          - list [ref=e593]:
+            - listitem [ref=e594]:
+              - link "Audit" [ref=e595]:
+                - /url: /our-services
+            - listitem [ref=e596]:
+              - link "Développement d'application multiplateforme" [ref=e597]:
+                - /url: /our-services
+            - listitem [ref=e598]:
+              - link "Développement Web" [ref=e599]:
+                - /url: /our-services
+            - listitem [ref=e600]:
+              - link "SEO" [ref=e601]:
+                - /url: /our-services
+        - generic [ref=e602]:
+          - heading "Contact" [level=4] [ref=e603]
+          - list [ref=e604]:
+            - listitem [ref=e605]:
+              - generic [ref=e606]: location_on
+              - text: Chantonnay, Vendée (85)
+            - listitem [ref=e607]:
+              - generic [ref=e608]: mail
+              - link "hello@pixup.agency" [ref=e609]:
+                - /url: mailto:hello@pixup.agency
+            - listitem [ref=e610]:
+              - generic [ref=e611]: call
+              - text: +33 6 82 55 35 52
+      - generic [ref=e612]:
+        - paragraph [ref=e613]: © 2026 Agence PIXUP. Tous droits réservés.
+        - generic [ref=e614]:
+          - link "Politique de confidentialité" [ref=e615]:
+            - /url: /legal-mentions
+          - link "Conditions d'utilisation" [ref=e616]:
+            - /url: /legal-mentions
+```
