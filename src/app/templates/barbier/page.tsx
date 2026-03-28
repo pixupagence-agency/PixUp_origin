@@ -5,123 +5,272 @@ import Link from "next/link";
 
 export default function BarbierLandingPage() {
     return (
-        <div className="min-h-screen bg-neutral-900 font-sans text-neutral-300 selection:bg-orange-500/30">
-            {/* Header */}
-            <header className="fixed top-0 w-full z-50 bg-neutral-900/80 backdrop-blur-md border-b border-neutral-800 transition-all">
-                <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-                    <div className="flex items-center gap-3">
-                        <span className="material-symbols-outlined text-orange-500 text-3xl">content_cut</span>
-                        <span className="font-black text-2xl tracking-tighter text-white uppercase">The Vintage Barber</span>
-                    </div>
-                    <nav className="hidden md:flex gap-8 text-sm font-bold text-neutral-400 uppercase tracking-wider">
-                        <a href="#services" className="hover:text-orange-500 transition-colors">Services</a>
-                        <a href="#equipe" className="hover:text-orange-500 transition-colors">L'Artisan</a>
-                        <a href="#galerie" className="hover:text-orange-500 transition-colors">Galerie</a>
-                        <a href="#contact" className="hover:text-orange-500 transition-colors">Contact</a>
-                    </nav>
-                    <button className="bg-orange-600 text-white px-6 py-2.5 rounded text-sm font-bold uppercase tracking-widest hover:bg-orange-500 transition-colors group flex items-center gap-2">
-                        Réserver 
-                        <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">calendar_month</span>
-                    </button>
-                </div>
-            </header>
-
-            {/* Hero Section */}
-            <section className="relative min-h-screen flex items-center justify-center pt-20">
-                <div className="absolute inset-0 z-0">
-                    <iframe 
-                        className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-40 grayscale mix-blend-luminosity"
-                        src="https://www.youtube.com/embed/7yBsz8R-8h0?autoplay=1&mute=1&loop=1&playlist=7yBsz8R-8h0&controls=0&disablekb=1&playsinline=1"
-                        allow="autoplay; encrypted-media"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/50 via-neutral-900/80 to-neutral-900"></div>
-                </div>
+        <div className="bg-[var(--color-barber-surface)] text-[var(--color-barber-on-surface)] font-manrope selection:bg-[var(--color-barber-primary)] selection:text-[var(--color-barber-on-primary)] min-h-screen">
+            <style jsx global>{`
+                @import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@400;700;800&family=Manrope:wght@300;400;500;600;700&display=swap');
+                @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
                 
-                <div className="relative z-10 max-w-5xl mx-auto px-6 text-center pt-24 pb-32">
-                    <div className="inline-block p-4 rounded-full border border-orange-500/30 mb-8 bg-black/40 backdrop-blur-sm">
-                        <span className="material-symbols-outlined text-orange-500 text-4xl">cut</span>
-                    </div>
-                    <h1 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tight mb-6">
-                        L'artisan de <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">votre style</span>
-                    </h1>
-                    <p className="text-xl md:text-2xl text-neutral-400 max-w-2xl mx-auto mb-12 font-medium">
-                        Un savoir-faire traditionnel, une ambiance authentique et un service sur-mesure pour hommes modernes.
-                    </p>
-                    <button className="bg-orange-600 hover:bg-orange-500 text-white text-lg font-bold px-10 py-4 uppercase tracking-widest rounded transition-all transform hover:scale-105 shadow-xl shadow-orange-600/20">
-                        Prendre rendez-vous en ligne
-                    </button>
+                .material-symbols-outlined {
+                    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+                }
+                .hero-text-shadow {
+                    text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+                }
+            `}</style>
+            
+            {/* Top Navigation Bar */}
+            <nav className="fixed top-0 w-full z-50 bg-[var(--color-barber-surface)]/80 backdrop-blur-md flex justify-between items-center px-12 py-6 border-b border-white/5">
+                <div className="text-2xl font-bold tracking-tight text-white font-serif">
+                    L'Atelier du Barbier
                 </div>
-            </section>
+                <div className="hidden md:flex gap-12 items-center">
+                    <a className="text-neutral-400 uppercase text-xs tracking-widest hover:text-amber-200 transition-colors duration-300" href="#services">Services</a>
+                    <a className="text-neutral-400 uppercase text-xs tracking-widest hover:text-amber-200 transition-colors duration-300" href="#gallery">Galerie</a>
+                    <a className="text-neutral-400 uppercase text-xs tracking-widest hover:text-amber-200 transition-colors duration-300" href="#team">Équipe</a>
+                </div>
+                <button className="bg-[var(--color-barber-primary-container)] text-[var(--color-barber-on-primary-container)] px-8 py-3 font-bold text-sm uppercase tracking-wider hover:opacity-90 transition-all active:scale-95 duration-150 ease-in-out">
+                    Réserver
+                </button>
+            </nav>
 
-            {/* Services */}
-            <section id="services" className="py-24 bg-neutral-900 border-t border-neutral-800">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="text-center mb-20 fade-in">
-                        <span className="text-orange-500 font-bold tracking-widest uppercase text-sm mb-4 block">Notre Expertise</span>
-                        <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tight">Services Classiques</h2>
+            <main>
+                {/* Hero Section */}
+                <section className="relative h-screen w-full flex items-center overflow-hidden">
+                    <div className="absolute inset-0 bg-black/40 z-10"></div>
+                    <img 
+                        className="absolute inset-0 w-full h-full object-cover" 
+                        src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=2000&auto=format&fit=crop" 
+                        alt="Dramatic industrial shop setting"
+                    />
+                    <div className="relative z-20 px-12 md:px-24 max-w-5xl">
+                        <h1 className="font-newsreader text-7xl md:text-9xl font-extrabold tracking-tighter text-white leading-[0.9] hero-text-shadow mb-8 uppercase">
+                            L'Atelier du <br/> Barbier:<br/>
+                            <span className="text-[var(--color-barber-primary)] italic font-normal normal-case">L'Art du Soin</span>
+                        </h1>
+                        <p className="text-xl md:text-2xl text-neutral-300 max-w-xl mb-12">
+                            Un sanctuaire pour l'homme moderne. Là où le savoir-faire artisanal rencontre la précision contemporaine au cœur de la ville.
+                        </p>
+                        <div className="flex gap-6">
+                            <a className="bg-[var(--color-barber-primary)] px-10 py-5 text-[var(--color-barber-on-primary)] font-bold uppercase tracking-widest text-sm hover:opacity-90 transition-all" href="#booking">
+                                Prendre Rendez-vous
+                            </a>
+                            <a className="border border-white/20 px-10 py-5 text-[var(--color-barber-primary)] font-bold uppercase tracking-widest text-sm hover:bg-white/5 transition-all text-center" href="#services">
+                                Nos Services
+                            </a>
+                        </div>
                     </div>
-                    
-                    <div className="grid md:grid-cols-3 gap-8">
+                </section>
+
+                {/* Services Section */}
+                <section className="py-32 px-12 md:px-24 bg-[var(--color-barber-surface)]" id="services">
+                    <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+                        <div className="max-w-2xl">
+                            <h2 className="text-[var(--color-barber-primary)] uppercase tracking-[0.4em] text-sm mb-4">Art Précis</h2>
+                            <h3 className="font-newsreader text-5xl md:text-7xl font-bold leading-tight">Des services méticuleux pour l'homme exigeant.</h3>
+                        </div>
+                        <p className="text-neutral-400 max-w-sm mb-2 font-light">
+                            Chaque prestation est une heure dévouée de savoir-faire, incluant une consultation personnalisée et des produits haut de gamme.
+                        </p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-white/5">
+                        {/* Service 01 */}
+                        <div className="group bg-[var(--color-barber-surface)] hover:bg-[var(--color-barber-surface-container-low)] transition-colors duration-500 p-12 border-b md:border-b-0 md:border-r border-white/5 flex flex-col justify-between h-[400px]">
+                            <div>
+                                <span className="material-symbols-outlined text-[var(--color-barber-primary)] text-4xl mb-8">content_cut</span>
+                                <h4 className="font-newsreader text-3xl font-bold mb-4">Coupe Signature</h4>
+                                <p className="text-neutral-400 font-light">Coupe sur mesure, dégradé de précision et finitions au rasoir avec coiffage premium.</p>
+                            </div>
+                            <div className="flex justify-between items-end">
+                                <span className="font-newsreader text-4xl text-[var(--color-barber-primary)] font-bold">65€</span>
+                                <span className="text-[10px] uppercase tracking-widest text-neutral-500">45 MINS</span>
+                            </div>
+                        </div>
+                        {/* Service 02 */}
+                        <div className="group bg-[var(--color-barber-surface-container-low)] p-12 border-b md:border-b-0 md:border-r border-white/5 flex flex-col justify-between h-[400px]">
+                            <div>
+                                <span className="material-symbols-outlined text-[var(--color-barber-primary)] text-4xl mb-8">face</span>
+                                <h4 className="font-newsreader text-3xl font-bold mb-4">Taille de Barbe Expert</h4>
+                                <p className="text-neutral-400 font-light">Sculptage, détails et soin à l'huile avec serviette chaude et contour au rasoir.</p>
+                            </div>
+                            <div className="flex justify-between items-end">
+                                <span className="font-newsreader text-4xl text-[var(--color-barber-primary)] font-bold">45€</span>
+                                <span className="text-[10px] uppercase tracking-widest text-neutral-500">30 MINS</span>
+                            </div>
+                        </div>
+                        {/* Service 03 */}
+                        <div className="group bg-[var(--color-barber-surface)] hover:bg-[var(--color-barber-surface-container-low)] transition-colors duration-500 p-12 flex flex-col justify-between h-[400px]">
+                            <div>
+                                <span className="material-symbols-outlined text-[var(--color-barber-primary)] text-4xl mb-8">spa</span>
+                                <h4 className="font-newsreader text-3xl font-bold mb-4">Rasage à l'Ancienne</h4>
+                                <p className="text-neutral-400 font-light">Le rituel ultime. Serviettes à la vapeur, huiles de pré-rasage et rasoir coupe-chou traditionnel.</p>
+                            </div>
+                            <div className="flex justify-between items-end">
+                                <span className="font-newsreader text-4xl text-[var(--color-barber-primary)] font-bold">75€</span>
+                                <span className="text-[10px] uppercase tracking-widest text-neutral-500">60 MINS</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Gallery Section */}
+                <section className="bg-black py-32 px-12 md:px-24" id="gallery">
+                    <div className="text-center mb-24">
+                        <h2 className="font-newsreader text-5xl md:text-6xl font-bold mb-4">La Galerie du Savoir-Faire</h2>
+                        <div className="w-24 h-1 bg-[var(--color-barber-primary)] mx-auto mb-8"></div>
+                    </div>
+                    <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
                         {[
-                            { title: 'Coupe Traditionnelle', desc: 'Coupe aux ciseaux, finitions à la tondeuse, shampoing et coiffage.', price: '25€', icon: 'content_cut' },
-                            { title: 'Taille de Barbe', desc: 'Rasage à l\'ancienne au coupe-chou, serviette chaude et huile nourrissante.', price: '18€', icon: 'face' },
-                            { title: 'Le Forfait Premium', desc: 'La totale : Coupe, taille de barbe, soin visage et massage crânien.', price: '40€', icon: 'local_fire_department' }
-                        ].map((service, idx) => (
-                            <div key={idx} className="bg-neutral-800 p-10 rounded text-center border border-neutral-700 hover:border-orange-500/50 transition-colors group cursor-pointer relative overflow-hidden">
-                                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 to-orange-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
-                                <span className="material-symbols-outlined text-4xl text-orange-500 mb-6">{service.icon}</span>
-                                <h3 className="text-2xl font-black text-white mb-4 uppercase">{service.title}</h3>
-                                <p className="text-neutral-400 mb-8">{service.desc}</p>
-                                <span className="text-3xl font-black text-white">{service.price}</span>
+                            "https://images.unsplash.com/photo-1503951914875-452162b0f3f1",
+                            "https://images.unsplash.com/photo-1512690196236-d5a234e73751",
+                            "https://images.unsplash.com/photo-1585747860715-2ba37e788b70",
+                            "https://images.unsplash.com/photo-1599351431202-1e0f0137899a",
+                            "https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8",
+                            "https://images.unsplash.com/photo-1590540178592-29b1aa561193"
+                        ].map((src, idx) => (
+                            <div key={idx} className="relative overflow-hidden group">
+                                <img 
+                                    className="w-full grayscale hover:grayscale-0 transition-all duration-700" 
+                                    src={`${src}?q=80&w=800&auto=format&fit=crop`} 
+                                    alt={`Grooming gallery ${idx + 1}`}
+                                />
+                                <div className="absolute inset-0 border-[0px] group-hover:border-[12px] border-[var(--color-barber-primary)]/20 transition-all duration-500 pointer-events-none"></div>
                             </div>
                         ))}
                     </div>
-                </div>
-            </section>
-            {/* Galerie */}
-            <section id="galerie" className="py-24 bg-black">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tight">Notre Travail</h2>
-                        <div className="w-16 h-1 bg-orange-500 mx-auto mt-6"></div>
-                    </div>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=800&auto=format&fit=crop" alt="Barber cut 1" className="w-full h-64 object-cover rounded hover:opacity-75 transition-opacity" />
-                        <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?q=80&w=800&auto=format&fit=crop" alt="Barber cut 2" className="w-full h-64 object-cover rounded hover:opacity-75 transition-opacity" />
-                        <img src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?q=80&w=800&auto=format&fit=crop" alt="Barber cut 3" className="w-full h-64 object-cover rounded hover:opacity-75 transition-opacity" />
-                        <img src="https://images.unsplash.com/photo-1532710093739-9470acff878b?q=80&w=800&auto=format&fit=crop" alt="Barber tools" className="w-full h-64 object-cover rounded hover:opacity-75 transition-opacity" />
-                    </div>
-                </div>
-            </section>
+                </section>
 
-            {/* Features Info Box */}
-            <section className="bg-orange-600 text-black py-16">
-                <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 text-center">
-                    <div>
-                        <span className="material-symbols-outlined text-4xl mb-4">pin_drop</span>
-                        <h4 className="font-black uppercase text-xl mb-2">Centre-ville</h4>
-                        <p className="font-medium opacity-80">14 Rue des Forgerons, <br/>85110 Chantonnay</p>
+                {/* Team Section */}
+                <section className="py-32 px-12 md:px-24 bg-[var(--color-barber-surface-container-low)]" id="team">
+                    <div className="mb-24">
+                        <h2 className="text-[var(--color-barber-primary)] uppercase tracking-[0.4em] text-sm mb-4">Les Artisans</h2>
+                        <h3 className="font-newsreader text-5xl md:text-7xl font-bold">Les Maîtres de la Lame.</h3>
                     </div>
-                    <div>
-                        <span className="material-symbols-outlined text-4xl mb-4">schedule</span>
-                        <h4 className="font-black uppercase text-xl mb-2">Horaires</h4>
-                        <p className="font-medium opacity-80">Mar-Ven: 9h - 19h <br/>Samedi: 9h - 17h</p>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                        {/* Julian */}
+                        <div className="flex flex-col md:flex-row gap-8 items-center md:items-start group">
+                            <div className="w-full md:w-1/2 aspect-[4/5] overflow-hidden">
+                                <img 
+                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                                    src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=800&auto=format&fit=crop" 
+                                    alt="Julian - Master Barber"
+                                />
+                            </div>
+                            <div className="w-full md:w-1/2 flex flex-col justify-center">
+                                <h4 className="font-newsreader text-4xl font-bold mb-2">Julian</h4>
+                                <span className="text-[var(--color-barber-primary)] uppercase tracking-widest text-xs mb-6">Fondateur & Maître Barbier</span>
+                                <p className="text-neutral-400 leading-relaxed mb-6 font-light">
+                                    Avec plus de 15 ans d'expérience, Julian se spécialise dans les techniques classiques européennes et les dégradés architecturaux. Il croit que le soin est un rituel de restauration.
+                                </p>
+                                <div className="flex gap-4">
+                                    <span className="material-symbols-outlined text-neutral-600 cursor-pointer hover:text-[var(--color-barber-primary)] transition-colors">share</span>
+                                    <span className="material-symbols-outlined text-neutral-600 cursor-pointer hover:text-[var(--color-barber-primary)] transition-colors">photo_camera</span>
+                                </div>
+                            </div>
+                        </div>
+                        {/* Elena */}
+                        <div className="flex flex-col md:flex-row gap-8 items-center md:items-start group">
+                            <div className="w-full md:w-1/2 aspect-[4/5] overflow-hidden">
+                                <img 
+                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                                    src="https://images.unsplash.com/photo-1542382156909-9ae37b3f56fd?q=80&w=800&auto=format&fit=crop" 
+                                    alt="Elena - Stylist"
+                                />
+                            </div>
+                            <div className="w-full md:w-1/2 flex flex-col justify-center">
+                                <h4 className="font-newsreader text-4xl font-bold mb-2">Elena</h4>
+                                <span className="text-[var(--color-barber-primary)] uppercase tracking-widest text-xs mb-6">Styliste & Spécialiste Barbe</span>
+                                <p className="text-neutral-400 leading-relaxed mb-6 font-light">
+                                    Elena apporte un regard éditorial au métier de barbier traditionnel. Sa maîtrise du rasoir droit et du sculptage de barbe en a fait l'une des stylistes les plus recherchées de la ville.
+                                </p>
+                                <div className="flex gap-4">
+                                    <span className="material-symbols-outlined text-neutral-600 cursor-pointer hover:text-[var(--color-barber-primary)] transition-colors">share</span>
+                                    <span className="material-symbols-outlined text-neutral-600 cursor-pointer hover:text-[var(--color-barber-primary)] transition-colors">photo_camera</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <span className="material-symbols-outlined text-4xl mb-4">phone_iphone</span>
-                        <h4 className="font-black uppercase text-xl mb-2">Contact</h4>
-                        <p className="font-medium opacity-80">02 51 00 00 00 <br/>hello@vintagebarber.fr</p>
+                </section>
+
+                {/* Booking Section */}
+                <section className="py-32 px-12 md:px-24 bg-[var(--color-barber-surface)] flex justify-center" id="booking">
+                    <div className="w-full max-w-6xl bg-[var(--color-barber-surface-container)] p-12 md:p-24 relative overflow-hidden">
+                        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20">
+                            <div>
+                                <h2 className="font-newsreader text-6xl md:text-7xl font-bold mb-8 leading-none">Votre Fauteuil vous <br/><span className="text-[var(--color-barber-primary)] italic font-normal">Attend.</span></h2>
+                                <p className="text-neutral-400 text-xl font-light mb-12">
+                                    Nous fonctionnons principalement sur rendez-vous pour garantir à chaque client notre attention indivisible et une expérience premium.
+                                </p>
+                                <div className="space-y-6">
+                                    <div className="flex items-center gap-6">
+                                        <span className="material-symbols-outlined text-[var(--color-barber-primary)]">location_on</span>
+                                        <span className="font-light">124 Rue de la Forge, Quartier Historique</span>
+                                    </div>
+                                    <div className="flex items-center gap-6">
+                                        <span className="material-symbols-outlined text-[var(--color-barber-primary)]">call</span>
+                                        <span className="font-light">02 51 00 00 00</span>
+                                    </div>
+                                    <div className="flex items-center gap-6">
+                                        <span className="material-symbols-outlined text-[var(--color-barber-primary)]">schedule</span>
+                                        <span className="font-light">Mar - Sam : 10:00 - 20:00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="bg-black/40 p-10 border border-white/5">
+                                <h4 className="font-newsreader text-3xl mb-8 font-bold">Réservation Rapide</h4>
+                                <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+                                    <div>
+                                        <label className="text-[10px] uppercase tracking-widest text-neutral-500 block mb-2 font-bold">Prestation Souhaitée</label>
+                                        <select className="w-full bg-transparent border-0 border-b border-white/20 focus:ring-0 focus:border-[var(--color-barber-primary)] px-0 text-white py-3 appearance-none">
+                                            <option>Coupe Signature</option>
+                                            <option>Taille de Barbe Expert</option>
+                                            <option>Rasage à l'Ancienne</option>
+                                            <option>L'Expérience Complète Atelier</option>
+                                        </select>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-8">
+                                        <div>
+                                            <label className="text-[10px] uppercase tracking-widest text-neutral-500 block mb-2 font-bold">Date Souhaitée</label>
+                                            <input className="w-full bg-transparent border-0 border-b border-white/20 focus:ring-0 focus:border-[var(--color-barber-primary)] px-0 text-white py-3" type="date"/>
+                                        </div>
+                                        <div>
+                                            <label className="text-[10px] uppercase tracking-widest text-neutral-500 block mb-2 font-bold">Nom Complet</label>
+                                            <input className="w-full bg-transparent border-0 border-b border-white/20 focus:ring-0 focus:border-[var(--color-barber-primary)] px-0 text-white py-3" placeholder="Jean Dupont" type="text"/>
+                                        </div>
+                                    </div>
+                                    <button className="w-full bg-[var(--color-barber-primary)] py-5 text-[var(--color-barber-on-primary)] font-bold uppercase tracking-[0.2em] hover:opacity-90 transition-all mt-4" type="submit">
+                                        Confirmer le Rendez-vous
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </main>
 
             {/* Footer */}
-            <footer className="bg-black py-12 text-center text-neutral-600">
-                <p className="mb-4">© The Vintage Barber • Artisan Indépendant</p>
-                <p className="text-sm">
-                    Démo PixUp Agency.
-                    <Link href="/portfolio" className="text-orange-500 hover:text-white transition-colors ml-2 border-b border-orange-500/30">Retour</Link>
-                </p>
+            <footer className="bg-black py-24 px-20 grid grid-cols-1 md:grid-cols-3 gap-16 w-full">
+                <div>
+                    <div className="text-xl font-serif text-amber-400 mb-8 uppercase tracking-widest">L'Atelier du Barbier</div>
+                    <p className="text-neutral-500 max-w-xs font-light leading-relaxed">
+                        Définir le soin moderne à travers un savoir-faire intemporel et une attention obsessionnelle aux détails.
+                    </p>
+                </div>
+                <div className="flex flex-col gap-4">
+                    <h5 className="text-[var(--color-barber-primary)] uppercase tracking-widest text-xs font-bold mb-4">Suivez-nous</h5>
+                    <a className="text-neutral-500 hover:text-white transition-all" href="#">Instagram</a>
+                    <a className="text-neutral-500 hover:text-white transition-all" href="#">Facebook</a>
+                    <a className="text-neutral-500 hover:text-white transition-all" href="#">Contact</a>
+                    <a className="text-neutral-500 hover:text-white transition-all" href="#">Horaires</a>
+                </div>
+                <div className="flex flex-col justify-between items-start md:items-end">
+                    <div className="text-right hidden md:block">
+                        <span className="material-symbols-outlined text-amber-400 text-5xl">stat_3</span>
+                    </div>
+                    <p className="text-neutral-500 text-sm mt-8">
+                        © 2024 L'Atelier du Barbier. 
+                        <Link href="/portfolio" className="text-[var(--color-barber-primary)] hover:underline ml-2">Retour au portfolio</Link>
+                    </p>
+                </div>
             </footer>
         </div>
     );

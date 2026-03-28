@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MTC Sports | Velocity Editorial</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,700;1,900&amp;family=Lexend:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed-variant": "#701964",
+              "surface-container-highest": "#262626",
+              "on-secondary-fixed": "#403f3f",
+              "surface-tint": "#98a9ff",
+              "on-primary-fixed-variant": "#001f7f",
+              "on-primary-container": "#001868",
+              "secondary-container": "#474646",
+              "on-secondary-container": "#d2d0cf",
+              "tertiary-fixed-dim": "#ee88d7",
+              "surface-container-high": "#201f1f",
+              "primary-container": "#859aff",
+              "on-secondary-fixed-variant": "#5c5b5b",
+              "secondary-fixed": "#e5e2e1",
+              "error-dim": "#d73357",
+              "on-surface-variant": "#adaaaa",
+              "on-background": "#ffffff",
+              "on-surface": "#ffffff",
+              "surface-container-lowest": "#000000",
+              "surface-dim": "#0e0e0e",
+              "on-error": "#490013",
+              "secondary": "#e5e2e1",
+              "on-tertiary": "#701a64",
+              "background": "#0e0e0e",
+              "outline": "#777575",
+              "surface-container": "#1a1919",
+              "inverse-primary": "#0046fc",
+              "on-tertiary-fixed": "#42003b",
+              "on-primary-fixed": "#000000",
+              "surface-container-low": "#131313",
+              "on-secondary": "#525151",
+              "tertiary": "#fface9",
+              "primary-fixed": "#859aff",
+              "primary": "#98a9ff",
+              "inverse-surface": "#fcf8f8",
+              "secondary-dim": "#d7d4d3",
+              "outline-variant": "#484847",
+              "surface": "#0e0e0e",
+              "tertiary-container": "#fe95e5",
+              "secondary-fixed-dim": "#d7d4d3",
+              "inverse-on-surface": "#565554",
+              "on-tertiary-container": "#650d5a",
+              "primary-dim": "#4065ff",
+              "tertiary-dim": "#ee88d7",
+              "error": "#ff6e84",
+              "tertiary-fixed": "#fe95e5",
+              "on-error-container": "#ffb2b9",
+              "surface-bright": "#2c2c2c",
+              "error-container": "#a70138",
+              "primary-fixed-dim": "#728bff",
+              "on-primary": "#002185",
+              "surface-variant": "#262626"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Lexend"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .diagonal-bg {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+        }
+        .kinetic-border {
+            position: relative;
+        }
+        .kinetic-border::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #98a9ff;
+        }
+        .glass-card {
+            background: rgba(38, 38, 38, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .text-stroke {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0e0e0e]/90 backdrop-blur-md border-b border-white/10">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-black italic text-[#98a9ff] uppercase tracking-tighter">
+                MTC Sports
+            </div>
+<div class="hidden md:flex items-center space-x-8 font-label text-sm uppercase tracking-widest">
+<a class="text-white/70 hover:text-white transition-colors" href="#Schedule">Schedule</a>
+<a class="text-white/70 hover:text-white transition-colors" href="#Membership">Membership</a>
+<a class="text-white/70 hover:text-white transition-colors" href="#News">News</a>
+<a class="text-white/70 hover:text-white transition-colors" href="#Contact">Contact</a>
+</div>
+<button class="bg-primary-dim text-on-primary px-6 py-2 font-label text-xs font-bold uppercase tracking-tighter rounded-md hover:bg-primary transition-all active:scale-95 duration-150">
+                Join the Club
+            </button>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative min-height-[921px] pt-32 pb-20 overflow-hidden">
+<div class="absolute inset-0 z-0 overflow-hidden">
+<img class="w-full h-full object-cover opacity-40 mix-blend-luminosity" data-alt="dynamic low angle shot of a professional basketball player mid-air during a dunk with dramatic stadium lighting and high contrast shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvrnwFA4rD34KyscxNIdWOIuM199VHNH_D0KYB6rD13aN-4-nDVU5mK53TOuscQ51QD_jKqpk9iSpJTsB0DFmY_7JwD5gSgulXkOvTjFJAAqt_RBFlA9IC70-DHMLii619TTX5xslHBcQY_V5qg6-Im9efogdmUFpfbz4dLfH9WTm9RWb0wJipH_jcpvjwOftxu1DMCw2Bu5qsszDLjjNwtAAY-QMLCp83cRTLx-WgsRhtH2v5qZTJODhLvfBL8LKp-1sFFZ585AA"/>
+<div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-transparent"></div>
+</div>
+<div class="max-w-7xl mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<div class="lg:col-span-8">
+<span class="inline-block bg-primary text-on-primary font-label text-[10px] font-bold tracking-[0.3em] px-3 py-1 mb-6 uppercase">
+                        Velocity Driven Performance
+                    </span>
+<h1 class="font-headline italic font-black text-6xl md:text-8xl lg:text-9xl leading-[0.9] tracking-tighter uppercase mb-8">
+                        Precision<br/>
+<span class="text-primary italic">In Motion.</span>
+</h1>
+<p class="font-body text-xl text-on-surface-variant max-w-xl mb-10 leading-relaxed">
+                        Push the boundaries of human potential. Join the elite network of MTC Sports and access world-class facilities and coaching.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary-dim text-on-primary px-10 py-4 font-label font-bold uppercase tracking-widest flex items-center gap-3 hover:bg-primary transition-all">
+                            Join the Club
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+</button>
+<button class="border border-outline-variant/40 hover:border-primary px-10 py-4 font-label font-bold uppercase tracking-widest transition-all">
+                            View Programs
+                        </button>
+</div>
+</div>
+<div class="hidden lg:block lg:col-span-4 relative">
+<div class="absolute -top-20 -right-20 text-9xl font-black italic opacity-10 text-stroke select-none">
+                        FAST
+                    </div>
+</div>
+</div>
+</section>
+<!-- Weekly Schedule Section -->
+<section class="py-24 bg-surface-container-low" id="Schedule">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div>
+<h2 class="font-headline italic font-bold text-4xl md:text-5xl uppercase tracking-tighter kinetic-border pb-4 mb-4">
+                            Weekly Schedule
+                        </h2>
+<p class="font-label text-sm text-on-surface-variant uppercase tracking-widest">Training sessions &amp; competitions</p>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-2 w-full md:w-auto">
+<button class="bg-primary text-on-primary px-4 py-2 font-label text-xs font-bold uppercase tracking-widest whitespace-nowrap">All Sports</button>
+<button class="bg-surface-container-highest hover:bg-surface-bright transition-colors px-4 py-2 font-label text-xs font-bold uppercase tracking-widest whitespace-nowrap">Basketball</button>
+<button class="bg-surface-container-highest hover:bg-surface-bright transition-colors px-4 py-2 font-label text-xs font-bold uppercase tracking-widest whitespace-nowrap">Tennis</button>
+<button class="bg-surface-container-highest hover:bg-surface-bright transition-colors px-4 py-2 font-label text-xs font-bold uppercase tracking-widest whitespace-nowrap">Football</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-white/5">
+<!-- Schedule Card 1 -->
+<div class="p-8 border-r border-b border-white/5 hover:bg-surface-container transition-colors group">
+<div class="flex justify-between items-start mb-12">
+<span class="font-label text-xs font-bold text-primary tracking-widest uppercase">08:00 AM — 10:00 AM</span>
+<span class="material-symbols-outlined text-white/20 group-hover:text-tertiary transition-colors">sports_basketball</span>
+</div>
+<h3 class="font-headline italic font-bold text-2xl uppercase mb-2">Elite Hoops Clinic</h3>
+<p class="text-on-surface-variant text-sm mb-8">Advanced ball handling and shooting precision.</p>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional sports coach portrait with serious expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcwpBNN5PMKqwql2u8ECnn3roF_Rj04RLlrUHSggz1lJ7G9ZRYHjOKoyUk9gbJoTrjnWz6wo2M5ZqSs6JOY3m1bGKLHkioZ-tXHkqy-4odzc_Jx2vVpKT5f-1pxaOVUH-UjXwWR2wLxW0YIcVLWVEKByI38dt6XImcHFL8r2z05U52X-oSkArZGuUVS3t4ixn4frkRxLNE6QTmwLk-2BxWRUVpJOCIWKkqEVBl38WdakmcdNR6cjp2B4UVPpnXU0JzEHogzOukeyo"/>
+</div>
+<span class="font-label text-xs uppercase tracking-widest">Coach Marcus V.</span>
+</div>
+</div>
+<!-- Schedule Card 2 -->
+<div class="p-8 border-r border-b border-white/5 bg-surface-container/50 hover:bg-surface-container transition-colors group">
+<div class="flex justify-between items-start mb-12">
+<span class="font-label text-xs font-bold text-primary tracking-widest uppercase">01:00 PM — 02:30 PM</span>
+<span class="material-symbols-outlined text-white/20 group-hover:text-tertiary transition-colors">sports_tennis</span>
+</div>
+<h3 class="font-headline italic font-bold text-2xl uppercase mb-2">Power Serve Tennis</h3>
+<p class="text-on-surface-variant text-sm mb-8">Technical biomechanics for explosive serving.</p>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="athletic female coach in sports gear portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtSGvwsxmSlgoOsRxMkd6jVMcOCP_TjSaSISDDwKjI3rcPphbZWAKBo3lM1uppdMrRpOGdVQ63Bg93BvzIMCJI_eNZLzz-FfV531-Jd35jC5wFiNdVKRW2G31EIr5sTud9iChDc20idaPBcini6ipkgLYS9VZ3jKvuvwysdstOiScT4E6ZWdKM23cT5yjX3ZE2lIF33hkPXlm7Ydh3A7aLpQlmjmWCiFwSt69yn4NLOwFEyWKPrHBM4Ye3t6zPb_Jlu_z-rttZmQQ"/>
+</div>
+<span class="font-label text-xs uppercase tracking-widest">Coach Sarah L.</span>
+</div>
+</div>
+<!-- Schedule Card 3 (Live Indicator) -->
+<div class="p-8 border-r border-b border-white/5 hover:bg-surface-container transition-colors group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2">
+<div class="flex items-center gap-2 px-2 py-1 bg-tertiary/10 rounded-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-label text-[10px] text-tertiary font-bold uppercase">Live Now</span>
+</div>
+</div>
+<div class="flex justify-between items-start mb-12">
+<span class="font-label text-xs font-bold text-primary tracking-widest uppercase">04:00 PM — 06:00 PM</span>
+<span class="material-symbols-outlined text-white/20 group-hover:text-tertiary transition-colors">sports_soccer</span>
+</div>
+<h3 class="font-headline italic font-bold text-2xl uppercase mb-2">Open Turf Match</h3>
+<p class="text-on-surface-variant text-sm mb-8">Full-field scrimmage for club members.</p>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="experienced male athlete portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmWXLJ_78viEOS2g1PzW_khcaec8lXf81eaAZemHRPCfHxuTVqfDtxpe9HREs817PCslFzeXDXhoWNWebM8wOSkCBDkyF-k42dRxFIwL_QnEIeW0bEvssh1BwUScLPihDLqLDKMYVedjFOTah5oXrfSaj4A14CUqUyPEcePr9s4F0xuF2HiHLUt0Vu0QwJxyqv-B68BZq8GnWj7Kz323NWUIChQieRdQoLC-VOq7FugBzSt1G4dILt86KE-07D9USu1sJZxGgFKcQ"/>
+</div>
+<span class="font-label text-xs uppercase tracking-widest">Lead: Alex Chen</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Membership Plans -->
+<section class="py-24 relative overflow-hidden" id="Membership">
+<div class="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-primary/20 to-transparent -rotate-12"></div>
+<div class="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-transparent via-primary/20 to-transparent 15-rotate"></div>
+<div class="max-w-7xl mx-auto px-6 relative z-10">
+<div class="text-center mb-20">
+<h2 class="font-headline italic font-black text-5xl md:text-6xl uppercase tracking-tighter mb-6">Tiered Access</h2>
+<p class="font-body text-on-surface-variant max-w-2xl mx-auto">Choose your level of performance. Every plan includes full access to our digital analytics platform.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Starter Plan -->
+<div class="glass-card p-10 flex flex-col hover:translate-y-[-8px] transition-transform duration-300">
+<div class="font-label text-xs font-bold text-on-surface-variant tracking-[0.2em] uppercase mb-4">Rookie</div>
+<div class="flex items-baseline gap-1 mb-8">
+<span class="text-4xl font-black italic">$49</span>
+<span class="text-on-surface-variant font-label text-xs uppercase">/Month</span>
+</div>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-center gap-3 font-label text-xs uppercase tracking-widest text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                Access to Courts
+                            </li>
+<li class="flex items-center gap-3 font-label text-xs uppercase tracking-widest text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                Standard Equipment
+                            </li>
+<li class="flex items-center gap-3 font-label text-xs uppercase tracking-widest text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                Locker Room Access
+                            </li>
+</ul>
+<button class="w-full border border-outline-variant/40 py-4 font-label text-xs font-bold uppercase tracking-widest hover:bg-white/5 transition-colors">Select Plan</button>
+</div>
+<!-- Pro Plan -->
+<div class="glass-card p-10 flex flex-col relative border-primary/30 hover:translate-y-[-8px] transition-transform duration-300">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-4 py-1 font-label text-[10px] font-black uppercase tracking-widest">Most Popular</div>
+<div class="font-label text-xs font-bold text-primary tracking-[0.2em] uppercase mb-4">Elite Athlete</div>
+<div class="flex items-baseline gap-1 mb-8">
+<span class="text-4xl font-black italic">$99</span>
+<span class="text-on-surface-variant font-label text-xs uppercase">/Month</span>
+</div>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-center gap-3 font-label text-xs uppercase tracking-widest">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                Everything in Rookie
+                            </li>
+<li class="flex items-center gap-3 font-label text-xs uppercase tracking-widest">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                5 Guest Passes/mo
+                            </li>
+<li class="flex items-center gap-3 font-label text-xs uppercase tracking-widest">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                Coaching Sessions (2)
+                            </li>
+<li class="flex items-center gap-3 font-label text-xs uppercase tracking-widest">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                Performance Lab Access
+                            </li>
+</ul>
+<button class="w-full bg-primary-dim text-on-primary py-4 font-label text-xs font-bold uppercase tracking-widest hover:bg-primary transition-colors">Select Plan</button>
+</div>
+<!-- Ultimate Plan -->
+<div class="glass-card p-10 flex flex-col hover:translate-y-[-8px] transition-transform duration-300">
+<div class="font-label text-xs font-bold text-tertiary tracking-[0.2em] uppercase mb-4">Pro League</div>
+<div class="flex items-baseline gap-1 mb-8">
+<span class="text-4xl font-black italic">$199</span>
+<span class="text-on-surface-variant font-label text-xs uppercase">/Month</span>
+</div>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-center gap-3 font-label text-xs uppercase tracking-widest text-on-surface-variant">
+<span class="material-symbols-outlined text-tertiary text-lg">check_circle</span>
+                                Unlimited Access 24/7
+                            </li>
+<li class="flex items-center gap-3 font-label text-xs uppercase tracking-widest text-on-surface-variant">
+<span class="material-symbols-outlined text-tertiary text-lg">check_circle</span>
+                                Personal Trainer
+                            </li>
+<li class="flex items-center gap-3 font-label text-xs uppercase tracking-widest text-on-surface-variant">
+<span class="material-symbols-outlined text-tertiary text-lg">check_circle</span>
+                                Recovery Suite Access
+                            </li>
+<li class="flex items-center gap-3 font-label text-xs uppercase tracking-widest text-on-surface-variant">
+<span class="material-symbols-outlined text-tertiary text-lg">check_circle</span>
+                                Private Lounge
+                            </li>
+</ul>
+<button class="w-full border border-tertiary/20 text-tertiary py-4 font-label text-xs font-bold uppercase tracking-widest hover:bg-tertiary/10 transition-colors">Contact for Details</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Club News Bento Grid -->
+<section class="py-24 bg-surface-container-low" id="News">
+<div class="max-w-7xl mx-auto px-6">
+<h2 class="font-headline italic font-bold text-4xl md:text-5xl uppercase tracking-tighter mb-16 kinetic-border pb-4">Latest Briefing</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[800px]">
+<!-- Large Feature News -->
+<div class="md:col-span-2 md:row-span-2 relative group overflow-hidden bg-surface-container-highest">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="high action shot of a basketball team celebrating a victory in a modern indoor arena with cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlPRrPL41rbB_QlTCJuKpgyOZedRRGBx2lhXp0QFHCfHvB2wVN4cDt62fj8kix0e1jc1KSiIPDgdXazcRP-h-MIwfsJerecPcG641THeZ8svFmf0pCeQ_LYJgWfIWvUgF2UHidvyQi0LfqQov3V6ury1Y2F51WuYz5wcRdjQHnzEtenxidC9GYNjuUSAxirlQxs4sfYBWsu5NJLBSV967oj_499UKOGaDn2IOoWRP4hpN7rffICRYfduj6cv5INnDdI-8UJKKRnHI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 p-10">
+<span class="bg-primary text-on-primary px-3 py-1 font-label text-[10px] font-black uppercase tracking-widest mb-4 inline-block">Breaking</span>
+<h3 class="font-headline italic font-black text-4xl leading-tight uppercase mb-4">Regional Finals: MTC Thunder Takes the Title</h3>
+<button class="text-white font-label text-xs font-bold uppercase tracking-widest flex items-center gap-2 hover:text-primary transition-colors">Read Full Story <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+<!-- Small News 1 -->
+<div class="md:col-span-2 md:row-span-1 relative group overflow-hidden bg-surface-container-highest">
+<img class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700" data-alt="professional tennis player striking a backhand shot with intense focus and flying sweat droplets" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDsndLrErdMfbiJnqIuhU4AU_VW1Fwf8C1bxEZJEfDgg0_Its-KqyPfP8ip9HH8m0eXs8nfUrYfWzd7Leh24OvC_BaUpoHpEw2ydYe_cTNhm8_vJdiYio9XJaa8VxCPwIv6BVd1s83m4MTn08YT5-f8NSgnxFdi9tK8WammFK-Bun2fpCTXF3bcHgC4kkt09ecEkUChT8nkfqpxYCzzaU9Q5JiWp4mUdNpLz7mKmMNrnW5VJ2nY8SD7e7SnGtHim1JVTw-oW7mFM8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 p-8">
+<h3 class="font-headline italic font-bold text-2xl uppercase mb-2">Grand Slam Preparation</h3>
+<p class="text-on-surface-variant text-sm mb-4">Summer training camp registration now open.</p>
+<span class="font-label text-[10px] text-primary font-bold uppercase tracking-widest">2 Hours Ago</span>
+</div>
+</div>
+<!-- Small News 2 -->
+<div class="md:col-span-1 md:row-span-1 relative group overflow-hidden bg-surface-container-highest">
+<div class="absolute inset-0 bg-primary-dim group-hover:bg-primary transition-colors"></div>
+<div class="absolute inset-0 p-8 flex flex-col justify-end">
+<span class="material-symbols-outlined text-on-primary mb-4 text-3xl">fitness_center</span>
+<h3 class="font-headline italic font-bold text-xl text-on-primary uppercase leading-tight">New Strength Facility Opening</h3>
+</div>
+</div>
+<!-- Small News 3 -->
+<div class="md:col-span-1 md:row-span-1 relative group overflow-hidden bg-surface-container-highest">
+<img class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700" data-alt="athlete stretching in a futuristic dark gym with neon blue accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoeXh5TG-VmAXYzxuhQsFAkIS7Ot1Ml_kQ1LdmT-BDX90QoLwDkHYVjX_viDmlY1EsX2a4gOpNFCoJSTNUqO8WJvyYOOvA2KL08vsumYMWfP2G8-osQ_Vvmu2kE-cBGqn9Q0HhVYS3QEWHD6TGkT9mYUv2giPItSkdUXC7JHPeusK9vWyesM0ntb0bh7GQxWJNmfJHSJ3mVWwKtqi_xGePRvXZl0JFFYw2_yVC0hmV_B9uG_GRZJ_Jlt9nhMV6wbVlcXk7m9hFk_E"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 p-8">
+<h3 class="font-headline italic font-bold text-xl uppercase leading-tight">Recovery Tech 2.0</h3>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-24 border-t border-white/5" id="Contact">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20">
+<div>
+<h2 class="font-headline italic font-black text-5xl md:text-6xl uppercase tracking-tighter mb-8 kinetic-border pb-4">Connect With Velocity</h2>
+<p class="font-body text-xl text-on-surface-variant mb-12 leading-relaxed">Questions about membership or specific training tracks? Our athletic directors are standing by.</p>
+<div class="space-y-8">
+<div class="flex items-start gap-6">
+<div class="bg-surface-container-highest p-4 rounded-md">
+<span class="material-symbols-outlined text-primary">location_on</span>
+</div>
+<div>
+<h4 class="font-label text-xs font-black uppercase tracking-widest text-on-surface-variant mb-1">Headquarters</h4>
+<p class="text-lg font-bold italic">88 Velocity Drive, Performance District, NY 10001</p>
+</div>
+</div>
+<div class="flex items-start gap-6">
+<div class="bg-surface-container-highest p-4 rounded-md">
+<span class="material-symbols-outlined text-primary">mail</span>
+</div>
+<div>
+<h4 class="font-label text-xs font-black uppercase tracking-widest text-on-surface-variant mb-1">Inquiries</h4>
+<p class="text-lg font-bold italic">contact@mtcsports.com</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container p-10 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 -rotate-45 translate-x-16 -translate-y-16"></div>
+<form class="space-y-6 relative z-10">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">First Name</label>
+<input class="w-full bg-surface-container-low border-0 border-b border-outline-variant focus:ring-0 focus:border-primary transition-all text-on-surface p-3" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Last Name</label>
+<input class="w-full bg-surface-container-low border-0 border-b border-outline-variant focus:ring-0 focus:border-primary transition-all text-on-surface p-3" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Email Address</label>
+<input class="w-full bg-surface-container-low border-0 border-b border-outline-variant focus:ring-0 focus:border-primary transition-all text-on-surface p-3" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Your Interests</label>
+<select class="w-full bg-surface-container-low border-0 border-b border-outline-variant focus:ring-0 focus:border-primary transition-all text-on-surface p-3">
+<option>Membership Inquiry</option>
+<option>Corporate Sponsorship</option>
+<option>Coaching Application</option>
+<option>Event Booking</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Message</label>
+<textarea class="w-full bg-surface-container-low border-0 border-b border-outline-variant focus:ring-0 focus:border-primary transition-all text-on-surface p-3" rows="4"></textarea>
+</div>
+<button class="w-full bg-primary-dim text-on-primary py-4 font-label font-black uppercase tracking-[0.2em] hover:bg-primary transition-all">Transmit Message</button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0e0e0e] w-full py-12 px-6 mt-auto border-t border-white/5">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+<div class="flex flex-col gap-6">
+<div class="text-xl font-black italic text-[#98a9ff]">MTC SPORTS</div>
+<p class="text-white/40 font-body text-sm max-w-xs leading-relaxed">
+                    Setting the standard for performance-focused sports communities since 2012. Join the movement.
+                </p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<h5 class="text-white font-label text-[10px] font-bold uppercase tracking-widest mb-4">Explore</h5>
+<a class="text-white/40 hover:text-[#fface9] transition-colors font-label text-xs uppercase" href="#">Schedule</a>
+<a class="text-white/40 hover:text-[#fface9] transition-colors font-label text-xs uppercase" href="#">Rosters</a>
+<a class="text-white/40 hover:text-[#fface9] transition-colors font-label text-xs uppercase" href="#">Facilities</a>
+</div>
+<div class="flex flex-col gap-2">
+<h5 class="text-white font-label text-[10px] font-bold uppercase tracking-widest mb-4">Legal</h5>
+<a class="text-white/40 hover:text-[#fface9] transition-colors font-label text-xs uppercase" href="#">Privacy Policy</a>
+<a class="text-white/40 hover:text-[#fface9] transition-colors font-label text-xs uppercase" href="#">Terms of Service</a>
+<a class="text-white/40 hover:text-[#fface9] transition-colors font-label text-xs uppercase" href="#">FAQ</a>
+</div>
+</div>
+<div class="flex flex-col items-start md:items-end gap-6">
+<div class="flex gap-4">
+<a class="w-10 h-10 flex items-center justify-center border border-white/10 hover:border-primary transition-all" href="#">
+<span class="material-symbols-outlined text-sm">public</span>
+</a>
+<a class="w-10 h-10 flex items-center justify-center border border-white/10 hover:border-primary transition-all" href="#">
+<span class="material-symbols-outlined text-sm">groups</span>
+</a>
+<a class="w-10 h-10 flex items-center justify-center border border-white/10 hover:border-primary transition-all" href="#">
+<span class="material-symbols-outlined text-sm">share</span>
+</a>
+</div>
+<div class="text-white/40 font-label text-[10px] uppercase tracking-tighter">
+                    © 2024 MTC Sports Association. Built for Velocity.
+                </div>
+</div>
+</div>
+</footer>
+</body></html>

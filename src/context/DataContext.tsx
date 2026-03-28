@@ -134,7 +134,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         { id: '3', title: 'Oasis Corporate Identity', category: 'Branding, Marketing', image: 'https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=2070&auto=format&fit=crop', featured: false, addedDate: 'Aug 02', active: true },
         { id: 'lawyer_1', title: 'Cabinet d\'Avocats - Landing Page', category: 'Web Development, UI/UX Design', image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2000&auto=format&fit=crop', featured: true, addedDate: 'Oct 26', active: true, url: '/templates/avocat' },
         { id: 'barber_1', title: 'The Vintage Barber - Landing Page', category: 'Web Development, Branding', image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=2000&auto=format&fit=crop', featured: false, addedDate: 'Oct 25', active: true, url: '/templates/barbier' },
-        { id: 'sport_1', title: 'Club Sportif Elite - Landing Page', category: 'Web Development, UX', image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=2000&auto=format&fit=crop', featured: false, addedDate: 'Oct 24', active: true, url: '/templates/asso-sportive' },
+        { id: 'sport_1', title: 'Sports Perf - Landing Page', category: 'Web Development, UX', image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=2000&auto=format&fit=crop', featured: false, addedDate: 'Oct 24', active: true, url: '/templates/asso-sportive' },
     ]);
 
     const [articles, setArticles] = useState<Article[]>([
@@ -144,8 +144,8 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     ]);
 
     const [testimonials, setTestimonials] = useState<Testimonial[]>([
-        { id: '1', name: 'Sarah Johnson', role: 'CEO at Techflow', content: 'PIXUP transformed our brand identity completely. Their attention to detail is unmatched in the industry.', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCV0R0saAlpYeF-pDtkxaGZsHcheXoboLneXgigeyycVajM52iv-f9EPf15lTV9gpqsFGqZrKFBsXEpEe3Qt2RGQ3k_0Qx2pHnf29cUegbhnleXPTS_XWe8L-_DNWQIqLV6sMXQRESxXTkUkN4-PBvO090nnEDcHfsllC3WivpNKXh8-7EIok_sJjoltCImRTir3_SFLQKIwY7N462BD0OO6d6uH4f1yWkkR3_GRYD_DEj_T6l9SZLj4-TGXxTmw6TXgzah9OY9knCx', active: true },
-        { id: '2', name: 'Michael Chen', role: 'Marketing Director at Innovate', content: 'Incredible work ethic and stunning designs. The team went above and beyond our expectations.', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBOGTSYycoTZEVZpNjONDvxP9Z2v5mwNIlUhljTEDsdaTlkPgyTV0K6-jXILPUxMnuiVw2xIOx_n7XCV_OgxtUkReViZNNbkUzG4rn8MZPyIpjTnIpHw_TmTtTva8B1B-JlBEfJF5z7vB-27HboTrdXcg_uFowr_EPorCLgaWOShbkj4k7Ln6p_G40R9rLl07Bm_EWiySKXmlukdpsHmfy7EDpKiACK_HUbfE6VUVayTqdklPWgukbQy1eTZmDk0gASKPZQsFX5bSbk', active: true },
+        { id: '1', name: 'Sarah Johnson', role: 'CEO at Techflow', content: 'PIXUP transformed our brand identity completely. Their attention to detail is unmatched in the industry.', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop', active: true },
+        { id: '2', name: 'Michael Chen', role: 'Marketing Director at Innovate', content: 'Incredible work ethic and stunning designs. The team went above and beyond our expectations.', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop', active: true },
     ]);
 
     const [plans, setPlans] = useState<PricingPlan[]>([
@@ -175,7 +175,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         founderName: "Denis Taveneau",
         founderRole: "Fondateur",
         founderBio: "Passionate about minimal design and creating user-centric digital experiences. Over 10 years of experience in the creative industry.",
-        founderAvatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBoIJjmXDZOgk6WrXH8dwaaXxpZwHjb1sUOvjcu-0AhQXIuHm7Gdk54leiIKUjUFgHbyPTlQRcEhDTjhbBTtnI6PfCdA5b1jQYyf5RnQA6q507D588TsVPsQInTIpTDb0asDIou9ogCoTgBZoJJfRnW9lPS66h1QHi0-QoL8oRSSDqI7nDYT2VoUjjRkOuzd7dTwpLaEEiDFXipov7hzZpNSnhUL_fyiLaf5Ela5-OXVr3Z8PKrUGuSo41MY5xNNQ-AbgKpVCJdWM1E",
+        founderAvatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop",
         linkedin: "https://linkedin.com/company/pixup",
         instagram: "https://instagram.com/pixup_agency",
         dribbble: "https://dribbble.com/pixup",
@@ -236,7 +236,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
                                 const newProjects = [
                                     { id: 'lawyer_1', title: 'Cabinet d\'Avocats - Landing Page', category: 'Web Development, UI/UX Design', image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2000&auto=format&fit=crop', featured: true, addedDate: 'Oct 26', active: true, url: '/templates/avocat' },
                                     { id: 'barber_1', title: 'The Vintage Barber - Landing Page', category: 'Web Development, Branding', image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=2000&auto=format&fit=crop', featured: false, addedDate: 'Oct 25', active: true, url: '/templates/barbier' },
-                                    { id: 'sport_1', title: 'Club Sportif Elite - Landing Page', category: 'Web Development, UX', image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=2000&auto=format&fit=crop', featured: false, addedDate: 'Oct 24', active: true, url: '/templates/asso-sportive' },
+                                    { id: 'sport_1', title: 'Sports Perf - Landing Page', category: 'Web Development, UX', image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=2000&auto=format&fit=crop', featured: false, addedDate: 'Oct 24', active: true, url: '/templates/asso-sportive' },
                                 ];
                                 parsed = [...parsed, ...newProjects];
                             }

@@ -111,7 +111,7 @@ export default function AdminSidebar() {
                     <img
                         alt="Admin User Profile"
                         className="h-10 w-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMu9lPu7U1LHHfzEJHm-L1G43fJ47kh_K318q0wbU599eG2mqt1rRjNVYk05yAweiMdi62y8OYXg_9waRkUdDMegbAJv-V_LgPtPtDxLx-Qpl9agQ4YbGH57jbyp55n-6K4471nJ2xNUiOkKY5a11cSpAFvktg7VzvrZ__-Y9uYUNjTlRJ54EmqCvXQ9cnLxc-NyeN0noAtyRucCtghM-eEIGWlMa2NzKtvdOMWOuKEnc39GheUh9hbzCziK7soSqwhgDsWlmmcKZ5"
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop"
                     />
                     <div className="flex flex-col overflow-hidden">
                         <span className="text-sm font-bold text-slate-900 dark:text-white truncate">Alex Morgan</span>

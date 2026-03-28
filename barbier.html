@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>L'Atelier du Barbier | The Art of Grooming</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,800;1,6..72,400&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-container": "#544321",
+              "on-tertiary-fixed-variant": "#554423",
+              "on-primary-fixed": "#261900",
+              "surface-bright": "#393939",
+              "tertiary-fixed-dim": "#dcc398",
+              "primary-fixed": "#ffdea5",
+              "surface": "#131313",
+              "secondary-container": "#474747",
+              "primary": "#f1c97d",
+              "on-primary-fixed-variant": "#5d4201",
+              "on-secondary-fixed-variant": "#474747",
+              "on-surface-variant": "#d0c5af",
+              "outline-variant": "#4d4635",
+              "primary-fixed-dim": "#e9c176",
+              "tertiary-container": "#c8b086",
+              "inverse-primary": "#775a19",
+              "on-secondary": "#303030",
+              "surface-container": "#201f1f",
+              "on-surface": "#e5e2e1",
+              "on-primary": "#412d00",
+              "primary-container": "#d4ad65",
+              "error-container": "#93000a",
+              "secondary": "#c8c6c5",
+              "surface-container-highest": "#353534",
+              "tertiary-fixed": "#fadfb2",
+              "inverse-surface": "#e5e2e1",
+              "on-secondary-fixed": "#1b1c1c",
+              "on-error": "#690005",
+              "surface-container-lowest": "#0e0e0e",
+              "on-tertiary": "#3d2e0f",
+              "secondary-fixed": "#e4e2e1",
+              "on-error-container": "#ffdad6",
+              "error": "#ffb4ab",
+              "surface-dim": "#131313",
+              "on-tertiary-fixed": "#261900",
+              "on-background": "#e5e2e1",
+              "surface-container-low": "#1c1b1b",
+              "surface-container-high": "#2a2a2a",
+              "on-secondary-container": "#b6b5b4",
+              "tertiary": "#e5cb9f",
+              "surface-tint": "#e9c176",
+              "surface-variant": "#353534",
+              "outline": "#99907c",
+              "background": "#131313",
+              "inverse-on-surface": "#313030",
+              "on-primary-container": "#5b4000",
+              "secondary-fixed-dim": "#c8c6c5"
+            },
+            fontFamily: {
+              "headline": ["Newsreader"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-text-shadow {
+            text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 rounded-none bg-surface/80 dark:bg-neutral-950/80 backdrop-blur-md flex justify-between items-center px-12 py-6">
+<div class="text-2xl font-bold tracking-tight text-neutral-100 dark:text-neutral-50 font-serif">
+            L'Atelier du Barbier
+        </div>
+<div class="hidden md:flex gap-12 items-center">
+<a class="text-neutral-400 dark:text-neutral-500 uppercase text-xs tracking-widest hover:text-amber-200 dark:hover:text-amber-300 transition-colors duration-300" href="#services">Services</a>
+<a class="text-neutral-400 dark:text-neutral-500 uppercase text-xs tracking-widest hover:text-amber-200 dark:hover:text-amber-300 transition-colors duration-300" href="#gallery">Gallery</a>
+<a class="text-neutral-400 dark:text-neutral-500 uppercase text-xs tracking-widest hover:text-amber-200 dark:hover:text-amber-300 transition-colors duration-300" href="#team">Team</a>
+</div>
+<button class="bg-primary-container text-on-primary-container px-8 py-3 font-label text-sm uppercase tracking-wider font-bold hover:bg-primary transition-all active:scale-95 duration-150 ease-in-out">
+            Book Now
+        </button>
+</nav>
+<!-- Hero Section -->
+<section class="relative h-screen w-full flex items-center overflow-hidden">
+<div class="absolute inset-0 bg-black/40 z-10"></div>
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="dramatic high-contrast black and white shot of a master barber focusing on a precise haircut in a moody industrial shop setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCExStkjen03-UqdnTYWzueXRmmeoQNU2C5FizMo_l5M4cgrqcvRu0c6vkxV67w5cEhC5Py8jKbRC7xqIJS64LvWPPHZP2uidNNubEsd0ozviEhJ9vfSIT0Neck3UHBrMa0EoAKDyHbIMXkkiWLUhNvt_1k9v7LKAbOWKqe2s4mW4jR0G97vvx-cXwljWxe-JJoH-eKcFW0mNdWnK1Jd3SRSwyQAz_7ZelzzRBf0UISspbirRmEmPuaYGkvow61DBKDpM1Ugm0ShYw"/>
+<div class="relative z-20 px-12 md:px-24 max-w-5xl">
+<h1 class="font-headline text-7xl md:text-9xl font-extrabold tracking-tighter text-on-surface leading-[0.9] hero-text-shadow mb-8">
+                L'Atelier du Barbier:<br/>
+<span class="text-primary italic font-normal">The Art of Grooming</span>
+</h1>
+<p class="font-body text-xl md:text-2xl text-on-surface-variant max-w-xl mb-12">
+                A sanctuary for the modern gentleman. Where heritage craft meets contemporary precision in the heart of the city.
+            </p>
+<div class="flex gap-6">
+<a class="bg-primary px-10 py-5 text-on-primary font-bold uppercase tracking-widest text-sm hover:bg-primary-fixed-dim transition-all" href="#booking">
+                    Secure an Appointment
+                </a>
+<a class="border border-outline-variant/30 px-10 py-5 text-primary font-bold uppercase tracking-widest text-sm hover:bg-surface-container-low transition-all" href="#services">
+                    Our Services
+                </a>
+</div>
+</div>
+<!-- Industrial Accent -->
+<div class="absolute bottom-0 right-0 p-12 z-20 hidden lg:block">
+<div class="flex flex-col items-end gap-2 border-r-4 border-primary pr-6 py-4">
+<span class="font-label text-xs uppercase tracking-[0.3em] text-outline">ESTD</span>
+<span class="font-headline text-4xl font-bold">2024</span>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section class="py-32 px-12 md:px-24 bg-surface" id="services">
+<div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+<div class="max-w-2xl">
+<h2 class="font-label text-primary uppercase tracking-[0.4em] text-sm mb-4">Precision Craft</h2>
+<h3 class="font-headline text-5xl md:text-7xl font-bold leading-tight">Meticulous Services for the Discerning.</h3>
+</div>
+<p class="font-body text-on-surface-variant max-w-sm mb-2">
+                Each service is a dedicated hour of craftsmanship, including a personalized consultation and premium products.
+            </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-outline-variant/10">
+<!-- Service 01 -->
+<div class="group bg-surface hover:bg-surface-container-low transition-colors duration-500 p-12 border-b md:border-b-0 md:border-r border-outline-variant/10 flex flex-col justify-between h-[400px]">
+<div>
+<span class="material-symbols-outlined text-primary text-4xl mb-8" data-icon="content_cut">content_cut</span>
+<h4 class="font-headline text-3xl font-bold mb-4">Signature Haircut</h4>
+<p class="text-on-surface-variant font-body">Custom cut, precision taper, and razor edge finish with premium styling.</p>
+</div>
+<div class="flex justify-between items-end">
+<span class="font-headline text-4xl text-primary font-bold">$65</span>
+<span class="font-label text-[10px] uppercase tracking-widest text-outline">45 MINS</span>
+</div>
+</div>
+<!-- Service 02 -->
+<div class="group bg-surface-container-low p-12 border-b md:border-b-0 md:border-r border-outline-variant/10 flex flex-col justify-between h-[400px]">
+<div>
+<span class="material-symbols-outlined text-primary text-4xl mb-8" data-icon="face">face</span>
+<h4 class="font-headline text-3xl font-bold mb-4">Master Beard Trim</h4>
+<p class="text-on-surface-variant font-body">Sculpting, detailing, and conditioning with hot towel and straight razor outlining.</p>
+</div>
+<div class="flex justify-between items-end">
+<span class="font-headline text-4xl text-primary font-bold">$45</span>
+<span class="font-label text-[10px] uppercase tracking-widest text-outline">30 MINS</span>
+</div>
+</div>
+<!-- Service 03 -->
+<div class="group bg-surface hover:bg-surface-container-low transition-colors duration-500 p-12 flex flex-col justify-between h-[400px]">
+<div>
+<span class="material-symbols-outlined text-primary text-4xl mb-8" data-icon="spa">spa</span>
+<h4 class="font-headline text-3xl font-bold mb-4">Hot Towel Shave</h4>
+<p class="text-on-surface-variant font-body">The ultimate ritual. Multi-stage steam towels, pre-shave oils, and traditional straight razor.</p>
+</div>
+<div class="flex justify-between items-end">
+<span class="font-headline text-4xl text-primary font-bold">$75</span>
+<span class="font-label text-[10px] uppercase tracking-widest text-outline">60 MINS</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Gallery Section -->
+<section class="bg-surface-container-lowest py-32 px-12 md:px-24" id="gallery">
+<div class="text-center mb-24">
+<h2 class="font-headline text-5xl md:text-6xl font-bold mb-4">The Gallery of Craft</h2>
+<div class="w-24 h-1 bg-primary mx-auto mb-8"></div>
+</div>
+<div class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+<div class="relative overflow-hidden group">
+<img class="w-full grayscale hover:grayscale-0 transition-all duration-700" data-alt="close up of a perfectly groomed pompadour hairstyle with sharp razor fade in high contrast studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsDdQ9kLqAtU80biYWhp4jyXejQOZglzmCLEKrGio8ylKqBlyQu-qtmri5LWA0dE67d6x5n1M8KGNwNRYIgtJsu--ScEDuv_2zxbBnwD9yeAdXKg_bzolNYCBMOKjwLmRe0Ev4I7SJUxUjIJIGf46_Oypv26e0C6RjT-DEOgHYggSHe6IXEpc1fbtVECWaI7K5VCt2jQFCgDBZl2rbvo4_tLP9fchdj0XyLeZal5TbFP3R6-soP6xDd62CRR6Cc0VwYByTL2soLok"/>
+<div class="absolute inset-0 border-[0px] group-hover:border-[12px] border-primary/20 transition-all duration-500"></div>
+</div>
+<div class="relative overflow-hidden group">
+<img class="w-full grayscale hover:grayscale-0 transition-all duration-700" data-alt="barber tool kit with vintage brass scissors and professional metal combs on a dark wooden surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe6b0yohH0pnES1elpheM0wSmX78nNoNjRZBNvIkIovY9qcB9LYjLpZruqokhVvz_RVd_5rtJpkxIDBxZ-qyofiMu6a7IX-gzDar4eVj2_ZSZl2rIOiWejXX6SMCkoWDW4A552PXvGwyPSm-a5Hnz1CgpyqdzI8s534gaB0_0lns4_dmB0O2oWCeJXzlic1YL9W3OhdBi0SpD_nIRkfbu7kNPA6hcgOhOgpfVGWBzj5AfFKJEH5YC4EsH0L0ALPF92Kl3Y8oFmM5s"/>
+<div class="absolute inset-0 border-[0px] group-hover:border-[12px] border-primary/20 transition-all duration-500"></div>
+</div>
+<div class="relative overflow-hidden group">
+<img class="w-full grayscale hover:grayscale-0 transition-all duration-700" data-alt="close up of a straight razor being applied to a well-groomed beard with thick white shaving foam" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIXNug3PUUKryOIaPlmAk4Rnqxqax4ajznDYRnyWd2Gem2MF1xA9RU_VZTatrz6kOJGHb3qVv4KPyi3LToj99jXadFlPWS1EBnj7IuXp2TSaECdM91Grlt1IJhf6pX2rEKhNkgpBTafIuZWpbL5rGVMySLB3F0BYxMvEIV94P_a-3BFYqwu3rcWP3iz7fXi1HeELL4XsN69vns2U08rcAl5eT40R4b51jFXRf4UhUIMxNYzvjYKyw3b-wPTalHPTNZgVA0YsWEm5E"/>
+<div class="absolute inset-0 border-[0px] group-hover:border-[12px] border-primary/20 transition-all duration-500"></div>
+</div>
+<div class="relative overflow-hidden group">
+<img class="w-full grayscale hover:grayscale-0 transition-all duration-700" data-alt="interior view of a luxury barbershop with leather chairs and industrial lighting fixtures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArgOXZmHg8oQM91EQ8LFhV16ODKtAQ_vS2oHbjE0T737wX08c5eOEZb6hN0bmLMNMoQZThOJyr0LCTRDwEOOL7_AU3TrwaIXyISUnN4_CvXhLYanTMkF841Ann4il4ujT6AAYB9krLa7L0p3Zc5RPZSr85eA_Hu4z-mQsyLxw3mrBRypGTVW40U9EMaoHWFc861SGMB9arHWmzjCpLMJCjTWj6f0IyF9yXKRCYUgGXPa7G4pkbtlDl4VTD08g87LT-D0p3HpzFXBc"/>
+<div class="absolute inset-0 border-[0px] group-hover:border-[12px] border-primary/20 transition-all duration-500"></div>
+</div>
+<div class="relative overflow-hidden group">
+<img class="w-full grayscale hover:grayscale-0 transition-all duration-700" data-alt="profile shot of a man with a sharp undercut and groomed beard looking into a mirror" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR2MukbSeaDPUcpPzGYw-ZvEuFvL7XkeGiuI0xDcrhLpgFBjv2bpFBJmcnO4QZndJkJjOKdJsfN_vOpqk4nbvsyanTLE-uStM1rGZtIey2cKgvmJy5FQNxuHdVF3xnDPwBw6VMulXXdG9es1XjNvBSUqtc-FAQfLeHm-qnBD1u8e1T6nAj5O5Ujoqt9Au6dZ6ymPMh7outVTHuEHFGXvNGpGhzLJizJ5GEmvesD5fIlp7AXXj5fMLkxm8TurSQugJmSQjUNnNp_3Q"/>
+<div class="absolute inset-0 border-[0px] group-hover:border-[12px] border-primary/20 transition-all duration-500"></div>
+</div>
+<div class="relative overflow-hidden group">
+<img class="w-full grayscale hover:grayscale-0 transition-all duration-700" data-alt="barber finishing a haircut with a brush and fine mist spray in a moody environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy0xPP0TRpOlsREkBvjJe13AqOWpnqO5gTFkW22WOkTJ8HPtjiGEPI5etMH3o013rQSng1oQSLxMuRfCHibhBusZmK8oKT49pzmMpUrIrburVmivUaOjZVfUVVP-57ef4ACoierw0FN6LK2Nml3QoRM3PnlkTTPKJwQTuX1tbNGPPA4_0JeHvpQ1USdWa_dQuEbP84OTn8x6Q9ZM61_o-8Y5P0uf7X2EQzfHiaJXhgkUiP3XRaJkOfXKgCAwwNePoJ4xNyp8SDrG8"/>
+<div class="absolute inset-0 border-[0px] group-hover:border-[12px] border-primary/20 transition-all duration-500"></div>
+</div>
+</div>
+</section>
+<!-- Team Section -->
+<section class="py-32 px-12 md:px-24 bg-surface-container-low" id="team">
+<div class="mb-24">
+<h2 class="font-label text-primary uppercase tracking-[0.4em] text-sm mb-4">The Artisans</h2>
+<h3 class="font-headline text-5xl md:text-7xl font-bold">Masters of the Blade.</h3>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+<!-- Julian -->
+<div class="flex flex-col md:flex-row gap-8 items-center md:items-start group">
+<div class="w-full md:w-1/2 aspect-[4/5] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="professional headshot of a stylish male barber with tattoos and a vest standing in a shop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFVe6vOTJmflwUgTvM2nqexeVHqvAvXkDQ3LfjEZ20tHtxJm7Gd_H_XzPEvq3Jejwl-rNaXGJ3xyoOywdG9bs_aTsN-tVTqm20t6Ac5OwTRN-s0MLgcc30FcDyiESjbLPjOHOp7E3QJAxabYjy2kJA8a7hP---04KTp4VPrXuCNvCfiebND_myoSxaBtLHwf9eCrAnwsHJ87b_cjS9P6gpipbJRtgisf4fVfI1c6YoOIy8WwHHGNP_3pJw9RDr7NikqdmZ4mr3Nfs"/>
+</div>
+<div class="w-full md:w-1/2 flex flex-col justify-center">
+<h4 class="font-headline text-4xl font-bold mb-2">Julian</h4>
+<span class="font-label text-primary uppercase tracking-widest text-xs mb-6">Founder &amp; Master Barber</span>
+<p class="text-on-surface-variant leading-relaxed mb-6 font-body">
+                        With over 15 years in the industry, Julian specializes in classic European techniques and architectural fades. He believes grooming is a ritual of restoration.
+                    </p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary transition-colors" data-icon="share">share</span>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary transition-colors" data-icon="photo_camera">photo_camera</span>
+</div>
+</div>
+</div>
+<!-- Elena -->
+<div class="flex flex-col md:flex-row gap-8 items-center md:items-start group">
+<div class="w-full md:w-1/2 aspect-[4/5] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="professional headshot of a female barber with modern style focusing on her tools in a luxury salon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4j2uvlNSFWP1hncYpzcFe_Ag56c8lJUewfkHkXIfmd0UAZNARcyV5Cl9DIxBMxUfZ4gCylV7HsOfx0vjn2PgKBA13DD7fSoudsh6yjOeCeoX96ZLY7myyJ0rWZLYu62oq4AirldCdE9dMoKzau29t_7NdtP0cPAY7RZS7n9yOLdRVysci7eVH4kQ44LVdvTxTkfCV2YwLEjf-NIU60htEGeD2esVlHV05TXFCp1YDTHRGWgTCfqRbyy3G8Ym3rHk2voZoXQPr31c"/>
+</div>
+<div class="w-full md:w-1/2 flex flex-col justify-center">
+<h4 class="font-headline text-4xl font-bold mb-2">Elena</h4>
+<span class="font-label text-primary uppercase tracking-widest text-xs mb-6">Stylist &amp; Beard Specialist</span>
+<p class="text-on-surface-variant leading-relaxed mb-6 font-body">
+                        Elena brings an editorial eye to traditional barbering. Her mastery of the straight razor and beard sculpting has made her one of the most sought-after stylists in the city.
+                    </p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary transition-colors" data-icon="share">share</span>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary transition-colors" data-icon="photo_camera">photo_camera</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Booking Section -->
+<section class="py-32 px-12 md:px-24 bg-surface flex justify-center" id="booking">
+<div class="w-full max-w-6xl bg-surface-container-high p-12 md:p-24 relative overflow-hidden">
+<!-- Brass Texture Accent -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 -mr-32 -mt-32 rounded-full blur-3xl"></div>
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20">
+<div>
+<h2 class="font-headline text-6xl md:text-7xl font-bold mb-8 leading-none">Your Seat is <br/><span class="text-primary italic">Waiting.</span></h2>
+<p class="text-on-surface-variant text-xl font-body mb-12">
+                        We operate primarily by appointment to ensure every guest receives our undivided attention and a premium experience.
+                    </p>
+<div class="space-y-6">
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<span class="font-body">124 Rue de la Forge, Heritage District</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-primary" data-icon="call">call</span>
+<span class="font-body">+1 (555) 890-4422</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-primary" data-icon="schedule">schedule</span>
+<span class="font-body">Tue - Sat: 10:00 AM - 8:00 PM</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-10 border-b border-outline-variant/30">
+<h4 class="font-headline text-3xl mb-8">Quick Reserve</h4>
+<form class="space-y-8">
+<div>
+<label class="font-label text-[10px] uppercase tracking-widest text-outline block mb-2">Service Required</label>
+<select class="w-full bg-transparent border-0 border-b border-outline-variant/50 focus:ring-0 focus:border-primary px-0 text-on-surface py-3 appearance-none">
+<option>Signature Haircut</option>
+<option>Master Beard Trim</option>
+<option>Hot Towel Shave</option>
+<option>The Full Atelier Experience</option>
+</select>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div>
+<label class="font-label text-[10px] uppercase tracking-widest text-outline block mb-2">Preferred Date</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/50 focus:ring-0 focus:border-primary px-0 text-on-surface py-3" type="date"/>
+</div>
+<div>
+<label class="font-label text-[10px] uppercase tracking-widest text-outline block mb-2">Full Name</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/50 focus:ring-0 focus:border-primary px-0 text-on-surface py-3" placeholder="John Doe" type="text"/>
+</div>
+</div>
+<button class="w-full bg-primary py-5 text-on-primary font-bold uppercase tracking-[0.2em] hover:bg-primary-fixed-dim transition-all mt-4" type="submit">
+                            Book Your Appointment
+                        </button>
+</form>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-neutral-900 dark:bg-black py-24 px-20 grid grid-cols-1 md:grid-cols-3 gap-16 w-full">
+<div>
+<div class="text-xl font-serif text-amber-400 mb-8">L'Atelier du Barbier</div>
+<p class="text-neutral-500 max-w-xs font-body leading-relaxed">
+                Defining modern grooming through timeless craftsmanship and obsessive attention to detail.
+            </p>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-amber-400 uppercase tracking-widest text-xs font-bold mb-4">Connect</h5>
+<a class="text-neutral-500 hover:text-amber-200 underline-offset-4 decoration-amber-400 transition-all font-body" href="#">Instagram</a>
+<a class="text-neutral-500 hover:text-amber-200 underline-offset-4 decoration-amber-400 transition-all font-body" href="#">Facebook</a>
+<a class="text-neutral-500 hover:text-amber-200 underline-offset-4 decoration-amber-400 transition-all font-body" href="#">Contact</a>
+<a class="text-neutral-500 hover:text-amber-200 underline-offset-4 decoration-amber-400 transition-all font-body" href="#">Hours</a>
+</div>
+<div class="flex flex-col justify-between items-start md:items-end">
+<div class="text-right hidden md:block">
+<span class="material-symbols-outlined text-amber-400 text-5xl" data-icon="stat_3">stat_3</span>
+</div>
+<p class="text-neutral-500 text-sm mt-8">
+                © 2024 L'Atelier du Barbier. All Rights Reserved.
+            </p>
+</div>
+</footer>
+</body></html>

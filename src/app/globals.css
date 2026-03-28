@@ -15,6 +15,37 @@
   --color-tech-purple: #A855F7;
   --color-tech-magenta: #D946EF;
 
+  /* Lawyer Palette */
+  --color-lawyer-primary: #000666;
+  --color-lawyer-primary-fixed: #e0e0ff;
+  --color-lawyer-on-primary: #ffffff;
+  --color-lawyer-surface: #f8f9fa;
+  --color-lawyer-on-surface: #191c1d;
+  --color-lawyer-tertiary: #251800;
+  --color-lawyer-tertiary-fixed-dim: #e9c176;
+  --color-lawyer-surface-container: #edeeef;
+  --color-lawyer-surface-container-low: #f3f4f5;
+
+  /* Barber Palette */
+  --color-barber-primary: #f1c97d;
+  --color-barber-on-primary: #412d00;
+  --color-barber-surface: #131313;
+  --color-barber-on-surface: #e5e2e1;
+  --color-barber-primary-container: #d4ad65;
+  --color-barber-on-primary-container: #5b4000;
+  --color-barber-surface-container: #201f1f;
+  --color-barber-surface-container-low: #1c1b1b;
+
+  /* Sports Palette */
+  --color-sports-primary: #98a9ff;
+  --color-sports-on-primary: #002185;
+  --color-sports-surface: #0e0e0e;
+  --color-sports-on-surface: #ffffff;
+  --color-sports-primary-dim: #4065ff;
+  --color-sports-surface-container: #1a1919;
+  --color-sports-surface-container-low: #131313;
+  --color-sports-tertiary: #fface9;
+
   /* Neutrals */
   --color-neutral-50: #F8F9FA;
   --color-neutral-100: #E9ECEF;
@@ -29,6 +60,12 @@
 
   --font-display: "Inter", "sans-serif";
   --font-sans: "Inter", "sans-serif";
+  --font-serif: "Noto Serif", "serif";
+  --font-headline: "Inter", "sans-serif";
+  --font-newsreader: "Newsreader", "serif";
+  --font-manrope: "Manrope", "sans-serif";
+  --font-lexend: "Lexend", "sans-serif";
+
   --radius-xl: 0.75rem;
   --radius-2xl: 1rem;
   --radius-3xl: 1.5rem;
@@ -52,6 +89,30 @@
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .diagonal-bg {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+  }
+  .kinetic-border {
+    position: relative;
+  }
+  .kinetic-border::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--color-sports-primary);
+  }
+  .text-stroke {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+    color: transparent;
   }
 }
 
