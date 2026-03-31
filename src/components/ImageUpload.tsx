@@ -17,28 +17,48 @@ export default function ImageUpload({ value, onChange, label }: ImageUploadProps
 
     const safeValue = value || '';
 
-    const handleFile = (file: File) => {
+    const handleFile = async (file: File) => {
         setError(null);
-        if (file.size > 2 * 1024 * 1024) {
-            setError("L'image est trop volumineuse (max 2Mo pour le stockage local)");
+        
+        if (file.size > 5 * 1024 * 1024) {
+            setError("L'image est trop volumineuse (max 5Mo)");
             return;
         }
 
         if (file && file.type.startsWith('image/')) {
             setIsReading(true);
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                if (e.target?.result) {
-                    onChange(e.target.result as string);
+            
+            try {
+                // Cloudinary Unsigned Upload Logic
+                const formData = new FormData();
+                formData.append('file', file);
+                // Utilisation du Cloud Name "kinalguw6iv" trouvé dans les logs
+                // IMPORTANT: L'utilisateur doit avoir un "unsigned upload preset" nommé "pixup_preset"
+                formData.append('upload_preset', 'pixup_preset'); 
+                
+                const response = await fetch(
+                    `https://api.cloudinary.com/v1_1/kinalguw6iv/image/upload`,
+                    {
+                        method: 'POST',
+                        body: formData,
+                    }
+                );
+
+                const data = await response.json();
+
+                if (data.secure_url) {
+                    onChange(data.secure_url);
                     setUseUrl(false);
+                } else {
+                    console.error("Cloudinary Error:", data);
+                    setError(data.error?.message || "Erreur lors de l'envoi vers Cloudinary");
                 }
+            } catch (err) {
+                console.error("Upload failed:", err);
+                setError("Erreur réseau lors de l'envoi de l'image");
+            } finally {
                 setIsReading(false);
-            };
-            reader.onerror = () => {
-                setError("Erreur lors de la lecture du fichier");
-                setIsReading(false);
-            };
-            reader.readAsDataURL(file);
+            }
         } else {
             setError("Veuillez sélectionner un fichier image valide");
         }

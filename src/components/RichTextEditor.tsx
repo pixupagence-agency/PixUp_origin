@@ -42,15 +42,32 @@ const MenuBar = ({ editor }: { editor: any }) => {
         const input = document.createElement('input');
         input.type = 'file';
         input.accept = 'image/*';
-        input.onchange = (e: any) => {
+        input.onchange = async (e: any) => {
             const file = e.target.files[0];
             if (file) {
-                const reader = new FileReader();
-                reader.onload = (readerEvent) => {
-                    const content = readerEvent.target?.result as string;
-                    editor.chain().focus().setImage({ src: content }).run();
-                };
-                reader.readAsDataURL(file);
+                try {
+                    const formData = new FormData();
+                    formData.append('file', file);
+                    formData.append('upload_preset', 'pixup_preset');
+                    
+                    const response = await fetch(
+                        `https://api.cloudinary.com/v1_1/kinalguw6iv/image/upload`,
+                        {
+                            method: 'POST',
+                            body: formData,
+                        }
+                    );
+
+                    const data = await response.json();
+                    if (data.secure_url) {
+                        editor.chain().focus().setImage({ src: data.secure_url }).run();
+                    } else {
+                        alert("Erreur lors de l'upload de l'image sur Cloudinary");
+                    }
+                } catch (err) {
+                    console.error("RichTextEditor upload failed:", err);
+                    alert("Erreur réseau lors de l'upload");
+                }
             }
         };
         input.click();
