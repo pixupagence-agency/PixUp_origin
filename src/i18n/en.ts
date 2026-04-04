@@ -319,6 +319,8 @@ export const en = {
         heroDescription: "Choose a plan that fits your ambition. Upgrade or cancel anytime with zero hidden fees.",
         monthly: "Monthly",
         yearly: "Yearly",
+        monthlyShort: "/mo",
+        yearlyShort: "/yr",
         save20: "Save 20%",
         mostPopular: "Most Popular",
         getStarted: "Get Started",

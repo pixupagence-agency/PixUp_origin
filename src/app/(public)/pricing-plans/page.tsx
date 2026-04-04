@@ -43,28 +43,7 @@ export default function PricingPlans() {
                         <p className="text-lg text-slate-600 dark:text-slate-400 mb-10">
                             {t.pricing.heroDescription}
                         </p>
-                        {/*  Billing Toggle  */}
-                        <div className="inline-flex items-center p-1.5 rounded-full border border-slate-200 bg-white/50 dark:bg-slate-800/50 dark:border-slate-700 backdrop-blur-sm relative shadow-sm">
-                            <div className="relative z-10 flex text-slate-500">
-                                <label className="group relative cursor-pointer">
-                                    <input defaultChecked className="peer sr-only" name="billing" type="radio" value="monthly" />
-                                    <span className="flex items-center justify-center px-6 py-2 text-sm font-medium rounded-full transition-all duration-200 peer-checked:bg-white peer-checked:text-slate-900 peer-checked:shadow-sm dark:peer-checked:bg-slate-700 dark:peer-checked:text-white">
-                                        {t.pricing.monthly}
-                                    </span>
-                                </label>
-                                <label className="group relative cursor-pointer">
-                                    <input className="peer sr-only" name="billing" type="radio" value="yearly" />
-                                    <span className="flex items-center justify-center px-6 py-2 text-sm font-medium rounded-full transition-all duration-200 peer-checked:bg-white peer-checked:text-slate-900 peer-checked:shadow-sm dark:peer-checked:bg-slate-700 dark:peer-checked:text-white">
-                                        {t.pricing.yearly}
-                                    </span>
-                                </label>
-                            </div>
-                            <div className="absolute -right-24 top-1/2 -translate-y-1/2 hidden sm:block">
-                                <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-accent/20 text-accent border border-accent/30">
-                                    {t.pricing.save20}
-                                </span>
-                            </div>
-                        </div>
+
                     </div>
 
                     {/*  Pricing Cards Grid  */}
@@ -88,7 +67,10 @@ export default function PricingPlans() {
                                 <div className="flex items-baseline gap-1 mb-8">
                                     <span className="text-5xl font-black text-slate-900 dark:text-white tracking-tight">{plan.price}</span>
                                     {plan.billingCycle === 'monthly' && (
-                                        <span className="text-slate-500 dark:text-slate-400 font-medium">/mo</span>
+                                        <span className="text-slate-500 dark:text-slate-400 font-medium">{t.pricing.monthlyShort}</span>
+                                    )}
+                                    {plan.billingCycle === 'yearly' && (
+                                        <span className="text-slate-500 dark:text-slate-400 font-medium">{t.pricing.yearlyShort}</span>
                                     )}
                                 </div>
                                 <a className={`flex items-center justify-center w-full py-4 px-4 rounded-2xl font-bold text-base transition-all ${plan.popular ? 'brand-gradient text-white shadow-lg shadow-primary/25 hover:opacity-90' : 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700'}`} href="#">

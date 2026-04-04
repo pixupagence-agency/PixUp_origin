@@ -320,6 +320,8 @@ export const fr = {
         heroDescription: "Choisissez un plan qui correspond à votre ambition. Améliorez ou annulez à tout moment sans frais cachés.",
         monthly: "Mensuel",
         yearly: "Annuel",
+        monthlyShort: "/mois",
+        yearlyShort: "/an",
         save20: "Économisez 20%",
         mostPopular: "Le Plus Populaire",
         getStarted: "Démarrer",

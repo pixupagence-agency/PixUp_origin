@@ -32,7 +32,7 @@ export interface PricingPlan {
     popular: boolean;
     users: number;
     features: string[];
-    billingCycle: 'monthly' | 'one-time';
+    billingCycle: 'monthly' | 'yearly' | 'one-time';
 }
 
 export interface FAQItem {
@@ -151,7 +151,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const [plans, setPlans] = useState<PricingPlan[]>([
         { id: '1', name: 'Starter', price: '49€', description: 'Perfect for freelancers and solo creators.', active: true, popular: false, users: 128, features: ['5 Active Projects', 'Basic Support (Email)', 'Community Access', 'Standard Analytics'], billingCycle: 'monthly' },
         { id: '2', name: 'Professional', price: '99€', description: 'For growing teams demanding power.', active: true, popular: true, users: 542, features: ['Unlimited Active Projects', 'Priority 24/7 Support', 'Full Source Files Access', 'Advanced Analytics & Reporting', 'Team Collaboration Tools'], billingCycle: 'monthly' },
-        { id: '3', name: 'Agency', price: '199€', description: 'Scale your operations with full control.', active: true, popular: false, users: 86, features: ['Dedicated Account Manager', 'White Labeling Options', 'Custom API Access', 'Custom Contracts & SLAs', 'SSO & Advanced Security'], billingCycle: 'monthly' },
+        { id: '3', name: 'Agency', price: '1999€', description: 'Scale your operations with full control.', active: true, popular: false, users: 86, features: ['Dedicated Account Manager', 'White Labeling Options', 'Custom API Access', 'Custom Contracts & SLAs', 'SSO & Advanced Security'], billingCycle: 'yearly' },
     ]);
 
     const [faqs, setFaqs] = useState<FAQItem[]>([

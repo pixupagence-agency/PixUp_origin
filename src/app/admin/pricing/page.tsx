@@ -16,7 +16,7 @@ export default function AdminPricing() {
         price: "",
         description: "",
         features: "",
-        billingCycle: "monthly" as "monthly" | "one-time",
+        billingCycle: "monthly" as "monthly" | "yearly" | "one-time",
         active: true,
         popular: false
     });
@@ -159,7 +159,7 @@ export default function AdminPricing() {
                                         <p className="text-2xl font-black text-slate-900 dark:text-white mt-1">
                                             {plan.price}
                                             <span className="text-sm font-normal text-slate-500 dark:text-slate-400">
-                                                {plan.billingCycle === 'monthly' ? '/mo' : ` (${t.admin.oneTime})`}
+                                                {plan.billingCycle === 'monthly' ? '/mo' : plan.billingCycle === 'yearly' ? '/yr' : ` (${t.admin.oneTime})`}
                                             </span>
                                         </p>
                                         <p className="mt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400 line-clamp-2">
@@ -255,10 +255,11 @@ export default function AdminPricing() {
                                     <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">Type</label>
                                     <select
                                         value={formData.billingCycle}
-                                        onChange={(e) => setFormData({ ...formData, billingCycle: e.target.value as 'monthly' | 'one-time' })}
+                                        onChange={(e) => setFormData({ ...formData, billingCycle: e.target.value as 'monthly' | 'yearly' | 'one-time' })}
                                         className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all bg-white"
                                     >
-                                        <option value="monthly">{t.admin.monthly}</option>
+                                        <option value="monthly">{t.pricing.monthly}</option>
+                                        <option value="yearly">{t.pricing.yearly}</option>
                                         <option value="one-time">{t.admin.oneTime}</option>
                                     </select>
                                 </div>
