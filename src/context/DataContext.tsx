@@ -10,6 +10,8 @@ export interface Service {
     active: boolean;
     projects: number;
     color: string;
+    longDescription?: string;
+    benefits?: string[];
 }
 
 export interface Project {
@@ -123,10 +125,50 @@ const DataContext = createContext<DataContextType | undefined>(undefined);
 export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     // Initial data matching the current UI
     const [services, setServices] = useState<Service[]>([
-        { id: '1', name: 'Branding', description: 'Crafting unique visual identities that resonate with your audience and tell your story.', icon: 'diamond', active: true, projects: 12, color: 'blue' },
-        { id: '2', name: 'UI/UX Design', description: 'Designing intuitive, user-centric interfaces that provide seamless digital experiences.', icon: 'layers', active: true, projects: 28, color: 'purple' },
-        { id: '3', name: 'Web Development', description: 'Building robust, scalable websites and applications using modern technologies.', icon: 'code', active: true, projects: 45, color: 'blue' },
-        { id: '4', name: 'SEO & Marketing', description: 'Strategic campaigns that drive growth, engagement, and measurable results.', icon: 'campaign', active: false, projects: 0, color: 'orange' },
+        { 
+            id: '1', 
+            name: 'Branding', 
+            description: 'Crafting unique visual identities that resonate with your audience and tell your story.', 
+            icon: 'diamond', 
+            active: true, 
+            projects: 12, 
+            color: 'blue',
+            longDescription: "Nous créons des identités de marque qui ne se contentent pas d'être belles, mais qui racontent une histoire et véhiculent vos valeurs. Notre approche stratégique du branding vous permet de vous démarquer dans un marché saturé.",
+            benefits: ["Logo & Charte Graphique complète", "Positionnement & Identité verbale", "Supports de communication print & digitaux", "Brand Book & Guidelines"]
+        },
+        { 
+            id: '2', 
+            name: 'UI/UX Design', 
+            description: 'Designing intuitive, user-centric interfaces that provide seamless digital experiences.', 
+            icon: 'layers', 
+            active: true, 
+            projects: 28, 
+            color: 'purple',
+            longDescription: "Nous concevons des interfaces digitales qui placent l'utilisateur au centre. En alliant esthétique moderne et ergonomie irréprochable, nous créons des parcours fluides qui maximisent vos taux de conversion.",
+            benefits: ["Recherche utilisateur & Personas", "Wireframing & Prototypage interactif", "Design d'interface (UI) haute fidélité", "Tests utilisateurs & Itérations"]
+        },
+        { 
+            id: '3', 
+            name: 'Web Development', 
+            description: 'Building robust, scalable websites and applications using modern technologies.', 
+            icon: 'code', 
+            active: true, 
+            projects: 45, 
+            color: 'blue',
+            longDescription: "Nous transformons vos visions en réalité grâce à un code propre, performant et évolutif. Spécialistes des technologies modernes comme React et Next.js, nous construisons des solutions qui durent.",
+            benefits: ["Développement sur mesure (React / Next.js)", "Sites E-commerce performants", "Applications Web complexes", "Performance & SEO technique optimisés"]
+        },
+        { 
+            id: '4', 
+            name: 'SEO & Marketing', 
+            description: 'Strategic campaigns that drive growth, engagement, and measurable results.', 
+            icon: 'campaign', 
+            active: false, 
+            projects: 0, 
+            color: 'orange',
+            longDescription: "Nous vous aidons à acquérir et fidéliser vos clients grâce à des stratégies marketing data-driven. De l'optimisation pour les moteurs de recherche à la gestion de campagnes, nous boostons votre visibilité.",
+            benefits: ["Audit SEO complet & Stratégie de mots-clés", "Marketing de contenu & Copywriting", "Publicité en ligne (Google Ads, Social Ads)", "Analyse de données & Reporting mensuel"]
+        },
     ]);
 
     const [projects, setProjects] = useState<Project[]>([

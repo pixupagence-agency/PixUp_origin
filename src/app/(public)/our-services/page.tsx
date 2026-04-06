@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/context/LanguageContext";
 import { useData } from "@/context/DataContext";
+import Link from "next/link";
 
 export default function OurServices() {
     const { t } = useLanguage();
@@ -35,9 +36,12 @@ export default function OurServices() {
                                     <p className="mt-2 flex-auto text-base leading-7 text-neutral-500 dark:text-slate-400">
                                         {service.description}
                                     </p>
-                                    <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-primary">
+                                    <Link 
+                                        href={`/our-services/${service.id}`}
+                                        className="mt-6 flex items-center gap-2 text-sm font-semibold text-primary group-hover:text-primary/80 transition-colors"
+                                    >
                                         {t.servicesPage.learnMore} <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
-                                    </div>
+                                    </Link>
                                 </div>
                             </div>
                         ))}

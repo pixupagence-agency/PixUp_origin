@@ -2,11 +2,14 @@
 
 import { useLanguage } from "@/context/LanguageContext";
 import { useData } from "@/context/DataContext";
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+import { PricingPlan, Service } from "@/context/DataContext";
 
-export default function ContactUs() {
+function ContactFormContent() {
   const { t } = useLanguage();
-  const { settings, trackLead, recordActivity } = useData();
+  const { settings, plans, services, trackLead, recordActivity } = useData();
+  const searchParams = useSearchParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState("");
@@ -18,6 +21,13 @@ export default function ContactUs() {
     projectType: "",
     message: ""
   });
+
+  useEffect(() => {
+    const subject = searchParams.get('subject');
+    if (subject) {
+      setFormData(prev => ({ ...prev, projectType: subject }));
+    }
+  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -158,10 +168,19 @@ export default function ContactUs() {
                           onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
                         >
                           <option value="" disabled>{t.contactPage.form.selectType}</option>
-                          <option value="web-design">{t.contactPage.form.webDev}</option>
-                          <option value="branding">{t.contactPage.form.branding}</option>
-                          <option value="marketing">{t.contactPage.form.marketing}</option>
-                          <option value="other">{t.contactPage.form.other}</option>
+                          <optgroup label="Nos Formules">
+                            {plans.filter(p => p.active).map((p: PricingPlan) => (
+                              <option key={p.id} value={`Formule ${p.name}`}>{p.name}</option>
+                            ))}
+                          </optgroup>
+                          <optgroup label="Nos Services">
+                            {services.filter(s => s.active).map((s: Service) => (
+                              <option key={s.id} value={`Service ${s.name}`}>{s.name}</option>
+                            ))}
+                          </optgroup>
+                          <optgroup label="Autre">
+                            <option value="other">{t.contactPage.form.other}</option>
+                          </optgroup>
                         </select>
                         <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-400">
                           <span className="material-symbols-outlined">expand_more</span>
@@ -281,7 +300,14 @@ export default function ContactUs() {
           </div>
         </div>
       </main>
-
     </>
+  );
+}
+
+export default function ContactUs() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center dark:bg-background-dark"><div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin"></div></div>}>
+      <ContactFormContent />
+    </Suspense>
   );
 }

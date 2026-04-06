@@ -80,7 +80,11 @@ export default function PixupHomePage() {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {services.filter(s => s.active).slice(0, 4).map((service) => (
-                            <div key={service.id} className="group p-8 rounded-2xl bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-white/5 shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
+                            <Link 
+                                key={service.id} 
+                                href={`/our-services/${service.id}`}
+                                className="group p-8 rounded-2xl bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-white/5 shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 block"
+                            >
                                 <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:brand-gradient group-hover:text-white transition-all duration-300">
                                     <span className="material-symbols-outlined text-2xl">{service.icon}</span>
                                 </div>
@@ -88,7 +92,7 @@ export default function PixupHomePage() {
                                 <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3">
                                     {service.description}
                                 </p>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </section>
@@ -139,8 +143,8 @@ export default function PixupHomePage() {
                                 </div>
                                 {/*  Floating Stat Card  */}
                                 <div className="absolute -bottom-8 -left-8 md:bottom-8 md:-left-12 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md p-6 rounded-xl shadow-xl border border-slate-100 dark:border-white/10 max-w-[200px]">
-                                    <div className="text-4xl font-black text-primary mb-1">10+</div>
-                                    <div className="text-sm font-medium text-slate-600 dark:text-slate-400">{t.home.statsYears}</div>
+                                    <div className="text-2xl font-black text-primary mb-1 uppercase tracking-tighter">Expertise</div>
+                                    <div className="text-sm font-medium text-slate-600 dark:text-slate-400">Innovation & Qualité</div>
                                 </div>
                             </div>
                         </div>
