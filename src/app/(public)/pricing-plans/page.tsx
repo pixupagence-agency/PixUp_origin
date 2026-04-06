@@ -4,10 +4,21 @@ import { useLanguage } from "@/context/LanguageContext";
 import { useData } from "@/context/DataContext";
 import PixelGrid from "@/components/PixelGrid";
 import { notFound } from "next/navigation";
+import Modal from "@/components/Modal";
+import { useState } from "react";
+import { PricingPlan } from "@/context/DataContext";
 
 export default function PricingPlans() {
     const { t } = useLanguage();
     const { plans, faqs, settings } = useData();
+    const [selectedPlan, setSelectedPlan] = useState<PricingPlan | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openPlanDetails = (e: React.MouseEvent, plan: PricingPlan) => {
+        e.preventDefault();
+        setSelectedPlan(plan);
+        setIsModalOpen(true);
+    };
 
     if (!settings.showPricing) {
         notFound();
@@ -73,9 +84,12 @@ export default function PricingPlans() {
                                         <span className="text-slate-500 dark:text-slate-400 font-medium">{t.pricing.yearlyShort}</span>
                                     )}
                                 </div>
-                                <a className={`flex items-center justify-center w-full py-4 px-4 rounded-2xl font-bold text-base transition-all ${plan.popular ? 'brand-gradient text-white shadow-lg shadow-primary/25 hover:opacity-90' : 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700'}`} href="#">
+                                <button 
+                                    className={`flex items-center justify-center w-full py-4 px-4 rounded-2xl font-bold text-base transition-all ${plan.popular ? 'brand-gradient text-white shadow-lg shadow-primary/25 hover:opacity-90' : 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700'}`} 
+                                    onClick={(e) => openPlanDetails(e, plan)}
+                                >
                                     {t.pricing.getStarted}
-                                </a>
+                                </button>
                                 <ul className="mt-10 space-y-4">
                                     {plan.features.map((feature, i) => (
                                         <li key={i} className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
@@ -112,6 +126,61 @@ export default function PricingPlans() {
                     </div>
                 </div>
             </main>
+
+            {/* Plan Details Modal */}
+            <Modal 
+                isOpen={isModalOpen} 
+                onClose={() => setIsModalOpen(false)} 
+                title={selectedPlan?.name || ""}
+            >
+                {selectedPlan && (
+                    <div className="space-y-8">
+                        <div>
+                            <div className="flex items-center justify-between mb-4">
+                                <span className={`px-4 py-1.5 rounded-full text-xs font-bold ${selectedPlan.popular ? 'brand-gradient text-white shadow-lg shadow-primary/20' : 'bg-primary/10 text-primary border border-primary/20'} tracking-wide uppercase`}>
+                                    Formule {selectedPlan.name}
+                                </span>
+                                <div className="flex items-baseline gap-1">
+                                    <span className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">{selectedPlan.price}</span>
+                                    <span className="text-slate-500 dark:text-slate-400 font-medium lowercase">
+                                        {selectedPlan.billingCycle === 'monthly' ? t.pricing.monthlyShort : (selectedPlan.billingCycle === 'yearly' ? t.pricing.yearlyShort : '')}
+                                    </span>
+                                </div>
+                            </div>
+                            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed italic">
+                                "{selectedPlan.description}"
+                            </p>
+                        </div>
+
+                        <div className="space-y-4">
+                            <h4 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-widest flex items-center gap-2">
+                                <span className="w-8 h-[2px] bg-primary"></span>
+                                Ce qui est inclus
+                            </h4>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {selectedPlan.features.map((feature, i) => (
+                                    <div key={i} className="flex items-start gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-white/5 group hover:border-primary/30 transition-colors">
+                                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                                            <span className="material-symbols-outlined text-[18px]">done</span>
+                                        </div>
+                                        <span className="text-sm text-slate-600 dark:text-slate-300 font-medium self-center">{feature}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="p-6 rounded-3xl bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/10">
+                            <h4 className="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+                                <span className="material-symbols-outlined text-primary">info</span>
+                                Détails Supplémentaires
+                            </h4>
+                            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                {selectedPlan.details || "Contactez-nous pour en savoir plus sur les spécificités de cette formule et comment elle peut répondre à vos besoins."}
+                            </p>
+                        </div>
+                    </div>
+                )}
+            </Modal>
         </>
     );
 }

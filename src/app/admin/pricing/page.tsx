@@ -18,7 +18,8 @@ export default function AdminPricing() {
         features: "",
         billingCycle: "monthly" as "monthly" | "yearly" | "one-time",
         active: true,
-        popular: false
+        popular: false,
+        details: ""
     });
 
     const openModal = (plan: PricingPlan | null = null) => {
@@ -31,7 +32,8 @@ export default function AdminPricing() {
                 features: plan.features?.join(', ') || "",
                 billingCycle: plan.billingCycle || "monthly",
                 active: plan.active,
-                popular: plan.popular
+                popular: plan.popular,
+                details: plan.details || ""
             });
         } else {
             setEditingPlan(null);
@@ -42,7 +44,8 @@ export default function AdminPricing() {
                 features: "",
                 billingCycle: "monthly",
                 active: true,
-                popular: false
+                popular: false,
+                details: ""
             });
         }
         setIsModalOpen(true);
@@ -280,8 +283,15 @@ export default function AdminPricing() {
                                     required
                                     value={formData.features}
                                     onChange={(e) => setFormData({ ...formData, features: e.target.value })}
-                                    className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all h-20 resize-none"
-                                    placeholder="Feature 1, Feature 2, Feature 3..."
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">Détails supplémentaires (Modale)</label>
+                                <textarea
+                                    value={formData.details}
+                                    onChange={(e) => setFormData({ ...formData, details: e.target.value })}
+                                    className="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all h-24 resize-none"
+                                    placeholder="Informations détaillées pour la modale..."
                                 />
                             </div>
                             <div className="flex items-center gap-6 pt-2">

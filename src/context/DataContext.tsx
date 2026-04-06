@@ -33,6 +33,7 @@ export interface PricingPlan {
     users: number;
     features: string[];
     billingCycle: 'monthly' | 'yearly' | 'one-time';
+    details?: string;
 }
 
 export interface FAQItem {
@@ -149,9 +150,9 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     ]);
 
     const [plans, setPlans] = useState<PricingPlan[]>([
-        { id: '1', name: 'Starter', price: '49€', description: 'Perfect for freelancers and solo creators.', active: true, popular: false, users: 128, features: ['5 Active Projects', 'Basic Support (Email)', 'Community Access', 'Standard Analytics'], billingCycle: 'monthly' },
-        { id: '2', name: 'Professional', price: '99€', description: 'For growing teams demanding power.', active: true, popular: true, users: 542, features: ['Unlimited Active Projects', 'Priority 24/7 Support', 'Full Source Files Access', 'Advanced Analytics & Reporting', 'Team Collaboration Tools'], billingCycle: 'monthly' },
-        { id: '3', name: 'Agency', price: '1999€', description: 'Scale your operations with full control.', active: true, popular: false, users: 86, features: ['Dedicated Account Manager', 'White Labeling Options', 'Custom API Access', 'Custom Contracts & SLAs', 'SSO & Advanced Security'], billingCycle: 'yearly' },
+        { id: '1', name: 'Starter', price: '49€', description: 'Perfect for freelancers and solo creators.', active: true, popular: false, users: 128, features: ['5 Active Projects', 'Basic Support (Email)', 'Community Access', 'Standard Analytics'], billingCycle: 'monthly', details: "Idéal pour lancer votre projet avec un accompagnement expert. Cette formule inclut une mise en service rapide et un support réactif pour vous aider à démarrer sereinement." },
+        { id: '2', name: 'Professional', price: '99€', description: 'For growing teams demanding power.', active: true, popular: true, users: 542, features: ['Unlimited Active Projects', 'Priority 24/7 Support', 'Full Source Files Access', 'Advanced Analytics & Reporting', 'Team Collaboration Tools'], billingCycle: 'monthly', details: "Notre offre la plus populaire pour les entreprises en pleine croissance. Profitez d'outils avancés, d'une collaboration illimitée et d'un support prioritaire 24h/24 et 7j/7 pour booster votre productivité." },
+        { id: '3', name: 'Agency', price: '1999€', description: 'Scale your operations with full control.', active: true, popular: false, users: 86, features: ['Dedicated Account Manager', 'White Labeling Options', 'Custom API Access', 'Custom Contracts & SLAs', 'SSO & Advanced Security'], billingCycle: 'yearly', details: "La solution complète pour les agences et grandes organisations. Inclut une marque blanche totale, un gestionnaire de compte dédié et des ressources personnalisées pour une mise à l'échelle sans limite de vos projets." },
     ]);
 
     const [faqs, setFaqs] = useState<FAQItem[]>([
