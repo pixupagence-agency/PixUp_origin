@@ -90,7 +90,7 @@ export default function ServiceDetail() {
                                     href="#process"
                                     className="px-8 py-4 rounded-2xl glass-card text-slate-900 dark:text-white font-bold hover:bg-white/50 dark:hover:bg-slate-800 transition-all"
                                 >
-                                    Notre processus
+                                    Processus {service.name}
                                 </Link>
                             </div>
                         </div>
@@ -181,7 +181,7 @@ export default function ServiceDetail() {
                         </div>
                         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                             <div>
-                                <h2 className="text-4xl font-black mb-8 leading-tight">{service.processTitle || `Votre projet de ${service.name.toLowerCase()} mérite le meilleur`} <span className="text-primary">processus créatif</span>.</h2>
+                                <h2 className="text-4xl font-black mb-8 leading-tight">Votre projet de {service.name.toLowerCase()} mérite le meilleur <span className="text-primary">processus {service.name.toLowerCase()}</span>.</h2>
                                 <div className="space-y-8">
                                     {(service.processSteps && service.processSteps.length > 0 ? service.processSteps : [
                                         { title: "Découverte & Audit", description: "Échange approfondi pour définir les contours, les cibles et les indicateurs de succès du projet." },

@@ -336,7 +336,7 @@ export default function AdminServiceDetail() {
                         <section className="glass-card p-6 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
                             <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
                                 <span className="material-symbols-outlined text-primary">analytics</span>
-                                Processus Créatif
+                                Processus {service.name}
                             </h2>
                             
                             <div className="space-y-4">
