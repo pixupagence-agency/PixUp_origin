@@ -12,6 +12,12 @@ export interface Service {
     color: string;
     longDescription?: string;
     benefits?: string[];
+    // New fields
+    trustTitle?: string;
+    trustDescription?: string;
+    trustItems?: { title: string; description: string; icon: string }[];
+    processTitle?: string;
+    processSteps?: { title: string; description: string }[];
 }
 
 export interface Project {
@@ -134,7 +140,19 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
             projects: 12, 
             color: 'blue',
             longDescription: "Nous créons des identités de marque qui ne se contentent pas d'être belles, mais qui racontent une histoire et véhiculent vos valeurs. Notre approche stratégique du branding vous permet de vous démarquer dans un marché saturé.",
-            benefits: ["Logo & Charte Graphique complète", "Positionnement & Identité verbale", "Supports de communication print & digitaux", "Brand Book & Guidelines"]
+            benefits: ["Logo & Charte Graphique complète", "Positionnement & Identité verbale", "Supports de communication print & digitaux", "Brand Book & Guidelines"],
+            trustTitle: "Pourquoi nous faire confiance ?",
+            trustDescription: "Notre approche combine créativité sans limites et rigueur stratégique pour des résultats tangibles.",
+            trustItems: [
+                { title: "Analyse Stratégique", description: "Nous commençons chaque projet par une immersion totale dans votre univers.", icon: "analytics" },
+                { title: "Design sur Mesure", description: "Pas de templates. Chaque design est forgé à partir d'une page blanche.", icon: "brush" },
+                { title: "Exécution Agile", description: "Nous privilégions la rapidité et la qualité avec des cycles itératifs.", icon: "rocket_launch" }
+            ],
+            processSteps: [
+                { title: "Découverte & Audit", description: "Échange approfondi pour définir les contours et objectifs du projet." },
+                { title: "Conception & UX", description: "Architecture de l'information pour valider le parcours utilisateur." },
+                { title: "Design Pixel Perfect", description: "Création de l'interface visuelle avec une attention méticuleuse." }
+            ]
         },
         { 
             id: '2', 

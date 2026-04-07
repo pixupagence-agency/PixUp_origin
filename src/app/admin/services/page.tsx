@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useLanguage } from "@/context/LanguageContext";
 import { useData } from "@/context/DataContext";
 import AdminSidebar from "@/components/AdminSidebar";
+import Link from 'next/link';
 
 export default function AdminServices() {
     const { t } = useLanguage();
@@ -106,8 +107,15 @@ export default function AdminServices() {
                                                 className="rounded-lg p-2 text-slate-400 hover:bg-red-50 hover:text-red-600 transition-colors"
                                                 title={t.admin.delete}
                                             >
-                                                <span className="material-symbols-outlined text-lg">delete</span>
+                                                 <span className="material-symbols-outlined text-lg">delete</span>
                                             </button>
+                                            <Link
+                                                href={`/admin/services/${service.id}`}
+                                                className="rounded-lg p-2 text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors"
+                                                title={t.admin.editContent}
+                                            >
+                                                <span className="material-symbols-outlined text-lg">auto_awesome</span>
+                                            </Link>
                                         </div>
                                     </div>
                                     <div>

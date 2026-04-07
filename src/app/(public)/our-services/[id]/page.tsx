@@ -121,31 +121,23 @@ export default function ServiceDetail() {
                     {/* Features/Details Grid */}
                     <div className="mb-32">
                         <div className="text-center mb-16">
-                            <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4">Pourquoi nous faire confiance ?</h2>
-                            <p className="text-slate-500 max-w-2xl mx-auto">Notre approche combine créativité sans limites et rigueur stratégique pour des résultats tangibles.</p>
+                            <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4">{service.trustTitle || "Pourquoi nous faire confiance ?"}</h2>
+                            <p className="text-slate-500 max-w-2xl mx-auto">{service.trustDescription || "Notre approche combine créativité sans limites et rigueur stratégique pour des résultats tangibles."}</p>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            <div className="glass-card p-8 rounded-3xl group hover:-translate-y-2 transition-all duration-300">
-                                <div className="w-12 h-12 rounded-2xl bg-blue-50 dark:bg-blue-900/20 text-primary flex items-center justify-center mb-6 group-hover:brand-gradient group-hover:text-white transition-all">
-                                    <span className="material-symbols-outlined">analytics</span>
+                            {(service.trustItems && service.trustItems.length > 0 ? service.trustItems : [
+                                { title: "Analyse Stratégique", description: "Nous commençons chaque projet par une immersion totale dans votre univers pour comprendre vos enjeux et vos objectifs réels.", icon: "analytics" },
+                                { title: "Design sur Mesure", description: "Pas de templates. Chaque design est forgé à partir d'une page blanche pour garantir une identité unique et différenciante.", icon: "brush" },
+                                { title: "Exécution Agile", description: "Nous privilégions la rapidité et la qualité avec des cycles de développement itératifs et une communication constante.", icon: "rocket_launch" }
+                            ]).map((item, index) => (
+                                <div key={index} className="glass-card p-8 rounded-3xl group hover:-translate-y-2 transition-all duration-300">
+                                    <div className={`w-12 h-12 rounded-2xl bg-${service.color}-50 dark:bg-${service.color}-900/20 text-${service.color === 'blue' ? 'primary' : service.color + '-500'} flex items-center justify-center mb-6 group-hover:brand-gradient group-hover:text-white transition-all`}>
+                                        <span className="material-symbols-outlined">{item.icon}</span>
+                                    </div>
+                                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">{item.title}</h3>
+                                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">{item.description}</p>
                                 </div>
-                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Analyse Stratégique</h3>
-                                <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Nous commençons chaque projet par une immersion totale dans votre univers pour comprendre vos enjeux et vos objectifs réels.</p>
-                            </div>
-                            <div className="glass-card p-8 rounded-3xl group hover:-translate-y-2 transition-all duration-300">
-                                <div className="w-12 h-12 rounded-2xl bg-purple-50 dark:bg-purple-900/20 text-secondary flex items-center justify-center mb-6 group-hover:brand-gradient group-hover:text-white transition-all">
-                                    <span className="material-symbols-outlined">brush</span>
-                                </div>
-                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Design sur Mesure</h3>
-                                <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Pas de templates. Chaque design est forgé à partir d'une page blanche pour garantir une identité unique et différenciante.</p>
-                            </div>
-                            <div className="glass-card p-8 rounded-3xl group hover:-translate-y-2 transition-all duration-300">
-                                <div className="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 flex items-center justify-center mb-6 group-hover:brand-gradient group-hover:text-white transition-all">
-                                    <span className="material-symbols-outlined">rocket_launch</span>
-                                </div>
-                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Exécution Agile</h3>
-                                <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Nous privilégions la rapidité et la qualité avec des cycles de développement itératifs et une communication constante.</p>
-                            </div>
+                            ))}
                         </div>
                     </div>
 
@@ -189,29 +181,21 @@ export default function ServiceDetail() {
                         </div>
                         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                             <div>
-                                <h2 className="text-4xl font-black mb-8 leading-tight">Votre projet de {service.name.toLowerCase()} mérite le meilleur <span className="text-primary">processus créatif</span>.</h2>
+                                <h2 className="text-4xl font-black mb-8 leading-tight">{service.processTitle || `Votre projet de ${service.name.toLowerCase()} mérite le meilleur`} <span className="text-primary">processus créatif</span>.</h2>
                                 <div className="space-y-8">
-                                    <div className="flex gap-6">
-                                        <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center font-black text-xl text-primary border border-white/10">01</div>
-                                        <div>
-                                            <h4 className="font-bold text-lg mb-2">Découverte & Audit</h4>
-                                            <p className="text-slate-400 text-sm">Échange approfondi pour définir les contours, les cibles et les indicateurs de succès du projet.</p>
+                                    {(service.processSteps && service.processSteps.length > 0 ? service.processSteps : [
+                                        { title: "Découverte & Audit", description: "Échange approfondi pour définir les contours, les cibles et les indicateurs de succès du projet." },
+                                        { title: "Conception & UX", description: "Architecture de l'information et wireframes pour valider le parcours utilisateur." },
+                                        { title: "Design Pixel Perfect", description: "Création de l'interface visuelle avec une attention méticuleuse portée aux détails et à l'âme de votre marque." }
+                                    ]).map((step, index) => (
+                                        <div key={index} className="flex gap-6">
+                                            <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center font-black text-xl text-primary border border-white/10">{String(index + 1).padStart(2, '0')}</div>
+                                            <div>
+                                                <h4 className="font-bold text-lg mb-2">{step.title}</h4>
+                                                <p className="text-slate-400 text-sm">{step.description}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="flex gap-6">
-                                        <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center font-black text-xl text-primary border border-white/10">02</div>
-                                        <div>
-                                            <h4 className="font-bold text-lg mb-2">Conception & UX</h4>
-                                            <p className="text-slate-400 text-sm">Architecture de l'information et wireframes pour valider le parcours utilisateur.</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex gap-6">
-                                        <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center font-black text-xl text-primary border border-white/10">03</div>
-                                        <div>
-                                            <h4 className="font-bold text-lg mb-2">Design Pixel Perfect</h4>
-                                            <p className="text-slate-400 text-sm">Création de l'interface visuelle avec une attention méticuleuse portée aux détails et à l'âme de votre marque.</p>
-                                        </div>
-                                    </div>
+                                    ))}
                                 </div>
                             </div>
                             <div className="glass-card bg-white/5 border-white/10 p-10 rounded-3xl">
